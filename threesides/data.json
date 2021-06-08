@@ -1,0 +1,14 @@
+{
+	"circle": {
+		"name": "Circle",
+		"info": "a round plane figure whose boundary (the circumference) consists of points equidistant from a fixed point (the center)"
+	},
+	"triangle": {
+		"name": "Triangle",
+		"info": "a plane figure with three straight sides and three angles"
+	},
+	"square": {
+		"name": "Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	}
+}

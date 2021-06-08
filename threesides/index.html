@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Wimmel</title>
+
+<h1>Find the object that has 3 sides!</h1>
+
+<div id="bg"></div>
+
+<div id="info"></div>
+
+<style>
+
+body {
+	font-size: 15px;
+	font-family: helvetica, sans-serif;	
+}
+
+h1 {
+	position: fixed;
+	top: 25px;
+	left: 25px;
+}
+
+#info {
+	position: absolute;
+	left: 50%; top: 50%;
+	transform:translate(-50%, -50%);
+	width: 250px;
+	min-height: 150px;
+	background: #eee;
+	padding: 0 1em;
+	display: none;
+}
+
+#info.active { display: block; }
+
+.object { opacity: 0; cursor: pointer;}
+.object:hover, .object.active { opacity: 1;}
+
+</style>
+
+<script>
+
+function x(s) { return document.querySelector(s); }
+function X(s) { return document.querySelectorAll(s); }
+
+data = null;
+
+el = x('#bg');
+fetch('graphics.svg')
+  .then(r => r.text())
+  .then(text => { 
+		el.innerHTML = text; 
+		if (data!=null) process();
+	})
+	
+fetch('data.json')
+  .then(r => r.json())
+	.then(d => {
+		data = d;
+		if (typeof x('#bg svg') != "null") process();
+	});
+
+function process() {
+
+	var svg = x("#bg svg");
+
+	for (id in data) {
+		var obj = svg.getElementById(id);
+		obj.classList.add("object");
+		
+		obj.onclick = function(){
+			X(".active").forEach(el => el.classList.remove('active'));
+			var id = this.id;			
+			x("#"+id).classList.add("active");
+			x("#info").innerHTML = "<h2>"+ data[id].name +"</h2>" + "<p>" + data[id].info + "</p>";
+			x("#info").classList.add("active");
+		}
+	}
+	
+	var bg = svg.getElementById("background")
+	bg.onclick = function(){
+		X(".active").forEach(el => el.classList.remove('active'));
+	}
+	
+}
+
+
+</script>
