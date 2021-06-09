@@ -1,13 +1,121 @@
 {
-	"circle": {
+	"cup": {
 		"name": "✘ Circle",
 		"info": "a round plane figure whose boundary (the circumference) consists of points equidistant from a fixed point (the center)"
 	},
-	"triangle": {
+	"lamp": {
 		"name": "✔︎ Triangle",
 		"info": "a plane figure with three straight sides and three angles"
 	},
-	"square": {
+	"poster": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"sponge": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"knife": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"pin": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"spaghetti": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"table": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"postit": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"flowers": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"salt": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"flag": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"pot": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"coffee": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"magnet": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"other-cup": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object1": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object2": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-3": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-4": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-5": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-6": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-7": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-8": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-9": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-10": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-11": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-12": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-13": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"object-14": {
 		"name": "✘ Square",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	}

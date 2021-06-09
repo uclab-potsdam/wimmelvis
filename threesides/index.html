@@ -20,7 +20,7 @@ h1 {
 
 #info {
 	position: absolute;
-	left: 50%; top: 50%;
+	left: 10%; top: 20%;
 	transform:translate(-50%, -50%);
 	width: 250px;
 	min-height: 150px;
@@ -60,7 +60,7 @@ var data = null;
 var map = x('#map');
 
 // load the SVG file and add its elements to the map
-fetch('graphics.svg')
+fetch('graphics_2.0.svg')
   .then(r => r.text())
   .then(text => { 
 		map.innerHTML = text;		
@@ -83,7 +83,7 @@ function init() {
 	
 	// variable references the svg object
 	var svg = x("#map svg");
-
+	console.warn("You have " + Object.keys(data).length + " items in your dataset")
 	// iterate over all data items
 	for (id in data) {
 		
@@ -97,7 +97,6 @@ function init() {
 		
 		// the object that is matched gets class object and is made invisible (see style above)
 		obj.classList.add("object");
-		
 		// object gets a click event
 		obj.onclick = function(){
 			// reset all active classes from elements
