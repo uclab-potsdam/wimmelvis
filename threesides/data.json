@@ -1,122 +1,86 @@
 {
-	"cup": {
-		"name": "✘ Circle",
+	"pizza-box": {
+		"name": "✘ Pizza Box",
 		"info": "a round plane figure whose boundary (the circumference) consists of points equidistant from a fixed point (the center)"
 	},
-	"lamp": {
-		"name": "✔︎ Triangle",
+	"tetrapack": {
+		"name": "✔︎ Tetrapack",
 		"info": "a plane figure with three straight sides and three angles"
 	},
-	"poster": {
-		"name": "✘ Square",
+	"shipping-box": {
+		"name": "✘ Shipping Box",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"sponge": {
-		"name": "✘ Square",
+	"envelopes": {
+		"name": "✘ Envelopes",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"knife": {
-		"name": "✘ Square",
+	"receipt": {
+		"name": "✘ Receipt",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"pin": {
-		"name": "✘ Square",
+	"plastic-bag": {
+		"name": "✘ Plastic Bag",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"spaghetti": {
-		"name": "✘ Square",
+	"medication": {
+		"name": "✘ Medication",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"table": {
-		"name": "✘ Square",
+	"cooking-foil": {
+		"name": "✘ Cooking Foil",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"postit": {
-		"name": "✘ Square",
+	"broken-mirror": {
+		"name": "✘ Broken Mirror",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"flowers": {
-		"name": "✘ Square",
+	"yogurt-cup": {
+		"name": "✘ Yogurt Cups",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"salt": {
-		"name": "✘ Square",
+	"broken-cable": {
+		"name": "✘ Broken Cable",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"flag": {
-		"name": "✘ Square",
+	"broken-dishes": {
+		"name": "✘ Broken Dishes",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"pot": {
-		"name": "✘ Square",
+	"broken-toaster": {
+		"name": "✘ Broken Toaster",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"coffee": {
-		"name": "✘ Square",
+	"batteries": {
+		"name": "✘ Batteries",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"magnet": {
-		"name": "✘ Square",
+	"chain-of-lights": {
+		"name": "✘ Chain of Lights",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"other-cup": {
-		"name": "✘ Square",
+	"dead-plant": {
+		"name": "✘ Dead Plant",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"object1": {
-		"name": "✘ Square",
+	"coffee-filter": {
+		"name": "✘ Used Coffee Filter",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"object2": {
-		"name": "✘ Square",
+	"bike-tire": {
+		"name": "✘ Bike Tire",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"object-3": {
-		"name": "✘ Square",
+	"plastic-bottle": {
+		"name": "✘ Plastic Bottle",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"object-4": {
-		"name": "✘ Square",
+	"printer-ink": {
+		"name": "✘ Printer Ink",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	},
-	"object-5": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-6": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-7": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-8": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-9": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-10": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-11": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-12": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-13": {
-		"name": "✘ Square",
-		"info": "a plane figure with four equal straight sides and four right angles"
-	},
-	"object-14": {
-		"name": "✘ Square",
+	"tea-bag": {
+		"name": "✘ Tea Bag",
 		"info": "a plane figure with four equal straight sides and four right angles"
 	}
 }

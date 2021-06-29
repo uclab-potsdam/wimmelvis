@@ -9,29 +9,39 @@ body {
 	font-size: 15px;
 	font-family: helvetica, sans-serif;	
 	padding: 0; margin: 0;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 h1 {
 	position: fixed;
 	top: 25px;
 	left: 25px;
+	background-color: white;
+	padding: 10px 20px;
+	border: 1px solid black;
 }
 
 #info {
-	position: absolute;
-	left: 10%; top: 20%;
-	transform:translate(-50%, -50%);
-	width: 250px;
+	position: fixed;
+	left: 25px; top: 15%;
+	/* transform:translate(-50%, -50%); */
+	width: 380px;
 	min-height: 150px;
 	background: #eee;
 	padding: 0 1em;
 	display: none;
+	border: 1px solid black;
 }
 
 #info.active { display: block; }
 
-#map svg { height: 100vh; width: 100vw }
+/* #map { overflow: scroll; } */
+
+#map svg {
+	/* overflow: scroll; */
+	height: 200%;
+	width: 200%;
+	}
 
 .object { opacity: 0; cursor: pointer;}
 .object.active { opacity: 1;}
@@ -39,7 +49,7 @@ h1 {
 </style>
 </head>
 
-<h1>Find the object that has 3 sides!</h1>
+<h1>Find all recyclabe objects!</h1>
 
 <!-- this element shows the descriptions of the items -->
 <div id="info"></div>
@@ -60,7 +70,7 @@ var data = null;
 var map = x('#map');
 
 // load the SVG file and add its elements to the map
-fetch('graphics_2.0.svg')
+fetch('graphics_3.0.svg')
   .then(r => r.text())
   .then(text => { 
 		map.innerHTML = text;		
