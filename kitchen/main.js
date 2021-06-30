@@ -14,7 +14,7 @@ fetch('graphics_3.0.svg')
   .then(text => { 
 		map.innerHTML = text;		
 		// initialize the map if data is loaded, too:
-		if (data!=null) init();
+		if (data!=null) load();
 	})
 
 // load data file and add to data variable
@@ -23,41 +23,53 @@ fetch('data.json')
 	.then(d => {
 		data = d;
 		// initialize the map if svg is loaded, too:
-		if (typeof x('#map svg') != "null") init();
+		if (typeof x('#map svg') != "null") load();
 	});
 
 // tooltips logic
 var Tooltip = {
-    tooltip: undefined,
+    // Stores current active object to trigger event correctly
+    activeObj: undefined,
     show: function (e, obj) {
-        console.log(e)
-        Tooltip.tooltip = obj;
-        var id = Tooltip.tooltip.id;
+        // reset all active classes from elements
+		reset();
+        
+        // Get unique id of active object
+        var id = Tooltip.activeObj.id;
+        
+        var document = x("html");
 
-        // Change div coordinates and move it close to object
-        var left  = e.layerX  + "px";
-        var top  = e.layerY  + "px";
-        x("#info").style.left = left;
-        x("#info").style.top = top;
+        var objCoordinates = Tooltip.activeObj.getBoundingClientRect()
 
-        // add a class to clicked object
-        x("#"+id).classList.add("active");
+        // Store cursor position @ click in two variables
+        var xPositionClick = e.layerX;
+        var yPositionClick = e.layerY;
+
         // this object's name and info is added to the info box
         x("#info").innerHTML = "<h2>"+ data[id].name +"</h2>" + "<p>" + data[id].info + "</p>";
+
+        // positions the info box on click position
+        x("#info").style.left = xPositionClick + 'px';
+        x("#info").style.top = yPositionClick + 'px';
+
+        // scrolls viewport to center active object
+        document.scrollLeft = document.scrollLeft / 2 + objCoordinates.x;
+        document.scrollTop = document.scrollTop / 2 + objCoordinates.y;
+        console.log(document.scrollTop / 2, objCoordinates.x)
+        // add a class to clicked object
+        x("#"+id).classList.add("active");
         // the infobox is also made visible (see style above)
         x("#info").classList.add("active");
     },
     hide: function() {
-        console.log('hidden');
         // removes classes and hide tooltip
         reset();
+        Tooltip.activeObj = undefined;
     }
 }
 
-console.log(Tooltip)
-
 // add click events to all svg elements that have an entry in data file
-function init() {
+function load() {
 	// variable references the svg object
 	var svg = x("#map svg");
 	console.warn("You have " + Object.keys(data).length + " items in your dataset")
@@ -75,17 +87,16 @@ function init() {
 		// the object that is matched gets class object and is made invisible (see style above)
 		obj.classList.add("object");
         
-        // add and remove tooltip on hover
-        obj.onmouseover = function(){
-            
-        }
-		// object gets a click event
-		obj.onclick = function(event){
-			// reset all active classes from elements
-			reset();
-            // execute function and renders tooltip			
-			Tooltip.show(event, this);
-		}
+            // object gets a click event
+            obj.onclick = function(event) {
+                // prevent event to be triggered if the clicked object is already active
+                if (Tooltip.activeObj == undefined || Tooltip.activeObj.id !== this.id) {
+                    // Assign current active object to tooltip
+                    Tooltip.activeObj = this;	
+                    // execute function that renders tooltip		
+                    Tooltip.show(event, this);
+                }
+            }
 	}
 	
 	// when clicking on the background, the selection is reset

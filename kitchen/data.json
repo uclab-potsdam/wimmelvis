@@ -1,0 +1,86 @@
+{
+	"pizza-box": {
+		"name": "Pizza Box",
+		"info": "a round plane figure whose boundary (the circumference) consists of points equidistant from a fixed point (the center)"
+	},
+	"tetrapack": {
+		"name": "Tetrapack",
+		"info": "a plane figure with three straight sides and three angles"
+	},
+	"shipping-box": {
+		"name": "Shipping Box",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"envelopes": {
+		"name": "Envelopes",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"receipt": {
+		"name": "Receipt",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"plastic-bag": {
+		"name": "Plastic Bag",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"medication": {
+		"name": "Medication",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"cooking-foil": {
+		"name": "Cooking Foil",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"broken-mirror": {
+		"name": "Broken Mirror",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"yogurt-cup": {
+		"name": "Yogurt Cups",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"broken-cable": {
+		"name": "Broken Cable",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"broken-plate": {
+		"name": "Broken Dishes",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"broken-toaster": {
+		"name": "Broken Toaster",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"batteries": {
+		"name": "Batteries",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"chain-of-lights": {
+		"name": "Chain of Lights",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"dead-plant": {
+		"name": "Dead Plant",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"coffee-filter": {
+		"name": "Used Coffee Filter",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"bike-tire": {
+		"name": "Bike Tire",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"plastic-bottle": {
+		"name": "Plastic Bottle",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"printer-ink": {
+		"name": "Printer Ink",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"tea-bag": {
+		"name": "Tea Bag",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	}
+}
