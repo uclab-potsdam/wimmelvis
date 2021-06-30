@@ -37,10 +37,6 @@ var Tooltip = {
         // Get unique id of active object
         var id = Tooltip.activeObj.id;
         
-        var document = x("html");
-
-        var objCoordinates = Tooltip.activeObj.getBoundingClientRect()
-
         // Store cursor position @ click in two variables
         var xPositionClick = e.layerX;
         var yPositionClick = e.layerY;
@@ -49,13 +45,12 @@ var Tooltip = {
         x("#info").innerHTML = "<h2>"+ data[id].name +"</h2>" + "<p>" + data[id].info + "</p>";
 
         // positions the info box on click position
-        x("#info").style.left = xPositionClick + 'px';
-        x("#info").style.top = yPositionClick + 'px';
+        x("#info").style.left = Math.floor(xPositionClick) + 'px';
+        x("#info").style.top = Math.floor(yPositionClick) + 'px';
 
-        // scrolls viewport to center active object
-        document.scrollLeft = document.scrollLeft / 2 + objCoordinates.x;
-        document.scrollTop = document.scrollTop / 2 + objCoordinates.y;
-        console.log(document.scrollTop / 2, objCoordinates.x)
+        // scrolls and centers clicked element in the viewport
+        window.scrollTo(e.layerX - (window.innerWidth>>1), e.layerY - (window.innerHeight>>1));
+
         // add a class to clicked object
         x("#"+id).classList.add("active");
         // the infobox is also made visible (see style above)

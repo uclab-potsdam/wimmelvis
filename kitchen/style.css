@@ -9,9 +9,10 @@ h1 {
     position: fixed;
     top: 25px;
     left: 25px;
-    background-color: white;
     padding: 10px 20px;
-    border: 1px solid black;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(133, 131, 221);
+    box-shadow: 5px 5px rgba(133, 131, 221, 0.5);
 }
 
 #info {
@@ -29,6 +30,7 @@ h1 {
     background: rgb(255, 255, 255);
     border: 1px solid rgb(133, 131, 221);
     box-shadow: 5px 5px rgba(133, 131, 221, 0.5);
+    line-height: double;
 }
 
 #info.active {
