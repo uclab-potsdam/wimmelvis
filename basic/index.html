@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Wimmel</title>
@@ -9,39 +8,29 @@ body {
 	font-size: 15px;
 	font-family: helvetica, sans-serif;	
 	padding: 0; margin: 0;
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 
 h1 {
 	position: fixed;
 	top: 25px;
 	left: 25px;
-	background-color: white;
-	padding: 10px 20px;
-	border: 1px solid black;
 }
 
 #info {
-	position: fixed;
-	left: 25px; top: 15%;
-	/* transform:translate(-50%, -50%); */
-	width: 380px;
+	position: absolute;
+	left: 50%; top: 50%;
+	transform:translate(-50%, -50%);
+	width: 250px;
 	min-height: 150px;
 	background: #eee;
 	padding: 0 1em;
 	display: none;
-	border: 1px solid black;
 }
 
 #info.active { display: block; }
 
-/* #map { overflow: scroll; } */
-
-#map svg {
-	/* overflow: scroll; */
-	height: 200%;
-	width: 200%;
-	}
+#map svg { height: 90vh; width: 90vw }
 
 .object { opacity: 0; cursor: pointer;}
 .object.active { opacity: 1;}
@@ -49,7 +38,7 @@ h1 {
 </style>
 </head>
 
-<h1>Find all recyclabe objects!</h1>
+<h1>Find the object that has 3 sides!</h1>
 
 <!-- this element shows the descriptions of the items -->
 <div id="info"></div>
@@ -70,7 +59,7 @@ var data = null;
 var map = x('#map');
 
 // load the SVG file and add its elements to the map
-fetch('graphics_3.0.svg')
+fetch('shapes.svg')
   .then(r => r.text())
   .then(text => { 
 		map.innerHTML = text;		
@@ -93,7 +82,7 @@ function init() {
 	
 	// variable references the svg object
 	var svg = x("#map svg");
-	console.warn("You have " + Object.keys(data).length + " items in your dataset")
+
 	// iterate over all data items
 	for (id in data) {
 		
@@ -107,6 +96,7 @@ function init() {
 		
 		// the object that is matched gets class object and is made invisible (see style above)
 		obj.classList.add("object");
+		
 		// object gets a click event
 		obj.onclick = function(){
 			// reset all active classes from elements
@@ -143,5 +133,6 @@ function reset() {
 	X(".active").forEach(el => el.classList.remove('active'));
 }	
 
+
+
 </script>
-</html>

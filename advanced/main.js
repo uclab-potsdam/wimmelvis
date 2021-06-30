@@ -9,7 +9,7 @@ var data = null;
 var map = x('#map');
 
 // load the SVG file and add its elements to the map
-fetch('graphics_3.0.svg')
+fetch('kitchen.svg')
   .then(r => r.text())
   .then(text => { 
 		map.innerHTML = text;		
@@ -26,11 +26,11 @@ fetch('data.json')
 		if (typeof x('#map svg') != "null") load();
 	});
 
-// tooltips logic
+// this variable holds information and methods necessary to trigger the appropriate tooltip
 var Tooltip = {
     // Stores current active object to trigger event correctly
     activeObj: undefined,
-    show: function (e, obj) {
+    show: function (e) {
         // reset all active classes from elements
 		reset();
         
@@ -53,7 +53,7 @@ var Tooltip = {
 
         // add a class to clicked object
         x("#"+id).classList.add("active");
-        // the infobox is also made visible (see style above)
+        // the infobox is also made visible (see style in style.css)
         x("#info").classList.add("active");
     },
     hide: function() {
@@ -79,7 +79,7 @@ function load() {
 			continue;
 		}
 		
-		// the object that is matched gets class object and is made invisible (see style above)
+		// the object that is matched gets class object and is made invisible (see stylesheet)
 		obj.classList.add("object");
         
             // object gets a click event

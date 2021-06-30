@@ -17,15 +17,19 @@ h1 {
 
 #info {
     position: absolute;
-    width: 300px; min-height: 150px;
-    transform: translate(-50%, -160%);
+    width: 300px; min-height: 150px; max-height: 200px;
+    transform: translate(-50%, -150%);
+
+    /* Prevent text flowing out of the div */
+    overflow: auto;
 
     /* When nothing is selected the div is not visible and not clickable */
+    visibility: hidden;
     opacity: 0;
     pointer-events: none;
 
     /* Change colors and box style */
-    padding: 0 1em;
+    padding: 0.5em 1.5em;
     border-radius: 1%;
     background: rgb(255, 255, 255);
     border: 1px solid rgb(133, 131, 221);
@@ -35,6 +39,8 @@ h1 {
 
 #info.active {
     opacity: 1;
+    visibility: visible;
+    pointer-events: all;
     transition: opacity 1s ease;
 }
 

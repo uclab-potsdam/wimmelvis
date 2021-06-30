@@ -1,0 +1,34 @@
+{
+	"circle": {
+		"name": "✘ Circle",
+		"info": "a round plane figure whose boundary (the circumference) consists of points equidistant from a fixed point (the center)"
+	},
+	"triangle": {
+		"name": "✔︎ Triangle",
+		"info": "a plane figure with three straight sides and three angles"
+	},
+	"rectangle": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"decagon": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"four-points-star": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"octagon": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"eight-point-star": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	},
+	"eight-point-red-star": {
+		"name": "✘ Square",
+		"info": "a plane figure with four equal straight sides and four right angles"
+	}
+}
