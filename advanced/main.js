@@ -126,6 +126,7 @@ function addElementToHistoryPanel(currentObj, elementsHistory) {
     // checks if element has already been discovered, otherwise it adds it to the list
     if (!elementsHistory.includes(data[currentObj].name)) {
         elementsHistory.push(data[currentObj].name)
-        x("#history").innerHTML += "<p>" + data[currentObj].name + "</p>"
+
+        x("#history").innerHTML += `<p class=${"object-name"}>` + data[currentObj].name + "</p>"
     }
 } 

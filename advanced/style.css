@@ -61,7 +61,15 @@ h1 {
 
 #history {
     position: fixed;
-    bottom: 0;
-    background-color: white;
-    width: 100%; height: 10%;
+    top: 0; right: 0;
+    background: rgb(255, 255, 255, 0.8);
+    height: 100%; width: 10%;
+
+    border-left: 1px solid rgb(133, 131, 221);
+
+    padding-left: 15px;
+}
+
+.object-name {
+    margin: 30px;
 }
