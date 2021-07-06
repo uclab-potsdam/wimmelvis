@@ -6,14 +6,18 @@
 <title>Wimmel</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
-<h1>Find all recyclabe objects</h1>
-
-<!-- this element shows the descriptions of the items -->
-<div id="info"></div>
-
-<!-- the svg is added to this element -->
-<div id="map"></div>
+<body>
+    <h1>Find all recyclabe objects</h1>
+    <!-- this element shows the descriptions of the items -->
+    <div id="info"></div>
+    <!-- the svg is added to this element -->
+    <div id="map"></div>
+    <div id="history">
+        <div class="history-inner-container">
+            <h4>You found:</h4>
+        </div>    
+    </div>
+</body>
 <!-- this polyfill forces scroll smooth on window.scrollTo(), see: https://github.com/iamdustan/smoothscroll -->
 <script src="smoothscroll.min.js"></script>
 <!-- main javascript file to handle scroll, click and all the interactive features -->

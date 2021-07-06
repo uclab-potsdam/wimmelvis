@@ -8,6 +8,8 @@ var data = null;
 // this variables is a reference to the DOM element holding the SVG elements 
 var map = x('#map');
 
+var elementsHistory = []
+
 // load the SVG file and add its elements to the map
 fetch('kitchen.svg')
   .then(r => r.text())
@@ -97,6 +99,7 @@ function load() {
                     Tooltip.activeObj = this;	
                     // execute function that renders tooltip		
                     Tooltip.show(event, this);
+                    addElementToHistoryPanel(this.id, elementsHistory);
                 }
             }
 	}
@@ -118,3 +121,11 @@ function load() {
 function reset() {
 	X(".active").forEach(el => el.classList.remove('active'));
 }
+
+function addElementToHistoryPanel(currentObj, elementsHistory) {
+    // checks if element has already been discovered, otherwise it adds it to the list
+    if (!elementsHistory.includes(data[currentObj].name)) {
+        elementsHistory.push(data[currentObj].name)
+        x("#history").innerHTML += "<p>" + data[currentObj].name + "</p>"
+    }
+} 
