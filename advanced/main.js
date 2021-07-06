@@ -41,6 +41,13 @@ var Tooltip = {
         var xPositionClick = e.layerX;
         var yPositionClick = e.layerY;
 
+        // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
+        var scrollOptions = {
+            left: e.layerX - (window.innerWidth>>1),
+            top: e.layerY - (window.innerHeight>>1),
+            behavior: 'smooth' // does not work in Safari, polyfill needed: https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
+        }
+
         // this object's name and info is added to the info box
         x("#info").innerHTML = "<h2>"+ data[id].name +"</h2>" + "<p>" + data[id].info + "</p>";
 
@@ -49,7 +56,7 @@ var Tooltip = {
         x("#info").style.top = Math.floor(yPositionClick) + 'px';
 
         // scrolls and centers clicked element in the viewport
-        window.scrollTo(e.layerX - (window.innerWidth>>1), e.layerY - (window.innerHeight>>1));
+        window.scrollTo(scrollOptions);
 
         // add a class to clicked object
         x("#"+id).classList.add("active");
