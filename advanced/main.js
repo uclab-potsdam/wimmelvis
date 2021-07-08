@@ -113,8 +113,18 @@ function load() {
 	   if (e.key === "Escape") {
 			 reset();
 		 }
-	}	
-	
+	}
+
+    var bins = X(".bin");
+    console.log(bins)
+
+    bins.forEach(function(bin, i) {
+        console.log(bin)
+        bin.onclick = function() {
+            this.classList.add("hidden");
+            // bin.not(this).classList.remove("visible");
+        }
+    })
 }
 
 // for now this just defaults to no object selected, later maybe more…

@@ -7,12 +7,37 @@ body {
 
 h1 {
     position: fixed;
-    top: 25px;
-    left: 25px;
-    padding: 10px 20px;
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(133, 131, 221);
-    box-shadow: 5px 5px rgba(133, 131, 221, 0.5);
+    width: 30%;
+    text-align: center;
+    top: 0px;
+    left: 15px;
+    padding: 10px 0px;
+    z-index: 2;
+}
+
+.welcome-card {
+    position: absolute;
+    width: 30%; height: 85%;
+    min-width: 280px; min-height: 400px;
+    top: 80px;
+    left: 15px;
+    z-index: 1;
+}
+
+.welcome-card-inner > img {
+    width: 85%;
+    margin: 20px auto;
+    display: block;
+}
+
+.welcome-card-inner > p {
+    width: 77%;
+    margin: 0 auto;
+}
+
+.welcome-card-inner > .start-scheme {
+    width: 70%;
+    margin-top: 60px;
 }
 
 #info {
@@ -59,17 +84,38 @@ h1 {
     opacity: 1;
 }
 
-#history {
+#history-outer-container {
     position: fixed;
-    top: 0; right: 0;
+    top: 0;
+    right: -10%;
+    height: 100%;
+    width: 10%;
+
+}
+
+#history-outer-container > img {
+    position: fixed;
+    bottom: 20px; right: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#history {
     background: rgb(255, 255, 255, 0.8);
-    height: 100%; width: 10%;
-
     border-left: 1px solid rgb(133, 131, 221);
-
     padding-left: 15px;
+    height: 100%;
 }
 
 .object-name {
     margin: 30px;
+}
+
+.title,
+.welcome-card {
+    background: rgb(255, 255, 255);
+    border: 1px solid black;
+    /* box-shadow: 5px 5px rgba(133, 131, 221, 0.5); */
 }
