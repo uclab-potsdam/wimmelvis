@@ -2,6 +2,10 @@
 function x(s) { return document.querySelector(s); }
 function X(s) { return document.querySelectorAll(s); }
 
+// shortcuts to remove/add classes to elements
+function addClassToX(s, desiredClass) { return s.classList.add(desiredClass); };
+function removeClassFromX(s, undesiredClass) { return s.classList.remove(undesiredClass); };
+
 // this variable will hold the metadata from the data file
 var data = null;
 
@@ -114,17 +118,25 @@ function load() {
 			 reset();
 		 }
 	}
+    // Really inelegant, this is triggering the history panel when clicking on bin while
+    // also switching image src. Now heavily hard-coded, is there a better solution???
+    // Ideally: add a custom attr to html with opposite obj id and source, use this attr to trigger
+    // change without hard-coding strings in here -\(.__.)/-
+    var history = x("#history-outer-container");
 
-    var bins = X(".bin");
-    console.log(bins)
-
-    bins.forEach(function(bin, i) {
-        console.log(bin)
-        bin.onclick = function() {
-            this.classList.add("hidden");
-            // bin.not(this).classList.remove("visible");
+    x(".bin").onclick = function(event) {
+        if (event.target.id == 'closed-bin') {
+            event.target.id = 'opened-bin';
+            event.target.src = './assets/opened-bin.svg';
+            addClassToX(history, 'active-history');
+            removeClassFromX(history, 'closed-history');
+        } else {
+            event.target.id = 'closed-bin';
+            event.target.src = './assets/closed-bin.svg';
+            removeClassFromX(history, 'active-history');
+            addClassToX(history, 'closed-history');
         }
-    })
+    }
 }
 
 // for now this just defaults to no object selected, later maybe more…
