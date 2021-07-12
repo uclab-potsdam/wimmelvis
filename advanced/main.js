@@ -2,9 +2,8 @@
 function x(s) { return document.querySelector(s); }
 function X(s) { return document.querySelectorAll(s); }
 
-// shortcuts to remove/add classes to elements
-function addClassToX(s, desiredClass) { return s.classList.add(desiredClass); };
-function removeClassFromX(s, undesiredClass) { return s.classList.remove(undesiredClass); };
+// shortcut to remove/add classes to elements
+function toggleClass(el, klass) { return el.classList.toggle(klass)}
 
 // this variable will hold the metadata from the data file
 var data = null;
@@ -118,24 +117,19 @@ function load() {
 			 reset();
 		 }
 	}
-    // Really inelegant, this is triggering the history panel when clicking on bin while
-    // also switching image src. Now heavily hard-coded, is there a better solution???
-    // Ideally: add a custom attr to html with opposite obj id and source, use this attr to trigger
-    // change without hard-coding strings in here -\(.__.)/-
-    var history = x("#history-outer-container");
 
-    x(".bin").onclick = function(event) {
-        if (event.target.id == 'closed-bin') {
-            event.target.id = 'opened-bin';
-            event.target.src = './assets/opened-bin.svg';
-            addClassToX(history, 'active-history');
-            removeClassFromX(history, 'closed-history');
-        } else {
-            event.target.id = 'closed-bin';
-            event.target.src = './assets/closed-bin.svg';
-            removeClassFromX(history, 'active-history');
-            addClassToX(history, 'closed-history');
-        }
+    var history = x("#history");
+
+    // By clicking on the bin's parent some classes are toggled    
+    x("#bin").onclick = function(event) {
+        toggleClass(event.target, 'open-bin');
+        toggleClass(event.target, 'closed-bin');
+        
+        // I am toggling some classes to trigger the panel in sliding in
+        toggleClass(history, "closed-history");
+        toggleClass(history, "active-history");
+
+        // Here more things happening when clicking on the history bin could happen.
     }
 }
 
