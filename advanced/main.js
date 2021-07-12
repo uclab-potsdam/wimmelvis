@@ -11,7 +11,7 @@ var data = null;
 // this variables is a reference to the DOM element holding the SVG elements 
 var map = x('#map');
 
-var elementsHistory = []
+var elementsHistory = [];
 
 // load the SVG file and add its elements to the map
 fetch('kitchen.svg')
@@ -130,6 +130,22 @@ function load() {
         toggleClass(history, "active-history");
 
         // Here more things happening when clicking on the history bin could happen.
+    }
+
+    var resetView = x("#reset");
+    // resets the whole view
+    resetView.onclick = function() {
+        var scrollOptions = {
+            left: 0,
+            top: 0,
+            behavior: 'smooth' // does not work in Safari, polyfill needed: https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
+        }
+
+        elementsHistory = [];
+        
+        reset();
+        x("#history").innerHTML = '<h4>Collected objects:</h4>';
+        window.scrollTo(scrollOptions);
     }
 }
 

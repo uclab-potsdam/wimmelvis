@@ -5,15 +5,34 @@ body {
     margin: 0;
 }
 
-h1 {
+h1.title, h3#reset {
     position: fixed;
-    width: 30%;
     text-align: center;
+}
+
+h1.title {
+    width: 30%;
     top: 0px;
-    left: 15px;
     padding: 10px 0px;
     z-index: 2;
 }
+
+h3#reset {
+    cursor: pointer;
+    margin: 0;
+    top: 80px;
+    padding: 5px 10px;
+}
+
+.title,
+.welcome-card,
+#reset {
+    left: 15px;
+    background: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+/* Welcome card with explanation */
 
 .welcome-card {
     position: absolute;
@@ -39,6 +58,8 @@ h1 {
     width: 70%;
     margin-top: 60px;
 }
+
+/* Navigation, tooltips, activate and deactivate objects */
 
 #info {
     position: absolute;
@@ -84,7 +105,10 @@ h1 {
     opacity: 1;
 }
 
+/* History */
+
 #history-outer-container {
+    pointer-events: none;
     position: fixed;
     top: 0;
     height: 100%;
@@ -97,6 +121,7 @@ h1 {
 }
 
 #bin {
+    pointer-events: all;
     cursor: pointer;
     width: 150px;
     height: 200px;
@@ -115,6 +140,7 @@ h1 {
 
 .open-bin {
     background-image: url('./assets/opened-bin.svg');
+    width: 50%;
 }
 
 #history {
@@ -124,6 +150,7 @@ h1 {
     padding-left: 15px;
     height: 100%;
     position: fixed;
+    overflow-y: auto;
 }
 
 .closed-history {
@@ -138,11 +165,5 @@ h1 {
 
 .object-name {
     margin: 30px;
-}
-
-.title,
-.welcome-card {
-    background: rgb(255, 255, 255);
-    border: 1px solid black;
-    /* box-shadow: 5px 5px rgba(133, 131, 221, 0.5); */
+    border-bottom: 1px solid black;
 }
