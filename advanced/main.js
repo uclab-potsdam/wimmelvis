@@ -79,6 +79,8 @@ var Tooltip = {
 
 // add click events to all svg elements that have an entry in data file
 function load() {
+    // variable references the history panel
+    var history = x("#history");
 	// variable references the svg object
 	var svg = x("#map svg");
 	console.warn("You have " + Object.keys(data).length + " items in your dataset")
@@ -109,9 +111,19 @@ function load() {
             }
 	}
 	
-	// when clicking on the background, the selection is reset
+	// when clicking on the background, the selection is reset and history panel is closed (if open)
 	var bg = svg.getElementById("background")
-	bg.onclick = function() { Tooltip.hide(); }
+	bg.onclick = function() { 
+        Tooltip.hide();
+
+        if (history.classList.contains('active-history')) {
+            toggleClass(x("#bin").firstElementChild, 'closed-bin');
+            toggleClass(x("#bin").firstElementChild, 'open-bin');
+
+            toggleClass(history, 'closed-history');
+            toggleClass(history, "active-history");
+        }
+    }
 	
 	// also when the escape key is pressed
 	document.onkeyup = function(e) {
@@ -119,8 +131,6 @@ function load() {
 			 reset();
 		 }
 	}
-
-    var history = x("#history");
 
     // By clicking on the bin's parent some classes are toggled    
     x("#bin").onclick = function(event) {
@@ -160,9 +170,9 @@ function reset() {
 
 function addElementToHistoryPanel(currentObj, elementsHistory) {
     // checks if element has already been discovered, otherwise it adds it to the list
-    if (!elementsHistory.includes(data[currentObj].name)) {
-        elementsHistory.push(data[currentObj].name)
+    if (!elementsHistory.includes(data[currentObj].name_EN)) {
+        elementsHistory.push(data[currentObj].name_EN)
 
-        x("#history").innerHTML += `<p class=${"object-name"}>` + data[currentObj].name + "</p>"
+        x("#history").innerHTML += `<p class=${"object-name"}>` + data[currentObj].name_EN + "</p>"
     }
 } 
