@@ -23,7 +23,7 @@ fetch('kitchen.svg')
 	})
 
 // load data file and add to data variable
-fetch('data.json')
+fetch('waste_data.json')
   .then(r => r.json())
 	.then(d => {
 		data = d;
@@ -54,7 +54,9 @@ var Tooltip = {
         }
 
         // this object's name and info is added to the info box
-        x("#info").innerHTML = "<h2>"+ data[id].name +"</h2>" + "<p>" + data[id].info + "</p>";
+        x("#info").innerHTML = "<h2>" + data[id].name_EN + "</h2>" 
+            + "<p>" + data[id].recyclable_EN + "</p>"
+            + "<p>" + data[id].material_info_EN + "</p>";
 
         // positions the info box on click position
         x("#info").style.left = Math.floor(xPositionClick) + 'px';
@@ -141,10 +143,12 @@ function load() {
             behavior: 'smooth' // does not work in Safari, polyfill needed: https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
         }
 
-        elementsHistory = [];
-        
+        // remove selection
         reset();
+        // cleans history
+        elementsHistory = [];
         x("#history").innerHTML = '<h4>Collected objects:</h4>';
+        // scroll to top left corner
         window.scrollTo(scrollOptions);
     }
 }

@@ -1,0 +1,140 @@
+id,name_EN,name_DE,recyclable_EN,material_info (EN),recyclable_DE,material_info (DE),recycling_bin,color,links
+pizza box,Pizza Box,Pizzakarton,"Yes, this is recyclable!","Its made out of carton. BUT: If it is stained with grease from the pizza then it can't be recycled as paper and 
+should go into the black bin (Hausmüll).","Richtig, der ist recycelbar!","Er besteht aus Pappe. ABER: Wenn er voller Fett von der Pizza ist, kann er 
+nicht als Papier recycelt werden und sollte in den Hausmüll (schwarz) entsorgt werden.",Hausmüll,black,
+tetrapack,Tetrapack,Tetrapack,"Yes, this is recyclable!","Its made out of around seven differrent materials like aluminium, plastic and paper. Most of it can be recycled
+ and goes into the yellow bin (Wertstofftonne).","Richtig, das ist recycelbar!","Es besteht aus etwa sieben verschiedenen Materialien wie Aluminium, Kunststoff 
+und Papier. Das meiste davon kann recycelt werden und kommt in die Wertstofftonne (gelb).",Wertstofftonne,yellow,
+shipping box,Shipping Box,Versandpaket,"Yes, this is recyclable! BUT: ","The different components like tape and stickers need to be separated from the carton box in order for it 
+to go into the blue bin (Papiertonne).","Richtig, das ist recycelbar! ABER:","Die verschiedenen Bestandteile wie Klebeband und Aufkleber 
+müssen von dem Karton getrennt werden, damit es in die Papiertonne (blau) kann.",Papiertonne,blue,
+envelopes,Envelopes,Briefumschläge,"Yes, this is recyclable!","As long as the main component is paper it can be disposed of in the blue bin (Papiertonne). Paper clips, 
+staples and small amounts of plastic can get sorted out in the recycling process of paper.","Richtig, die sind recycelbar!","Solange der Hauptbestandteil Papier ist, können sie über die Papiertonne (blau) 
+entsorgt werden. Büroklammern, Heftklammern und kleine Mengen an Plastik, wie Sichtfenster, können im 
+Recyclingprozess aussortiert werden.",Papiertonne,blue,
+receipt,Receipt,Quittung,"No, this is not recyclable!","The thermal paper has a special coating which hinders the recycling process. This is why they should go 
+into the black bin (Hausmüll).","Falsch, die ist nicht recycelbar!","Das Thermopapier hat eine spezielle Beschichtung, die den 
+Recyclingprozess behindert, deshalb gehört es in die in den Hausmüll (schwarz).",Hausmüll,black,
+plastic bag,Plastic Bag,Plastiktüte,"Yes, this is recyclable! BUT:","Not even a bio-degredable plastic bag can go in the brown bin (Biotonne), because it composts slower 
+then other bio-waste. You should dispose of it in the yellow bin (Wertstofftonne).","Richtig, die ist recycelbar!","ABER: Auch eine Bio-Plastiktüte darf nicht in die Biotonne (braun), denn 
+sie kompostiert langsamer als der restliche Bio-Abfall. Entsorgt werden muss sie trotzdem in der 
+Wertstofftonne (gelb).",Wertstofftonne,yellow,
+cooking foil,Cooking Foil,Alufolie,"Yes, this is recyclable!","It belongs into the yellow bin (Wertstofftonne), as well as packaging like food containers made out of aluminium.","Richtig, die ist recycelbar!","Sie gehört in die gelbe Tonne (Wertstofftonne), ebenso wie Verpackungen 
+wie Lebensmittelbehälter aus Aluminium.",Wertstofftonne,yellow,
+medication,Medication,Medikamente,"No, these are not recyclable! BUT:","It is still important to throw them away correctly, or else they can harm the enviroment. 
+There are designated recycling centers (Wertstoffhof/Recyclinghof) for disposal and some pharmacies take them back as well.","Falsch, diese sind nicht recycelbar!","ABER: Es ist trotzdem wichtig, sie richtig zu entsorgen, da sie 
+sonst die Umwelt belasten können. Es gibt ausgewiesene Recyclinghöfe für die Entsorgung und 
+einige Apotheken nehmen sie auch zurück.",Wertstoffhof/Recyclinghof,red,https://www.bsr.de/recyclinghoefe-20503.php
+broken mirror,Broken Mirror,Kaputter Spiegel,"No, this is not recyclable!","It is important to never throw mirrors into glass-recycling collection points (Glascontainer), they can ruin 
+whole charges of recyclable glas. Instead you can put them in the black bin (Hausmüll).","Falsch, der ist nicht recycelbar!","Es ist wichtig, dass man niemals Spiegel in Glascontainer wirft, sie 
+können ganze Ladungen von recycelbarem Glas unbrauchbar machen. Stattdessen kann man sie in 
+den Hausmüll (schwarz) entsorgen.",Hausmüll,black,
+yogurt cups,Yogurt Cups,Jogurthbecher,"Yes, this is recyclable!","The cup and even the lid can go into the yellow bin (Wertstofftonne). BUT: You should always separate lid 
+and cup and also not stack cups together. This makes the separation with a scanner and recycling easier. They also don't need to 
+be perfectly clean, just free of most food leftovers.","Richtig, die sind recycelbar!","Die Becher und sogar die Deckel können in die Wertstofftonne (gelb). 
+ABER: Man sollten Deckel und Becher immer trennen und Becher auch nicht zusammen stapeln. 
+Das erleichtert die Trennung mit einem Scanner und das Recycling. Sie müssen auch nicht perfekt 
+sauber sein, nur frei von den meisten Essensresten.",Wertstofftonne,yellow,
+broken cable,Broken Cable,Kaputtes Kabel,"Yes, this is recyclable!","They often are made out of a metal like copper or aluminium and have a isolation layer of plastic. The
+different layers get separated in an extensive separation process, before they can be reused. BUT: To guarantee that the valuable 
+metals get recycled, cables should go into the yellow bin (Wertstofftonne) rather then the black bin (Hausmüll).","Richtig, das ist recycelbar!","Kabel bestehen oft aus einem Metall wie Kupfer oder Aluminium und haben 
+eine Isolationsschicht aus Kunststoff. Die verschiedenen Schichten werden in einem aufwändigen 
+Trennverfahren separiert, bevor sie wiederverwendet werden können. ABER: Um sicherzustellen, dass 
+die wertvollen Metalle recycelt werden können, sollten Kabel in die Wertstofftonne (gelb) und nicht in 
+den Hausmüll (schwarz) kommen.",Wertstofftonne,yellow,
+broken plate,Broken Plate,Kaputte Teller,"No, this is not recyclable!","Porcelain is a organic connection of different kinds of rocks, but they don't get recycled because it would 
+cost to much energy and the raw materials are available in large quantities. BUT: It is important to never throw porcelain into 
+glass-recycling collection points (Glascontainer), they can ruin whole charges of recyclable glas. Instead you can put them in the 
+black bin (Hausmüll).","Falsch, die sind nicht recycelbar!","Porzellan ist eine organische Verbindung von verschiedenen Gesteinen, 
+das aber nicht recycelt wird, weil es zu viel Energie kosten würde und die Rohstoffe in großen Mengen 
+vorhanden sind. ABER: Es ist wichtig, Porzellan niemals in Glascontainer zu werfen, es könnte ganze 
+Ladungen von recycelbarem Glas ruinieren. Stattdessen kann kaputtes Porzellan-Geschirr in dem 
+Hausmüll (schwarz) entsorgt werden.",Hausmüll,black,
+broken toaster,Broken Toaster,Kaputter Toaster,Some of it is recyclable! BUT:,"Only if you bring it back to a store selling electrical appliance or bring it to one of the recycling centers. 
+(Wertstoffhof/Recyclinghof) They don't belong in the black bin (Hausmüll). Components like copper, aluminium and zinc, that are 
+found in most electronics can be extracted and recycled without any loss in quality and the plastic, e.g. from covers, is grinded 
+done into granules and can be reused as well.",Einiges daran ist recycelbar! ABER:,"Elektrogeräte wie Toaster muss man dafür in einem 
+Elektrofachgeschäft abgeben oder zu einem der Wertstoffhöfe bringen. Sie gehören nicht in den 
+Hausmüll (schwarz). Bestandteile wie Kupfer, Aluminium und Zink, die in den meisten Elektrogeräten 
+enthalten sind, können ohne Qualitätsverluste herausgelöst und recycelt werden. Der Kunststoff, 
+z. B. von Abdeckungen, wird zu Granulat verarbeitet und kann wiederverwertet werden.",Wertstoffhof/Recyclinghof,red,https://www.bsr.de/recyclinghoefe-20503.php
+batteries,Batteries,Batterien,"Yes, most parts are recyclable.","They contain different metals which can be separated and reused. BUT: In order to be recycled 
+they can't be thrown away in the black bin (Hausmüll). You can bring them back to a store, any store that sells them is legally 
+required to take them back.","Richtig, viele Bestandteile sind recycelbar.","Sie enthalten verschiedene Metalle, die getrennt und 
+wiederverwendet werden können. ABER: Um recycelt werden zu können, dürfen sie nicht in den 
+Hausmüll entsorgt werden. Man kann sie in ein Geschäft zurückbringen, jedes Geschäft, das sie verkauft, 
+ist gesetzlich verpflichtet, sie zurückzunehmen.",Laden,,
+chain of lights,Chain Of Lights,Lichterkette,"Yes, this is recyclable!","While old light bulbs and halogen lamps can be thrown away into the black bin (Hausmüll), chains of light are 
+considered electronis and should be brought to a recycling center (Wertstoffhof/Recyclinghof). They can contain electronical 
+components like capacitors and LEDs, which can be reused or recycled. That is the same for chains of light with small light bulbs.","Richtig, die ist recycelbar!","Während alte Glühbirnen und Halogenlampen in den Hausmüll (schwarz) 
+entsorgt werden können, gelten Lichterketten als Elektroschrott und sollten zum Wertstoffhof gebracht 
+werden. Sie können elektronische Komponenten wie Kondensatoren und LEDs enthalten, die 
+wiederverwendet oder weiterverarbeitet werden können. Das gilt auch für Lichterketten mit kleinen 
+Glühbirnen.",Wertstoffhof/Recyclinghof,red,https://www.bsr.de/recyclinghoefe-20503.php
+dead plant,Dead Plant,Tote Pflanze,"Yes, this is reycable!","You can dispose of the dead plant in your compost or in the brown bin (Biotonne) and reuse the soil for 
+another plant or just spread it out outside.","Richtig, das ist recyclebar!","Man kann die abgestorbene Pflanze auf dem Kompost oder in der Biotonne 
+(braun) entsorgen und die Erde für eine andere Pflanze wiederverwenden oder einfach draußen 
+verteilen.",Biotonne,brown,
+coffee filter,Coffee Filter,Benutzter Kaffeefilter,"Yes, this is recyclable!","It goes into the brown bin (Biotonne), which than is used for biogas plants and what is left is compost 
+for agriculture.","Richtig, der ist recycelbar!","Er kommt in die Biotonne (braun), deren Inhalt dann für Biogasanlagen 
+genutzt wird und was übrig bleibt, ist Kompost für die Landwirtschaft.",Biotonne,brown,
+bike tire,Bike Tire,Fahrradreifen,Some of it is recyclable! BUT:,"Not if they go into the black bin (Hausmüll). For recycling you can bring it back to a bike shop or 
+bring it to one of the recycling centers (Wertstoffhof/Recyclinghof).",Einiges daran ist recycelbar! ABER:,"Nicht wenn er in den Hausmüll (schwarz) kommt. Zum Recyceln 
+kann man ihn in ein Fahrradgeschäft bringen oder zu einem der Recyclinghöfe.",Wertstoffhof/Recyclinghof,red,https://www.bsr.de/recyclinghoefe-20503.php
+plastic bottle,Plastic Bottle,PET Flasche,"Yes, this is recyclable!","Most get recycled via the Pfandsystem, they are returnable bottles. They get grinded into granulate, the PET
+ is reused for packaging and the other recycled materials can be used for fabric fibres or foil. But this needs a lot of energy, so it is 
+always better to use reusable plastic or glas bottles. If they aren't returnable bottles, they belong into the yellow bin (Wertstofftonne).","Richtig, die ist recycelbar!","Die meisten werden über das Pfandsystem recycelt. Sie werden zu Granulat 
+zermahlen und das PET wird für Verpackungen wiederverwendet und die anderen Bestandteile können 
+für Stofffasern oder Folien verwendet werden. Aber das braucht viel Energie, deshalb ist es immer 
+besser, Mehrwegflaschen aus Plastik oder Glas zu verwenden. Wenn sie keine Pfandflaschen sind
+gehören sie in die Wertstofftonne (gelb).",Laden,yellow,
+printer ink,Printer Ink,Leere Druckerpatrone,"No, this is not recyclable! BUT:","It is still important to throw them away correctly, or else they can harm the enviroment. 
+There are designated recycling centers (Wertstoffhof/Recyclinghof) and stores take them back as well. As many toner cartridges 
+are produced with oil it is even better to get them refilled at specialised stores.","Falsch, die ist nicht recycelbar! ABER:","Es ist trotzdem wichtig, sie richtig zu entsorgen, da sie sonst die 
+Umwelt belasten könnte. Es gibt ausgewiesene Recyclinghöfe und auch viele Geschäfte nehmen sie 
+zurück. Da viele Tonerkartuschen mit Erdöl hergestellt werden, ist es noch besser, sie wenn möglich 
+im Fachhandel nachfüllen zu lassen.",Wertstoffhof/Recyclinghof,red,https://www.bsr.de/recyclinghoefe-20503.php
+tea bag,Tea Bag,Teebeutel,"Yes, this is recyclable!","It goes into the brown bin (Biotonne), which than is used for biogas plants and what is left is compost for 
+agriculture.","Richtig, der ist recycelbar!","Er kommt in die Biotonne (braun), deren Inhalt dann für Biogasanlagen 
+genutzt wird und was übrig bleibt, ist Kompost für die Landwirtschaft.",Biotonne,brown,
+old pan,Old Pan,Alte Pfanne,"Yes, this is recyclable!","Pans are made out of metals, either aluminium, stainless steel, iron or copper, and can in any case be melted 
+and reused. The plastic or wooden handels can be recycled as well, only the teflon coating has a too low melting point to be recycled. 
+Simply dispose of them in the yellow bin (Wertstofftonne).","Ja, die ist recycelbar!","Pfannen bestehen aus Metallen, entweder Aluminium, Edelstahl, Eisen oder 
+Kupfer und können auf jeden Fall eingeschmolzen und wiederverwendet werden. Auch die Griffe aus 
+Kunststoff oder Holz können recycelt werden, nur die Teflonbeschichtung hat einen zu niedrigen 
+Schmelzpunkt, um wiederverwendet werden zu können. Entsorgen kann man sie einfach in der 
+Wertstofftonne (gelb).",Wertstofftonne,yellow,
+glass bottle,Glass Bottle,Glasflasche,"Yes, this is recyclable!","To ensure its recycling you should return it to the store if it is a returnable bottle and if not bring it to a 
+glass-recyling collection station (Glascontainer). When recycled they need to be sorted by color to ensure the right glass color for 
+the reuse. In case you have a different colored bottle and no multi colored bin (Buntglascontainer) is there, you can put e.g. blue 
+and red colored glas bottles into the green glass containern. Green glass can contain up to 15% of different colored glass and still 
+be recycled into the right color.","Richtig, die ist recycelbar!","Wenn es eine Pfandflasche ist, sollte man sie im Geschäft zurück geben und 
+wenn nicht, bringt man sie zu einem Glascontainer. Beim Einsortieren muss man auf die Farben achten,
+um die richtige Glasfarbe für die Wiederverwendung zu gewährleisten. Falls man eine andersfarbige 
+Flasche hat und kein Buntglascontainer vorhanden ist, kann man z.B. blaue und rot gefärbte 
+Glasflaschen in den Grünglascontainer geben. Grünglas kann bis zu 15% andersfarbiges Glas enthalten 
+und trotzdem in der richtigen Farbe recycelt werden.",Glascontainer,green,https://www.berlin-recycling.de/service/standorte-glasiglus
+old clothing,Old Clothing,Alte Kleidung,"Yes, this are recyclable!","Especially clothing, shoes and bed linen in good condition are a great donation. They get donated to 
+people in need by organisations like Kleiderkammer der Berliner Stadtmission and Sachspende an die Berliner Kältehilfe and 
+almost every city has a similar organisation. If not, old clothing collection points (Altkleidercontainer) are another great option, 
+you should just check for ""FairWertung""-label. Unusable clothing can be disposed in the black bin (Hausmüll).","Richtig, diese ist recycelbar!","Besonders Kleidung, Schuhe und Bettwäsche in gutem Zustand sind eine tolle 
+Spende. Man kann sie an Organisationen wie die Kleiderkammer der Berliner Stadtmission und die 
+Berliner Kältehilfe weitergegeben und fast jede Stadt hat eine ähnliche Organisation. Wenn nicht, sind 
+Altkleidercontainer eine weitere gute Möglichkeit, man sollte aber auf das ""FairWertung""-Label auf dem 
+Container achten. Nicht mehr benutzbare Kleidung kann in dem Hausmüll (schwarz) entsorgen.",several options,black,"https://www.berliner-stadtmission.de/komm-und-sieh/kleiderkammer
+https://www.kaeltehilfe-berlin.de/spenden
+https://altkleiderspenden.de/
+https://www.fairwertung.de/"
+coffe to go cup,Coffe To Go Cup,Coffee-To-Go Becher,"No, this is not recycled!","To hold liquid, they have a plastic coating and contain 7% plastic. That makes them so hard to recycle that 
+their production is banned in the EU from July 2021. If you find one anyways, then they belong into the yellow bin (Wertstofftonne).","Falsch, der wird nicht recycelt!","Um Flüssigkeit zu halten, haben To-Go Becher eine 
+Kunststoffbeschichtung und enthalten 7 % Plastik. Das macht sie so schwer zu recyceln, dass ihre 
+Produktion in der EU ab Juli 2021 verboten ist. Wenn man trotzdem einen entsorgen muss, dann gehört 
+er in die Wertstofftonne (gelb).",Wertstofftonne,yellow,
+CD,CD,CD,"Yes, this is recyclable!","As they get less popular, it is important to recycle them correctly. They contain valuable plastics, mostly 
+polycarbonate, which makes their correct recycling important to help the enviroment and reduce the oil use. You should bring 
+them to a recycling center (Wertstoffhof/Recyclinghof), the polycarbonate can there be extracted and reused in items like lenses, 
+suit cases, helmets, syringes and phone and tablet casings.","Richtig, die ist recycelbar!","Da CD's und DVD's immer weniger beliebt sind, ist es wichtig, sie richtig zu 
+entsorgen. Sie enthalten wertvolle Kunststoffe, meist Polycarbonat, und ihr korrektes Recycling 
+kann die Umwelt schonen und den Erdölverbrauch reduzieren. Man sollte sie zu einem 
+Recyclinghöfen bringen, das Polycarbonat kann dann extrahiert werden und in Gegenständen wie 
+Brillengläsern, Koffern, Helmen, Spritzen und Handy- und Tablet-Gehäusen wiederverwendet werden.",Wertstoffhof/Recyclinghof,red,https://www.bsr.de/recyclinghoefe-20503.php
