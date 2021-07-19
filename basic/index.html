@@ -11,10 +11,19 @@ body {
 	overflow: hidden;
 }
 
-h1 {
+h1, h3#reset {
+	background: white;
+	border: 1px solid black;
+	padding: 5px 10px;
 	position: fixed;
 	top: 25px;
 	left: 25px;
+}
+
+h3#reset {
+	color: red;
+	cursor: pointer;
+	top: 80px;
 }
 
 #info {
@@ -35,10 +44,53 @@ h1 {
 .object { opacity: 0; cursor: pointer;}
 .object.active { opacity: 1;}
 
+/* History */
+
+#history-outer-container {
+    z-index: 4;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 10%;
+}
+
+#history-outer-container > #toggle-history {
+    position: fixed;
+    bottom: 2.5%; right: 2.5%;
+}
+
+#toggle-history {
+    pointer-events: all;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#history {
+    width: 20%;
+    background: rgb(255, 255, 255, 0.9);
+    border-left: 1px solid black;
+    padding-left: 15px;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+}
+
+.close-history {
+    right: -20%;
+    transition: right 0.5s ease;
+}
+
+.active-history {
+    right: 0;
+    transition: right 0.5s ease;
+}
+
 </style>
 </head>
 
-<h1>Find the object that has 3 sides!</h1>
+<h1>Find all special objects!</h1>
+<h3 id="reset">Reset</h3>
 
 <!-- this element shows the descriptions of the items -->
 <div id="info"></div>
@@ -46,17 +98,33 @@ h1 {
 <!-- the svg is added to this element -->
 <div id="map"></div>
 
+<!-- this element contains the history panel where discovered objects are enlisted  -->
+<div id="history-outer-container">
+	<div id="toggle-history">
+		<h3 class="close-bin">History</h3>
+	</div>
+	<div id="history" class="close-history">
+		<h4>Collected objects:</h4>
+	</div>
+</div>
+
 <script>
 
 // shortcuts to access elements
 function x(s) { return document.querySelector(s); }
 function X(s) { return document.querySelectorAll(s); }
 
+// shortcut to remove/add classes to elements
+function toggleClass(el, klass) { return el.classList.toggle(klass) }
+
 // this variable will hold the metadata from the data file
 var data = null;
 
 // this variables is a reference to the DOM element holding the SVG elements 
 var map = x('#map');
+
+// empty array, later will be filled with elements as they get discovered
+var elementsHistory = [];
 
 // load the SVG file and add its elements to the map
 fetch('shapes.svg')
@@ -112,19 +180,54 @@ function init() {
 			x("#info").innerHTML = "<h2>"+ data[id].name +"</h2>" + "<p>" + data[id].info + "</p>";
 			// the infobox is also made visible (see style above)
 			x("#info").classList.add("active");
+			// function call to add element in history panel
+			addElementToHistoryPanel(this.id, elementsHistory);
 		}
+	}
+
+	// variable references the history panel
+	var history = x("#history");
+
+	x("#toggle-history").onclick = function (event) {
+
+		// I am toggling some classes to trigger the panel in sliding in
+		toggleClass(history, "close-history");
+		toggleClass(history, "active-history");
+
+		// Here more things happening when clicking on the history bin could happen.
 	}
 	
 	// when clicking on the background, the selection is reset
 	var bg = svg.getElementById("background")
-	bg.onclick = function() { reset(); }
+	bg.onclick = function() { 
+		reset(); 
+
+		if (history.classList.contains('active-history')) {
+			toggleClass(history, 'close-history');
+			toggleClass(history, "active-history");
+		}
+
+	}
 	
 	// also when the escape key is pressed
 	document.onkeyup = function(e) {
 	   if (e.key === "Escape") {
 			 reset();
 		 }
-	}	
+	}
+
+	// variable references the reset div
+	var resetView = x("#reset");
+	
+	// resets the whole view when clicking on "reset" button
+	resetView.onclick = function () {
+		// remove selection
+		reset();
+		// cleans history
+		elementsHistory = [];
+		toggleClass(history, "close-history");
+		history.innerHTML = '<h4>Collected objects:</h4>';
+	}
 	
 }
 
@@ -132,7 +235,13 @@ function init() {
 function reset() {
 	X(".active").forEach(el => el.classList.remove('active'));
 }	
+// checks if element is already in array, if not adds it.
+function addElementToHistoryPanel(currentObj, elementsHistory) {
+	// checks if element has already been discovered, otherwise it adds it to the list
+	if (!elementsHistory.includes(data[currentObj].name)) {
+		elementsHistory.push(data[currentObj].name)
 
-
-
+		x("#history").innerHTML += `<p class=${"object-name"}>` + data[currentObj].name + "</p>"
+	}
+}
 </script>

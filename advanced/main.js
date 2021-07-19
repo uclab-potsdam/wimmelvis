@@ -18,9 +18,8 @@ fetch('./assets/kitchen.svg')
   .then(r => r.text())
   .then(text => { 
 		map.innerHTML = text;	
-        // map.firstElementChild.style.width = '200%';
-        // map.firstElementChild.style.height = '200%';
-		// initialize the map if data is loaded, too:
+
+        // initialize the map if data is loaded, too:
 		if (data!=null) load();
 	})
 
@@ -37,7 +36,7 @@ fetch('./assets/waste_data.json')
 var Tooltip = {
     // Stores current active object to trigger event correctly
     activeObj: undefined,
-    show: function (e) {
+    show: function (e, width) {
         // reset all active classes from elements
 		reset();
         
@@ -49,21 +48,21 @@ var Tooltip = {
         var yPositionClick = e.layerY;
 
         // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
-        var scrollOptions = {
-            left: e.layerX - (window.innerWidth>>1),
-            top: e.layerY - (window.innerHeight>>1),
-            behavior: 'smooth' // does not work in Safari, polyfill needed: https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
-        }
+        // if/else helps on smaller viewports so the object is always visible
+        // behavior: 'smooth' does not work in Safari, polyfill needed: https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
+        var scrollOptions = width > 400 
+        ? { left: xPositionClick - (window.innerWidth >> 1), top: yPositionClick - (window.innerHeight >> 1), behavior: 'smooth' } 
+        : { left: xPositionClick - (window.innerWidth >> 1), top: yPositionClick - (window.innerHeight >> 1) - 100, behavior: 'smooth' }
 
         // this object's name and info is added to the info box
         x("#info").innerHTML = "<h2>" + data[id].name_EN + "</h2>" 
             + "<p>" + data[id].recyclable_EN + "</p>"
             + "<p>" + data[id].material_info_EN + "</p>";
 
-        // positions the info box on click position
+        // positions the info box on click position, if/else helps with edge cases where the info box would be rendered outside of the viewport
         x("#info").style.left = Math.floor(xPositionClick) + 'px';
-        x("#info").style.top = Math.floor(yPositionClick) + 'px';
-
+        x("#info").style.top = yPositionClick < 400 ? Math.floor(yPositionClick + 300) + 'px' : Math.floor(yPositionClick) + 'px';
+        
         // scrolls and centers clicked element in the viewport
         window.scrollTo(scrollOptions);
 
@@ -81,8 +80,15 @@ var Tooltip = {
 
 // add click events to all svg elements that have an entry in data file
 function load() {
+    // variable holds the viewport width
+    var currentViewportWidth = detectedViewportWidth();
+    
     // variable references the history panel
     var history = x("#history");
+    
+    // variable references the reset div
+    var resetView = x("#reset");
+
 	// variable references the svg object
 	var svg = x("#map svg");
 	console.warn("You have " + Object.keys(data).length + " items in your dataset")
@@ -106,8 +112,8 @@ function load() {
                 if (Tooltip.activeObj == undefined || Tooltip.activeObj.id !== this.id) {
                     // Assign current active object to tooltip
                     Tooltip.activeObj = this;	
-                    // execute function that renders tooltip		
-                    Tooltip.show(event, this);
+                    // execute function that renders tooltip (we need to pass the viewport width to catch problematic tooltips)		
+                    Tooltip.show(event, currentViewportWidth);
                     addElementToHistoryPanel(this.id, elementsHistory);
                 }
             }
@@ -126,6 +132,18 @@ function load() {
             toggleClass(history, "active-history");
         }
     }
+
+    // By clicking on the bin's parent some classes are toggled    
+    x("#bin").onclick = function (event) {
+        toggleClass(event.target, 'open-bin');
+        toggleClass(event.target, 'closed-bin');
+
+        // I am toggling some classes to trigger the panel in sliding in
+        toggleClass(history, "closed-history");
+        toggleClass(history, "active-history");
+
+        // Here more things happening when clicking on the history bin could happen.
+    }
 	
 	// also when the escape key is pressed
 	document.onkeyup = function(e) {
@@ -134,25 +152,12 @@ function load() {
 		 }
 	}
 
-    // By clicking on the bin's parent some classes are toggled    
-    x("#bin").onclick = function(event) {
-        toggleClass(event.target, 'open-bin');
-        toggleClass(event.target, 'closed-bin');
-        
-        // I am toggling some classes to trigger the panel in sliding in
-        toggleClass(history, "closed-history");
-        toggleClass(history, "active-history");
-
-        // Here more things happening when clicking on the history bin could happen.
-    }
-
-    var resetView = x("#reset");
     // resets the whole view
     resetView.onclick = function() {
         var scrollOptions = {
             left: 0,
             top: 0,
-            behavior: 'smooth' // does not work in Safari, polyfill needed: https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
+            behavior: 'smooth'
         }
 
         // remove selection
@@ -177,4 +182,12 @@ function addElementToHistoryPanel(currentObj, elementsHistory) {
 
         x("#history").innerHTML += `<p class=${"object-name"}>` + data[currentObj].name_EN + "</p>"
     }
-} 
+}
+
+// Detect viewport width and returns its size
+function detectedViewportWidth () {
+    var body = document.body;
+    var html = document.documentElement;
+
+    return Math.max(body.offsetWidth, html.clientWidth, html.offsetWidth);
+}
