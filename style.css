@@ -16,6 +16,7 @@ p {
 }
 
 .inner-body {
+    z-index: -2;
     background-color: #e4ecfb;
     width: 100%;
     height: 100vh;
@@ -40,24 +41,33 @@ p {
 }
 
 .introduction-container > .graphic-title {
-    background: url('./advanced/assets/wimmelbild_logo.png');
+    background: url('./assets/logo_homepage.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    transform: rotate(-10deg);
     
     width: 100%;
-    height: 30%; max-height: 300px;
+    height: 40%;
     margin-top: 5%;
+    /* margin-left: 300px; */
+    /* position: absolute; */
 }
 
 .introduction-container > .introduction-paragraph {
-    padding: 0 4em;
+    padding: 1em 4em;
+}
+
+.additional-info > p, h5 {
+    font-size: 12px;
+    margin-bottom: 0;
 }
 
 .wimmelbild-preview {
-    background: url('./assets/wimmelbild-preview.png');
+    z-index: 0;
+    background: url('./assets/wimmelbild-preview.svg');
     background-repeat: no-repeat;
-    background-position: right, top;
+    /* background-position: right, top; */
     background-size: contain;
     /* background-color: pink; */
     
@@ -90,6 +100,18 @@ footer {
     margin: 10px;
 }
 
+.names-container > p > span {
+    font-size: 12px;
+}
+
+.logos-container {
+    display: inline-flex;
+}
+
+.logos-container > img {
+    max-width: 130px;
+    margin: 30px;
+}
 /* Start */
 .start {
     position: absolute;
