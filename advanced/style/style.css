@@ -1,0 +1,179 @@
+body {
+    font-size: 15px;
+    font-family: helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+h1.title, h3#reset {
+    position: fixed;
+    text-align: center;
+}
+
+h1.title {
+    width: 30%;
+    top: 0px;
+    padding: 10px 0px;
+    z-index: 2;
+}
+
+h3#reset {
+    cursor: pointer;
+    margin: 0;
+    top: 80px;
+    padding: 5px 10px;
+}
+
+.title,
+.welcome-card,
+#reset {
+    max-width: 600px;
+    left: 15px;
+    background: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+/* Welcome card with explanation */
+
+.welcome-card {
+    position: absolute;
+    width: 30%; 
+    /* height: 85%; */
+    min-width: 280px; min-height: 400px;
+    top: 80px;
+    left: 15px;
+    z-index: 1;
+}
+
+.welcome-card-inner {
+        overflow-y: auto;
+        max-height: 100%;
+        padding-bottom: 5%;
+}
+
+.welcome-card-inner > img {
+    width: 85%;
+    margin: 20px auto;
+    display: block;
+}
+
+.welcome-card-inner > p {
+    width: 77%;
+    margin: 0 auto;
+}
+
+.welcome-card-inner > .start-scheme {
+    width: 70%;
+    margin-top: 60px;
+}
+
+/* Navigation, tooltips, activate and deactivate objects */
+
+#info {
+    position: absolute;
+    width: 300px; min-height: 150px; max-height: 200px;
+    transform: translate(-50%, -150%);
+
+    /* Prevent text flowing out of the div */
+    overflow: auto;
+
+    /* When nothing is selected the div is not visible and not clickable */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    /* Change colors and box style */
+    padding: 0.5em 1.5em;
+    border-radius: 1%;
+    background: rgb(255, 255, 255);
+    border: 1px solid black;
+    /* box-shadow: 5px 5px rgba(133, 131, 221, 0.5); */
+    line-height: double;
+}
+
+#info.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transition: opacity 1s ease;
+}
+
+#map svg {
+    height: 200%;
+    width: 200%;
+}
+
+.object {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.object.active {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+/* History */
+
+#history-outer-container {
+    z-index: 4;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 10%;
+}
+
+#history-outer-container > #bin {
+    position: fixed;
+    bottom: 20px; right: 20px;
+}
+
+#bin {
+    pointer-events: all;
+    cursor: pointer;
+    width: 150px;
+    height: 200px;
+    z-index: 2;
+}
+
+#bin > div {
+    background-repeat: no-repeat;
+    background-position: center;
+    width:100%; height:100%;
+    background-size: contain;
+}
+
+.closed-bin {
+    background-image: url('../assets/closed-bin.svg');
+}
+
+.open-bin {
+    background-image: url('../assets/opened-bin.svg');
+    width: 50%;
+}
+
+#history {
+    width: 20%;
+    background: rgb(255, 255, 255, 0.9);
+    border-left: 1px solid black;
+    padding-left: 15px;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+}
+
+.closed-history {
+    right: -20%;
+    transition: right 0.5s ease;
+}
+
+.active-history {
+    right: 0;
+    transition: right 0.5s ease;
+}
+
+.object-name {
+    margin: 30px;
+    border-bottom: 1px solid black;
+}

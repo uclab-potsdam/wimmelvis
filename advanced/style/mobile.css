@@ -1,0 +1,78 @@
+/* Smartphones and small devices (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 850px) {
+    /* Styles */
+    #map svg {
+        width: 600%;
+        height: 600%;
+    }
+
+    h1.title, .welcome-card {
+        width: 90%;
+    }
+
+    h1.title {
+        font-size: 1.5rem;
+    }
+
+    .welcome-card {
+        /* top: 0px; */
+        height: 80%;
+    }
+
+    #history {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    #history > h4 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .closed-history {
+        right: -105%;
+    }
+
+    #history-outer-container > #bin {
+        right: 15px;
+        bottom: 10px;
+    }
+
+    #bin {
+        width: 80px;
+        height: 120px;
+    }
+
+}
+
+/* Tablets and medium size devices (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width: 851px) 
+and (max-device-width: 1024px) 
+and (-webkit-min-device-pixel-ratio: 1) {
+    h1.title,
+    .welcome-card {
+        width: 50%;
+    }
+
+    #map svg {
+        width: 500%;
+        height: 500%;
+    }
+
+    #history {
+        width: 60%;
+        padding-left: 0;
+    }
+
+    #history>h4 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .closed-history {
+        right: -65%;
+    }
+}
