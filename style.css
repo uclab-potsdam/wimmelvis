@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,500;1,300&display=swap');
+
 body {
     padding: 0;
     margin: 0;
+    font-family: 'Work Sans',
+    sans-serif,
+    Arial,
+    Helvetica,
+    sans-serif;
+;
+}
+
+p {
+    font-weight: 300;
 }
 
 .inner-body {
@@ -11,9 +23,9 @@ body {
 
 .container {
     margin: 0 auto;
-    width: 80%;
+    width: 80%; max-width: 1500px;
     height: 100%;
-    background-color: sandybrown;
+    /* background-color: sandybrown; */
 }
 
 .container-inner {
@@ -23,7 +35,7 @@ body {
 }
 
 .introduction-container {
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 50%;
 }
 
@@ -34,20 +46,20 @@ body {
     background-position: center;
     
     width: 100%;
-    height: 20%; max-height: 300px;
+    height: 30%; max-height: 300px;
     margin-top: 5%;
 }
 
 .introduction-container > .introduction-paragraph {
-    padding: 2em;
+    padding: 0 4em;
 }
 
 .wimmelbild-preview {
-    background: url('placeholder-wimmelbild.png');
+    background: url('./assets/wimmelbild-preview.png');
     background-repeat: no-repeat;
     background-position: right, top;
     background-size: contain;
-    background-color: pink;
+    /* background-color: pink; */
     
     width: 50%;
     position: relative;
@@ -56,8 +68,9 @@ body {
 
 /* Footer */
 footer {
+    border-top: 1px solid black;
     margin-top: 2%;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
 }
 
 .footer-container {
@@ -69,19 +82,27 @@ footer {
     width: 50%;
 }
 
+.names-container {
+    display: inline-flex;
+}
+
+.names-container > p {
+    margin: 10px;
+}
+
 /* Start */
 .start {
     position: absolute;
     right: 5px;
     bottom: 5px;
-    width: 120px;
-    height: 150px;
+    width: 300px;
+    height: 300px;
 }
 
 .start > a {
     text-decoration: none;
     color: black;
-    background-image: url('./advanced/assets/closed-bin.svg');
+    background-image: url('./assets/start.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
