@@ -1,0 +1,91 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.inner-body {
+    background-color: #e4ecfb;
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    background-color: sandybrown;
+}
+
+.container-inner {
+    width: 100%;
+    height: 80%;
+    display: inline-flex;
+}
+
+.introduction-container {
+    background-color: aqua;
+    width: 50%;
+}
+
+.introduction-container > .graphic-title {
+    background: url('./advanced/assets/wimmelbild_logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
+    width: 100%;
+    height: 20%; max-height: 300px;
+    margin-top: 5%;
+}
+
+.introduction-container > .introduction-paragraph {
+    padding: 2em;
+}
+
+.wimmelbild-preview {
+    background: url('placeholder-wimmelbild.png');
+    background-repeat: no-repeat;
+    background-position: right, top;
+    background-size: contain;
+    background-color: pink;
+    
+    width: 50%;
+    position: relative;
+    /* height:100%; */
+}
+
+/* Footer */
+footer {
+    margin-top: 2%;
+    background-color: greenyellow;
+}
+
+.footer-container {
+    width: 100%;
+    display: inline-flex;
+}
+
+.team, .partners-funding {
+    width: 50%;
+}
+
+/* Start */
+.start {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 120px;
+    height: 150px;
+}
+
+.start > a {
+    text-decoration: none;
+    color: black;
+    background-image: url('./advanced/assets/closed-bin.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    display: block;
+    height: 100%;
+}
