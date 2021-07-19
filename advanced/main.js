@@ -14,16 +14,18 @@ var map = x('#map');
 var elementsHistory = [];
 
 // load the SVG file and add its elements to the map
-fetch('kitchen.svg')
+fetch('./assets/kitchen.svg')
   .then(r => r.text())
   .then(text => { 
-		map.innerHTML = text;		
+		map.innerHTML = text;	
+        // map.firstElementChild.style.width = '200%';
+        // map.firstElementChild.style.height = '200%';
 		// initialize the map if data is loaded, too:
 		if (data!=null) load();
 	})
 
 // load data file and add to data variable
-fetch('waste_data.json')
+fetch('./assets/waste_data.json')
   .then(r => r.json())
 	.then(d => {
 		data = d;

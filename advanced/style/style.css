@@ -108,6 +108,7 @@ h3#reset {
 /* History */
 
 #history-outer-container {
+    z-index: 4;
     pointer-events: none;
     position: fixed;
     top: 0;
@@ -132,14 +133,15 @@ h3#reset {
     background-repeat: no-repeat;
     background-position: center;
     width:100%; height:100%;
+    background-size: contain;
 }
 
 .closed-bin {
-    background-image: url('./assets/closed-bin.svg');
+    background-image: url('../assets/closed-bin.svg');
 }
 
 .open-bin {
-    background-image: url('./assets/opened-bin.svg');
+    background-image: url('../assets/opened-bin.svg');
     width: 50%;
 }
 

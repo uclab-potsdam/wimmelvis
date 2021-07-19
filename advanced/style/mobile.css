@@ -1,0 +1,38 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+    /* Styles */
+
+    #map svg {
+        width: 600%;
+        height: 600%;
+    }
+
+    h1.title, .welcome-card {
+        width: 90%;
+    }
+
+    .welcome-card {
+        top: 120px;
+        height: 80%;
+    }
+
+    #history {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .closed-history {
+        right: -105%;
+    }
+
+    #history-outer-container > #bin {
+        right: 15px;
+        bottom: 10px;
+    }
+
+    #bin {
+        width: 80px;
+        height: 120px;
+    }
+
+}
