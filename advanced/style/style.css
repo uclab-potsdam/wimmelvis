@@ -27,6 +27,7 @@ h3#reset {
 .title,
 .welcome-card,
 #reset {
+    max-width: 600px;
     left: 15px;
     background: rgb(255, 255, 255);
     border: 1px solid black;
@@ -36,11 +37,18 @@ h3#reset {
 
 .welcome-card {
     position: absolute;
-    width: 30%; height: 85%;
+    width: 30%; 
+    /* height: 85%; */
     min-width: 280px; min-height: 400px;
     top: 80px;
     left: 15px;
     z-index: 1;
+}
+
+.welcome-card-inner {
+        overflow-y: auto;
+        max-height: 100%;
+        padding-bottom: 5%;
 }
 
 .welcome-card-inner > img {
@@ -147,7 +155,7 @@ h3#reset {
 
 #history {
     width: 20%;
-    background: rgb(255, 255, 255, 0.8);
+    background: rgb(255, 255, 255, 0.9);
     border-left: 1px solid black;
     padding-left: 15px;
     height: 100%;
