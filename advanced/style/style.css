@@ -45,17 +45,18 @@ h3#reset {
 .welcome-card {
     position: absolute;
     width: 30%; 
-    /* height: 85%; */
     min-width: 280px; min-height: 400px;
+    max-height: 88%;
+
     top: 80px;
     left: 15px;
     z-index: 1;
 }
 
 .welcome-card-inner {
-        overflow-y: auto;
-        max-height: 100%;
-        padding-bottom: 5%;
+    overflow-y: auto;
+    max-height: 100%;
+    padding-bottom: 5%;
 }
 
 .welcome-card-inner > img {
@@ -133,14 +134,14 @@ h3#reset {
 
 #history-outer-container > #bin {
     position: fixed;
-    bottom: 20px; right: 20px;
+    bottom: 20px; right: 25px;
 }
 
 #bin {
     pointer-events: all;
     cursor: pointer;
-    width: 150px;
-    height: 200px;
+    width: 100px;
+    height: 150px;
     z-index: 2;
 }
 
@@ -168,6 +169,7 @@ h3#reset {
     height: 100%;
     position: fixed;
     overflow-y: auto;
+    pointer-events: all;
 }
 
 .closed-history {

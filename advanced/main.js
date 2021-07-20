@@ -1,10 +1,3 @@
-// shortcuts to access elements
-function x(s) { return document.querySelector(s); }
-function X(s) { return document.querySelectorAll(s); }
-
-// shortcut to remove/add classes to elements
-function toggleClass(el, klass) { return el.classList.toggle(klass)}
-
 // this variable will hold the metadata from the data file
 var data = null;
 
@@ -39,30 +32,41 @@ var Tooltip = {
     show: function (e, width) {
         // reset all active classes from elements
 		reset();
-        
+
         // Get unique id of active object
-        var id = Tooltip.activeObj.id;
+        var id = Tooltip.activeObj.id || Tooltip.activeObj.attributes["data-id"].nodeValue;
         
-        // Store cursor position @ click in two variables
-        var xPositionClick = e.layerX;
-        var yPositionClick = e.layerY;
+        // check if object already has coordinates stored
+        if (!data[id].hasOwnProperty("elementCoordinates")) {
+            // Store cursor position @ click in one property, 0 is x, 1 is y
+            data[id].elementCoordinates = [e.layerX, e.layerY];
+        }
 
         // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
-        // if/else helps on smaller viewports so the object is always visible
-        // behavior: 'smooth' does not work in Safari, polyfill needed: https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
-        var scrollOptions = width > 400 
-        ? { left: xPositionClick - (window.innerWidth >> 1), top: yPositionClick - (window.innerHeight >> 1), behavior: 'smooth' } 
-        : { left: xPositionClick - (window.innerWidth >> 1), top: yPositionClick - (window.innerHeight >> 1) - 100, behavior: 'smooth' }
+        // behavior: 'smooth' does not work in Safari, polyfill needed: 
+        // https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
+        var scrollOptions = { 
+            left: data[id].elementCoordinates[0] - (window.innerWidth >> 1), 
+            top: data[id].elementCoordinates[1] - (window.innerHeight >> 1), behavior: 'smooth' 
+        }
+
+        // if condition helps on smaller viewports so the object is always visible
+        if (width < 400) {
+            scrollOptions.top = data[id].elementCoordinates[1] - (window.innerHeight >> 1) - 100;
+        }
 
         // this object's name and info is added to the info box
         x("#info").innerHTML = "<h2>" + data[id].name_EN + "</h2>" 
             + "<p>" + data[id].recyclable_EN + "</p>"
             + "<p>" + data[id].material_info_EN + "</p>";
 
-        // positions the info box on click position, if/else helps with edge cases where the info box would be rendered outside of the viewport
-        x("#info").style.left = Math.floor(xPositionClick) + 'px';
-        x("#info").style.top = yPositionClick < 400 ? Math.floor(yPositionClick + 300) + 'px' : Math.floor(yPositionClick) + 'px';
-        
+        // positions the info box on click position, 
+        // if/else helps with edge cases where the info box would be rendered outside of the viewport
+        x("#info").style.left = Math.floor(data[id].elementCoordinates[0]) + 'px';
+        x("#info").style.top = data[id].elementCoordinates[1] < 400 
+            ? Math.floor(data[id].elementCoordinates[1] + 300) + 'px' 
+            : Math.floor(data[id].elementCoordinates[1]) + 'px';
+
         // scrolls and centers clicked element in the viewport
         window.scrollTo(scrollOptions);
 
@@ -118,7 +122,30 @@ function load() {
                 }
             }
 	}
-	
+
+    // By clicking on the bin's parent some classes are toggled    
+    x("#bin").onclick = function (event) {
+        toggleClass(event.target, 'open-bin');
+        toggleClass(event.target, 'closed-bin');
+
+        // I am toggling some classes to trigger the panel in sliding in
+        toggleClass(history, "closed-history");
+        toggleClass(history, "active-history");
+
+        // Here more things happening when clicking on the history bin could happen.
+    }
+
+    history.onclick = function (event) {
+        // Possible way to fix click problem: add to data additional fields with tooltip and object's position on screen
+        // Then trigger the position and elements based on these stored values instead of clicks.
+        Tooltip.activeObj = event.target;
+        Tooltip.show(event, currentViewportWidth);
+    }
+
+    ////////
+    ///// from here on we define how views are cleaned and resetted
+    ////////
+
 	// when clicking on the background, the selection is reset and history panel is closed (if open)
 	var bg = svg.getElementById("background")
 	bg.onclick = function() { 
@@ -131,18 +158,6 @@ function load() {
             toggleClass(history, 'closed-history');
             toggleClass(history, "active-history");
         }
-    }
-
-    // By clicking on the bin's parent some classes are toggled    
-    x("#bin").onclick = function (event) {
-        toggleClass(event.target, 'open-bin');
-        toggleClass(event.target, 'closed-bin');
-
-        // I am toggling some classes to trigger the panel in sliding in
-        toggleClass(history, "closed-history");
-        toggleClass(history, "active-history");
-
-        // Here more things happening when clicking on the history bin could happen.
     }
 	
 	// also when the escape key is pressed
@@ -170,6 +185,11 @@ function load() {
     }
 }
 
+////////
+///// helpers
+////////
+
+
 // for now this just defaults to no object selected, later maybe more…
 function reset() {
 	X(".active").forEach(el => el.classList.remove('active'));
@@ -180,7 +200,7 @@ function addElementToHistoryPanel(currentObj, elementsHistory) {
     if (!elementsHistory.includes(data[currentObj].name_EN)) {
         elementsHistory.push(data[currentObj].name_EN)
 
-        x("#history").innerHTML += `<p class=${"object-name"}>` + data[currentObj].name_EN + "</p>"
+        x("#history").innerHTML += `<p class=${"object-name"} data-id="` + currentObj + `">` + data[currentObj].name_EN + "</p>"
     }
 }
 
@@ -191,3 +211,10 @@ function detectedViewportWidth () {
 
     return Math.max(body.offsetWidth, html.clientWidth, html.offsetWidth);
 }
+
+// shortcuts to access elements
+function x(s) { return document.querySelector(s); }
+function X(s) { return document.querySelectorAll(s); }
+
+// shortcut to remove/add classes to elements
+function toggleClass(el, klass) { return el.classList.toggle(klass) }
