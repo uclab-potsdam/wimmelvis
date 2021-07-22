@@ -124,9 +124,9 @@ function load() {
 	}
 
     // By clicking on the bin's parent some classes are toggled    
-    x("#bin").onclick = function (event) {
-        toggleClass(event.target, 'open-bin');
-        toggleClass(event.target, 'closed-bin');
+    x("#history-toggle").onclick = function (event) {
+        toggleClass(event.target, 'open-history');
+        toggleClass(event.target, 'closed-history');
 
         // I am toggling some classes to trigger the panel in sliding in
         toggleClass(history, "closed-history");
@@ -152,8 +152,8 @@ function load() {
         Tooltip.hide();
 
         if (history.classList.contains('active-history')) {
-            toggleClass(x("#bin").firstElementChild, 'closed-bin');
-            toggleClass(x("#bin").firstElementChild, 'open-bin');
+            toggleClass(x("#history-toggle").firstElementChild, 'closed-history');
+            toggleClass(x("#history-toggle").firstElementChild, 'open-history');
 
             toggleClass(history, 'closed-history');
             toggleClass(history, "active-history");
