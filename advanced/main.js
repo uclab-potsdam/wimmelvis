@@ -7,7 +7,7 @@ var map = x('#map');
 var elementsHistory = [];
 
 // load the SVG file and add its elements to the map
-fetch('./assets/kitchen.svg')
+fetch('./assets/scene.svg')
   .then(r => r.text())
   .then(text => { 
 		map.innerHTML = text;	
