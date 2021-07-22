@@ -56,9 +56,9 @@ var Tooltip = {
         }
 
         // this object's name and info is added to the info box
-        x("#info").innerHTML = "<h2>" + data[id].name_EN + "</h2>" 
-            + "<p>" + data[id].recyclable_EN + "</p>"
-            + "<p>" + data[id].material_info_EN + "</p>";
+        x("#info").innerHTML = "<h2>" + data[id].name_DE + "</h2>" 
+            + "<p>" + data[id].recyclable_DE + "</p>"
+            + "<p>" + data[id].material_info_DE + "</p>";
 
         // positions the info box on click position, 
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
@@ -200,7 +200,7 @@ function addElementToHistoryPanel(currentObj, elementsHistory) {
     if (!elementsHistory.includes(data[currentObj].name_EN)) {
         elementsHistory.push(data[currentObj].name_EN)
 
-        x("#history").innerHTML += `<p class=${"object-name"} data-id="` + currentObj + `">` + data[currentObj].name_EN + "</p>"
+        x("#history").innerHTML += `<p class=${"object-name"} data-id="` + currentObj + `">` + data[currentObj].name_DE + "</p>"
     }
 }
 
