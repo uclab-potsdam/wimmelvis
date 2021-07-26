@@ -7,29 +7,32 @@ var map = x('#map');
 var elementsHistory = [];
 
 // load the SVG file and add its elements to the map
-fetch('./assets/scene.svg')
-  .then(r => r.text())
-  .then(text => { 
-		map.innerHTML = text;	
-
-        // initialize the map if data is loaded, too:
-		if (data!=null) load();
-	})
+var fetchScene = fetch('./assets/scene.svg')
+    .then(r => r.text())
+    .then(text => {
+        map.innerHTML = text;
+    });
 
 // load data file and add to data variable
-fetch('./assets/waste_data.json')
-  .then(r => r.json())
-	.then(d => {
-		data = d;
-		// initialize the map if svg is loaded, too:
-		if (typeof x('#map svg') != "null") load();
-	});
+var fetchData = fetch('./assets/waste_data.json')
+    .then(r => r.json())
+    .then(d => {
+        data = d;
+    });
+
+Promise.all([fetchScene, fetchData]).then(() => {
+    load()
+})
 
 // this variable holds information and methods necessary to trigger the appropriate tooltip
 var Tooltip = {
     // Stores current active object to trigger event correctly
     activeObj: undefined,
     show: function (e, width) {
+        ////////////////////////
+        // Add here things that should happen to the tooltip when shown
+        ////////////////////////
+
         // reset all active classes from elements
 		reset();
 
@@ -81,6 +84,10 @@ var Tooltip = {
         }
     },
     hide: function() {
+        ////////////////////////
+        // Add here things that should happen when clicking on the background or on the  'x' to close individual tooltips
+        ////////////////////////
+
         // removes classes and hide tooltip
         reset();
         Tooltip.activeObj = undefined;
@@ -117,6 +124,10 @@ function load() {
         
             // object gets a click event
             obj.onclick = function(event) {
+            ////////////////////////
+            // Add here things that should happen on object's click
+            ////////////////////////
+
                 // prevent event to be triggered if the clicked object is already active
                 if (Tooltip.activeObj == undefined || Tooltip.activeObj.id !== this.id) {
                     // Assign current active object to tooltip
@@ -141,15 +152,14 @@ function load() {
     }
 
     history.onclick = function (event) {
-        // Possible way to fix click problem: add to data additional fields with tooltip and object's position on screen
-        // Then trigger the position and elements based on these stored values instead of clicks.
+        // When clicking one element in history we are brought back to the tooltip
         Tooltip.activeObj = event.target;
         Tooltip.show(event, currentViewportWidth);
     }
 
-    ////////
-    ///// from here on we define how views are cleaned and resetted
-    ////////
+    ////////////////////////
+    // from here on we define how views are cleaned and resetted
+    ////////////////////////
 
 	// when clicking on the background, the selection is reset and history panel is closed (if open)
 	var bg = svg.getElementById("background")
@@ -190,9 +200,9 @@ function load() {
     }
 }
 
-////////
-///// helpers
-////////
+////////////////////////
+// helpers
+////////////////////////
 
 
 // for now this just defaults to no object selected, later maybe more…

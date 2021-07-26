@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,500;1,300&display=swap');
 
 body {
-    /* font-size: 15px; */
-    /* font-family: helvetica, sans-serif; */
     font-family: 'Work Sans', sans-serif, Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
@@ -13,7 +11,8 @@ a {
     color: #da936a;
 }
 
-p, a {
+p, 
+a {
     font-weight: 300;
 }
 
@@ -113,14 +112,11 @@ a.back {
     border-radius: 1%;
     background: rgb(255, 255, 255);
     border: 1px solid black;
-    /* box-shadow: 5px 5px rgba(133, 131, 221, 0.5); */
     line-height: double;
 }
 
 #info > #close-info {
-    /* right: -20px; */
     width: 90%;
-    /* right: 1em; */
     position: fixed;
 }
 
