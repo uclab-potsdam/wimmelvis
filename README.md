@@ -17,31 +17,31 @@ The folder contains one introduction page on the first level and two subfolders:
 `\basic` contains a simplified version of the template. It consists of three files: `index.html` containing its barebone structure, `shapes.svg` containing the scene that will be loaded inside the page, and `data.json` containing the additional information bits that will be chained to specific objects within the scene.
 
 ```
-📦basic
- ┣ 📜data.json
- ┣ 📜index.html
- ┗ 📜shapes.svg
+📦 basic
+ ┣ 📜 data.json
+ ┣ 📜 index.html
+ ┗ 🖼 shapes.svg
 ```
 
 `\advanced` contains an elaborated version of the template with a more complex scene and very specific underlying data. The javascript logic is contained in `main.js` and style has its own directory `/style` which includes mobile specifications. All images and data are inside the `/assets` folder.
 
 ```
-📦advanced
- ┣ 📂assets
- ┃ ┣ 📜.DS_Store
- ┃ ┣ 📜closed-history.svg
- ┃ ┣ 📜kitchen.svg
- ┃ ┣ 📜opened-history.svg
- ┃ ┣ 📜waste_data.json
- ┃ ┣ 📜wimmelbild_logo.png
- ┃ ┗ 📜wimmelbild_scheme.svg
- ┣ 📂style
- ┃ ┣ 📜mobile.css
- ┃ ┗ 📜style.css
- ┣ 📜.DS_Store
- ┣ 📜index.html
- ┣ 📜main.js
- ┗ 📜smoothscroll.min.js
+📦 advanced
+ ┣ 📂 assets
+ ┃ ┣ 📜 .DS_Store
+ ┃ ┣ 🖼 closed-history.svg
+ ┃ ┣ 🖼 kitchen.svg
+ ┃ ┣ 🖼 opened-history.svg
+ ┃ ┣ 📜 waste_data.json
+ ┃ ┣ 🖼 wimmelbild_logo.png
+ ┃ ┗ 🖼 wimmelbild_scheme.svg
+ ┣ 📂 style
+ ┃ ┣ 📜 mobile.css
+ ┃ ┗ 📜 style.css
+ ┣ 📜 .DS_Store
+ ┣ 📜 index.html
+ ┣ 📜 main.js
+ ┗ 📜 smoothscroll.min.js
 ```
 
 Both templates present roughly the same features:

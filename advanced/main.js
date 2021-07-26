@@ -107,7 +107,7 @@ function load() {
 
 	// variable references the svg object
 	var svg = x("#map svg");
-	console.warn("You have " + Object.keys(data).length + " items in your dataset")
+	console.info("You have " + Object.keys(data).length + " items in your dataset")
 	// iterate over all data items
 	for (id in data) {
 		
