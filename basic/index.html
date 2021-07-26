@@ -128,22 +128,22 @@ var map = x('#map');
 var elementsHistory = [];
 
 // load the SVG file and add its elements to the map
-fetch('shapes.svg')
+var fetchShapes = fetch('shapes.svg')
   .then(r => r.text())
   .then(text => { 
 		map.innerHTML = text;		
-		// initialize the map if data is loaded, too:
-		if (data!=null) init();
 	})
 
 // load data file and add to data variable
-fetch('data.json')
+var fetchData = fetch('data.json')
   .then(r => r.json())
 	.then(d => {
 		data = d;
-		// initialize the map if svg is loaded, too:
-		if (typeof x('#map svg') != "null") init();
 	});
+
+Promise.all([fetchShapes, fetchData]).then(() => {
+	init()
+})
 
 
 // add click events to all svg elements that have an entry in data file
