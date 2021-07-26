@@ -207,6 +207,7 @@ function load() {
 // for now this just defaults to no object selected, later maybe more…
 function reset() {
 	X('.active').forEach(el => el.classList.remove('active'));
+    x('#info').scrollTo(0, 0);
 }
 
 function addElementToHistoryPanel(currentObj, elementsHistory) {

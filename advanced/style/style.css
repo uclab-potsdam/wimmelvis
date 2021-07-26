@@ -17,6 +17,7 @@ a {
 }
 
 h1.title, h3#reset {
+    /* pointer-events: none; */
     font-size: 1.5em;
     position: fixed;
     text-align: center;
@@ -39,6 +40,7 @@ h3#reset {
 .title,
 .welcome-card,
 #reset {
+    /* pointer-events: none; */
     max-width: 600px;
     left: 15px;
     background: rgb(255, 255, 255);

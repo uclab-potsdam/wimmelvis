@@ -40,7 +40,7 @@ p {
 
 .introduction-container > .graphic-title {
     z-index: 2;
-    background: url('./advanced/assets/wimmelbild_logo.png');
+    background: url('/advanced/assets/wimmelbild_logo.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;    
@@ -121,7 +121,7 @@ footer {
 .start > a {
     text-decoration: none;
     color: black;
-    background-image: url('./advanced/assets/closed-history.svg');
+    background-image: url('../assets/closed-history.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
