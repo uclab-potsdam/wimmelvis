@@ -56,9 +56,9 @@ var Tooltip = {
         }
 
         // this object's name and info is added to the info box
-        x("#info").innerHTML = "<h2>" + data[id].name_DE + "</h2>" 
-            + "<p>" + data[id].recyclable_DE + "</p>"
-            + "<p>" + data[id].material_info_DE + "</p>";
+        x("#info").innerHTML = "<div id='close-info'><p>x</p></div><div><h2>" + data[id].name_DE + "</h2>"
+            + "<p class='recyclable'>" + data[id].recyclable_DE + "</p>"
+            + "<p>" + data[id].material_info_DE + "</p></div>";
 
         // positions the info box on click position, 
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
@@ -74,6 +74,11 @@ var Tooltip = {
         x("#"+id).classList.add("active");
         // the infobox is also made visible (see style in style.css)
         x("#info").classList.add("active");
+
+        // Click on tiny x in box closes tooltip
+        x("#close-info").onclick = function () {
+            Tooltip.hide();
+        }
     },
     hide: function() {
         // removes classes and hide tooltip
@@ -218,3 +223,7 @@ function X(s) { return document.querySelectorAll(s); }
 
 // shortcut to remove/add classes to elements
 function toggleClass(el, klass) { return el.classList.toggle(klass) }
+
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}

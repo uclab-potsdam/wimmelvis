@@ -24,7 +24,7 @@ h1.title, h3#reset {
 }
 
 h1.title {
-    width: 30%;
+    width: 35%;
     top: 0px;
     padding: 10px 0px;
     z-index: 2;
@@ -50,7 +50,7 @@ h3#reset {
 
 .welcome-card {
     position: absolute;
-    width: 30%; 
+    width: 35%; 
     min-width: 280px; min-height: 400px;
     max-height: 88%;
 
@@ -86,6 +86,13 @@ a.back {
     margin-left: 20px;
 }
 
+.prova {
+    padding-right: 0.2em; padding-left: 0.2em;
+    border-radius: 2px;
+    background-color: rgb(152, 152, 248);
+    /* color: blue; */
+}
+
 /* Navigation, tooltips, activate and deactivate objects */
 
 #info {
@@ -108,6 +115,19 @@ a.back {
     border: 1px solid black;
     /* box-shadow: 5px 5px rgba(133, 131, 221, 0.5); */
     line-height: double;
+}
+
+#info > #close-info {
+    /* right: -20px; */
+    width: 90%;
+    /* right: 1em; */
+    position: fixed;
+}
+
+#close-info > p {
+    cursor: pointer;
+    margin-top: 0.5em;
+    text-align: right;
 }
 
 #info.active {

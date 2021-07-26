@@ -121,7 +121,7 @@ footer {
 .start > a {
     text-decoration: none;
     color: black;
-    background-image: url('./advanced/assets/closed-bin.svg');
+    background-image: url('./advanced/assets/closed-history.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
