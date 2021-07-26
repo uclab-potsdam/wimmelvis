@@ -37,10 +37,10 @@ var Tooltip = {
 		reset();
 
         // Get unique id of active object
-        var id = Tooltip.activeObj.id || Tooltip.activeObj.attributes["data-id"].nodeValue;
+        var id = Tooltip.activeObj.id || Tooltip.activeObj.attributes['data-id'].nodeValue;
         
         // check if object already has coordinates stored
-        if (!data[id].hasOwnProperty("elementCoordinates")) {
+        if (!data[id].hasOwnProperty('elementCoordinates')) {
             // Store cursor position @ click in one property, 0 is x, 1 is y
             data[id].elementCoordinates = [e.layerX, e.layerY];
         }
@@ -59,14 +59,13 @@ var Tooltip = {
         }
 
         // this object's name and info is added to the info box
-        x("#info").innerHTML = "<div id='close-info'><p>x</p></div><div><h2>" + data[id].name_DE + "</h2>"
-            + "<p class='recyclable'>" + data[id].recyclable_DE + "</p>"
-            + "<p>" + data[id].material_info_DE + "</p></div>";
+        x('#info').innerHTML = `<div id='close-info'><p>x</p></div><div><h2>${ data[id].name_DE }</h2>
+            <p class='recyclable'>${ data[id].recyclable_DE }</p><p>${ data[id].material_info_DE }</p></div>`;
 
         // positions the info box on click position, 
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
-        x("#info").style.left = Math.floor(data[id].elementCoordinates[0]) + 'px';
-        x("#info").style.top = data[id].elementCoordinates[1] < 400 
+        x('#info').style.left = Math.floor(data[id].elementCoordinates[0]) + 'px';
+        x('#info').style.top = data[id].elementCoordinates[1] < 400 
             ? Math.floor(data[id].elementCoordinates[1] + 300) + 'px' 
             : Math.floor(data[id].elementCoordinates[1]) + 'px';
 
@@ -74,12 +73,12 @@ var Tooltip = {
         window.scrollTo(scrollOptions);
 
         // add a class to clicked object
-        x("#"+id).classList.add("active");
+        x('#'+id).classList.add('active');
         // the infobox is also made visible (see style in style.css)
-        x("#info").classList.add("active");
+        x('#info').classList.add('active');
 
         // Click on tiny x in box closes tooltip
-        x("#close-info").onclick = function () {
+        x('#close-info').onclick = function () {
             Tooltip.hide();
         }
     },
@@ -100,14 +99,14 @@ function load() {
     var currentViewportWidth = detectedViewportWidth();
     
     // variable references the history panel
-    var history = x("#history");
+    var history = x('#history');
     
     // variable references the reset div
-    var resetView = x("#reset");
+    var resetView = x('#reset');
 
 	// variable references the svg object
-	var svg = x("#map svg");
-	console.info("You have " + Object.keys(data).length + " items in your dataset")
+	var svg = x('#map svg');
+	console.info('You have ' + Object.keys(data).length + ' items in your dataset')
 	// iterate over all data items
 	for (id in data) {
 		
@@ -115,12 +114,12 @@ function load() {
 		
 		// if id not found among svg elements issue warning and continue with loop
 		if (obj == null) {
-			console.warn(id+" not found in the map");
+			console.warn(id+' not found in the map');
 			continue;
 		}
 		
 		// the object that is matched gets class object and is made invisible (see stylesheet)
-		obj.classList.add("object");
+		obj.classList.add('object');
         
             // object gets a click event
             obj.onclick = function(event) {
@@ -140,13 +139,13 @@ function load() {
 	}
 
     // By clicking on the bin's parent some classes are toggled    
-    x("#history-toggle").onclick = function (event) {
+    x('#history-toggle').onclick = function (event) {
         toggleClass(event.target, 'open-history');
         toggleClass(event.target, 'closed-history');
 
         // I am toggling some classes to trigger the panel in sliding in
-        toggleClass(history, "closed-history");
-        toggleClass(history, "active-history");
+        toggleClass(history, 'closed-history');
+        toggleClass(history, 'active-history');
 
         // Here more things happening when clicking on the history bin could happen.
     }
@@ -162,22 +161,22 @@ function load() {
     ////////////////////////
 
 	// when clicking on the background, the selection is reset and history panel is closed (if open)
-	var bg = svg.getElementById("background")
+	var bg = svg.getElementById('background')
 	bg.onclick = function() { 
         Tooltip.hide();
 
         if (history.classList.contains('active-history')) {
-            toggleClass(x("#history-toggle").firstElementChild, 'closed-history');
-            toggleClass(x("#history-toggle").firstElementChild, 'open-history');
+            toggleClass(x('#history-toggle').firstElementChild, 'closed-history');
+            toggleClass(x('#history-toggle').firstElementChild, 'open-history');
 
             toggleClass(history, 'closed-history');
-            toggleClass(history, "active-history");
+            toggleClass(history, 'active-history');
         }
     }
 	
 	// also when the escape key is pressed
 	document.onkeyup = function(e) {
-	   if (e.key === "Escape") {
+	   if (e.key === 'Escape') {
 			 reset();
 		 }
 	}
@@ -194,7 +193,7 @@ function load() {
         reset();
         // cleans history
         elementsHistory = [];
-        x("#history").innerHTML = '<h4>Collected objects:</h4>';
+        x('#history').innerHTML = '<h4>Collected objects:</h4>';
         // scroll to top left corner
         window.scrollTo(scrollOptions);
     }
@@ -207,7 +206,7 @@ function load() {
 
 // for now this just defaults to no object selected, later maybe more…
 function reset() {
-	X(".active").forEach(el => el.classList.remove('active'));
+	X('.active').forEach(el => el.classList.remove('active'));
 }
 
 function addElementToHistoryPanel(currentObj, elementsHistory) {
@@ -215,7 +214,7 @@ function addElementToHistoryPanel(currentObj, elementsHistory) {
     if (!elementsHistory.includes(data[currentObj].name_EN)) {
         elementsHistory.push(data[currentObj].name_EN)
 
-        x("#history").innerHTML += `<p class=${"object-name"} data-id="` + currentObj + `">` + data[currentObj].name_DE + "</p>"
+        x('#history').innerHTML += `<p class=${'object-name'} data-id='${currentObj}'>${data[currentObj].name_DE}</p>`
     }
 }
 

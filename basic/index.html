@@ -37,6 +37,10 @@ h3#reset {
 	display: none;
 }
 
+#close-info {
+	cursor: pointer;
+}
+
 #info.active { display: block; }
 
 #map svg { height: 90vh; width: 90vw }
@@ -150,7 +154,7 @@ Promise.all([fetchShapes, fetchData]).then(() => {
 function init() {
 	
 	// variable references the svg object
-	var svg = x("#map svg");
+	var svg = x('#map svg');
 
 	// iterate over all data items
 	for (id in data) {
@@ -159,12 +163,12 @@ function init() {
 		
 		// if id not found among svg elements issue warning and continue with loop
 		if (obj == null) {
-			console.warn(id+" not found in the map");
+			console.warn(id+' not found in the map');
 			continue;
 		}
 		
 		// the object that is matched gets class object and is made invisible (see style above)
-		obj.classList.add("object");
+		obj.classList.add('object');
 		
 		// object gets a click event
 		obj.onclick = function(){
@@ -175,58 +179,64 @@ function init() {
 			var id = this.id;
 			
 			// the clicked element is activated and made visible (see style above)
-			x("#"+id).classList.add("active");
+			x('#'+id).classList.add('active');
 			
 			// this object's name and info is added to the info box
-			x("#info").innerHTML = "<h2>"+ data[id].name +"</h2>" + "<p>" + data[id].info + "</p>";
+			x('#info').innerHTML = `<div id='close-info'><p>x</p></div><h2>${ data[id].name }</h2><p>${ data[id].info }</p>`;
 			// the infobox is also made visible (see style above)
-			x("#info").classList.add("active");
+			x('#info').classList.add('active');
 			// function call to add element in history panel
 			addElementToHistoryPanel(this.id, elementsHistory);
+
+			// Click on tiny x in box closes tooltip
+			x('#close-info').onclick = function () {
+				reset();
+			}
+
 		}
 	}
 
 	// variable references the history panel
-	var history = x("#history");
+	var history = x('#history');
 
-	x("#toggle-history").onclick = function (event) {
+	x('#toggle-history').onclick = function (event) {
 
 		// I am toggling some classes to trigger the panel in sliding in
-		toggleClass(history, "close-history");
-		toggleClass(history, "active-history");
+		toggleClass(history, 'close-history');
+		toggleClass(history, 'active-history');
 
 		// Here more things happening when clicking on the history bin could happen.
 	}
 	
 	// when clicking on the background, the selection is reset
-	var bg = svg.getElementById("background")
+	var bg = svg.getElementById('background')
 	bg.onclick = function() { 
 		reset(); 
 
 		if (history.classList.contains('active-history')) {
 			toggleClass(history, 'close-history');
-			toggleClass(history, "active-history");
+			toggleClass(history, 'active-history');
 		}
 
 	}
 	
 	// also when the escape key is pressed
 	document.onkeyup = function(e) {
-	   if (e.key === "Escape") {
+	   if (e.key === 'Escape') {
 			 reset();
 		 }
 	}
 
 	// variable references the reset div
-	var resetView = x("#reset");
+	var resetView = x('#reset');
 	
-	// resets the whole view when clicking on "reset" button
+	// resets the whole view when clicking on 'reset' button
 	resetView.onclick = function () {
 		// remove selection
 		reset();
 		// cleans history
 		elementsHistory = [];
-		toggleClass(history, "close-history");
+		toggleClass(history, 'close-history');
 		history.innerHTML = '<h4>Collected objects:</h4>';
 	}
 	
@@ -234,7 +244,7 @@ function init() {
 
 // for now this just defaults to no object selected, later maybe more…
 function reset() {
-	X(".active").forEach(el => el.classList.remove('active'));
+	X('.active').forEach(el => el.classList.remove('active'));
 }	
 // checks if element is already in array, if not adds it.
 function addElementToHistoryPanel(currentObj, elementsHistory) {
@@ -242,7 +252,7 @@ function addElementToHistoryPanel(currentObj, elementsHistory) {
 	if (!elementsHistory.includes(data[currentObj].name)) {
 		elementsHistory.push(data[currentObj].name)
 
-		x("#history").innerHTML += `<p class=${"object-name"}>` + data[currentObj].name + "</p>"
+		x('#history').innerHTML += `<p class=${'object-name'}>${ data[currentObj].name }</p>`
 	}
 }
 </script>
