@@ -101,9 +101,6 @@ function load() {
     // variable references the history panel
     var history = x('#history');
     
-    // variable references the reset div
-    var resetView = x('#reset');
-
 	// variable references the svg object
 	var svg = x('#map svg');
 	console.info('You have ' + Object.keys(data).length + ' items in your dataset')
@@ -180,23 +177,6 @@ function load() {
 			 reset();
 		 }
 	}
-
-    // resets the whole view
-    resetView.onclick = function() {
-        var scrollOptions = {
-            left: 0,
-            top: 0,
-            behavior: 'smooth'
-        }
-
-        // remove selection
-        reset();
-        // cleans history
-        elementsHistory = [];
-        x('#history').innerHTML = '<h4>Collected objects:</h4>';
-        // scroll to top left corner
-        window.scrollTo(scrollOptions);
-    }
 }
 
 ////////////////////////
@@ -204,8 +184,11 @@ function load() {
 ////////////////////////
 
 
-// for now this just defaults to no object selected, later maybe more…
+// for now this just defaults to no object selected and resets the tooltip vertical position
 function reset() {
+    ////////////////////////
+    // add here things that should happen on reset
+    ////////////////////////
 	X('.active').forEach(el => el.classList.remove('active'));
     x('#info').scrollTo(0, 0);
 }
