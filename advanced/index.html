@@ -8,27 +8,47 @@
 <link rel="stylesheet" type="text/css" href="./style/mobile.css">
 </head>
 <body>
-    <h1 class="title">What objects are difficult to recycle?</h1>
-    <!-- <h3 id="reset">Reset</h3> -->
-    <div class="welcome-card">
-        <div class="welcome-card-inner">
-            <img src="./assets/wimmelbild_logo.png">
-            <img class="start-scheme" src="./assets/wimmelbild_scheme.svg">
-            <a href="./about/" class="back">← About this project</a>
+    <div class="main-container">
+        <h1 class="title">What objects are difficult to recycle?</h1>
+        <!-- <h3 id="reset">Reset</h3> -->
+        <div class="welcome-card">
+            <div class="welcome-card-inner">
+                <img src="./assets/wimmelbild_logo.png">
+                <p>Auch wenn das Recycling unser zunehmendes Abfallproblem nicht lösen kann, so ist es doch ein wichtiger Bestandteil, um
+                die Wiederverwendung bestimmter Materialien zu ermöglichen. Wir können dazu beitragen, indem wir unseren Müll richtig
+                trennen, und dafür gibt es eine Menge verschiedener Regeln. Erforschen Sie die häufig falsch sortierten Gegenstände, von
+                denen Sie sich nur das Beste wünschen, und sehen Sie, wo sie zu sortieren sind und ob sie tatsächlich recycelbar sind
+                oder nicht.</p>
+                <div class="navigation-commands">
+                    <a href="./about/" class="back">← Über dieses Projekt</a>
+                </div>
+                <div class="navigation-commands">
+                    <p class="start">Schwenken oder Scrollen zum Starten<span></span></p>
+                </div>
+                <!-- <img class="start-scheme" src="./assets/wimmelbild_scheme.svg"> -->
+            
+            </div>
         </div>
-    </div>
-    <!-- this element shows the descriptions of the items -->
-    <div id="info"></div>
-    <!-- the svg is added to this element -->
-    <div id="draggable-container" class="mapcontainer"><div id="map"></div></div>
-    <!-- this element contains the history panel where discovered objects are enlisted  -->
-    <div id="history-outer-container">
-        <div id="history-toggle">
-            <div class="closed-history"></div>
+        <!-- this element shows the descriptions of the items -->
+        <div class="information-container" id="info">
+            <div id="close-info"></div>
+            <div id="info-content"></div>
+            <div id="sticker-container"></div>
         </div>
-        <div id="history" class="closed-history">
-            <h4>Collected objects:</h4>
-        </div>    
+        <!-- the svg is added to this element -->
+        <div id="draggable" class="mapcontainer"><div id="map"></div></div>
+        <!-- this element contains the history panel where discovered objects are enlisted  -->
+        <div id="history-outer-container">
+            <div id="history-toggle">
+                <div id="counter">
+                    <p>0</p>
+                </div>
+                <div class="history-inner-container closed-history"></div>
+            </div>
+            <div id="history" class="closed-history">
+                <h4>Collected objects:</h4>
+            </div>    
+        </div>
     </div>
 </body>
 <!-- this polyfill forces scroll smooth on window.scrollTo(), see: https://github.com/iamdustan/smoothscroll -->

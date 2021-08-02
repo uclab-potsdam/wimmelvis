@@ -9,6 +9,12 @@ body {
     margin: 0;
 }
 
+.main-cointainer {
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+}
+
 a {
     text-decoration: none;
     color: #da936a;
@@ -20,13 +26,13 @@ a {
 }
 
 h1.title, h3#reset {
-    font-size: 1.5em;
+    font-size: 1.3em;
     position: fixed;
     text-align: center;
 }
 
 h1.title {
-    width: 35%;
+    width: 30%;
     top: 0px;
     padding: 10px 0px;
     z-index: 2;
@@ -53,9 +59,9 @@ h3#reset {
 
 .welcome-card {
     position: absolute;
-    width: 35%; 
+    width: 30%; 
     min-width: 280px; min-height: 400px;
-    max-height: 88%;
+    max-height: 80%;
 
     top: 80px;
     left: 15px;
@@ -65,7 +71,7 @@ h3#reset {
 .welcome-card-inner {
     overflow-y: auto;
     max-height: 100%;
-    padding-bottom: 5%;
+    /* padding-bottom: 5%; */
 }
 
 .welcome-card-inner > img {
@@ -74,7 +80,7 @@ h3#reset {
     display: block;
 }
 
-.welcome-card-inner > p {
+.welcome-card-inner > p, .navigation-commands {
     width: 77%;
     margin: 0 auto;
 }
@@ -85,26 +91,31 @@ h3#reset {
     margin-bottom: 40px;
 }
 
-a.back {
-    margin-left: 20px;
+.navigation-commands {
+    margin-top: 5%;
 }
 
-.prova {
-    padding-right: 0.2em; padding-left: 0.2em;
-    border-radius: 2px;
-    background-color: rgb(152, 152, 248);
+.start {
+    margin-top: 15%;
+    text-align: right;
+    margin-right: -10%;
+}
+
+.start > span {
+    background-image: url('../assets/navigate-arrow.svg');
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
 }
 
 /* Navigation, tooltips, activate and deactivate objects */
-
 #info {
     position: absolute;
     z-index: 999;
-    width: 300px; min-height: 150px; max-height: 200px;
+    width: 350px; height: 200px; max-height: 300px;
     transform: translate(-50%, -150%);
 
-    /* Prevent text flowing out of the div */
-    overflow: auto;
 
     /* When nothing is selected the div is not visible and not clickable */
     visibility: hidden;
@@ -112,22 +123,18 @@ a.back {
     pointer-events: none;
 
     /* Change colors and box style */
-    padding: 0em 1em;
     border-radius: 1%;
     background: rgb(255, 255, 255);
     border: 1px solid black;
-    line-height: double;
+    line-height: 1.3em;
 }
 
-#info > #close-info {
-    width: 90%;
-    position: fixed;
-}
+#info-content {
+    /* Prevent text flowing out of the div */
+    overflow: auto;
+    max-height: 100%;
+    padding: 0em 1em;
 
-#close-info > p {
-    cursor: pointer;
-    margin-top: 0.5em;
-    text-align: right;
 }
 
 #info.active {
@@ -150,6 +157,63 @@ a.back {
 .object.active {
     transition: opacity 0.5s ease;
     opacity: 1;
+}
+
+/* Tooltip elements, highlights and stickers */
+#close-info {
+    cursor: pointer;
+    width: 15px; height: 15px;
+    top: 0%; left: -10%;
+    position: fixed;
+
+    background-image: url('../assets/close.svg');
+    background-color: white;
+    border: 1px solid black;
+    padding: 2px;
+}
+
+.black, .yellow, .blue, .brown {
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+    border-radius: 2px;
+}
+
+
+.black {
+    color: white;
+    background-color: rgb(48, 48, 53);
+}
+
+.yellow {
+    background-color: rgb(255, 179, 66);
+}
+
+.blue {
+    color: white;
+    background-color: rgb(65, 87, 182);
+}
+
+.brown {
+    color: white;
+    background-color: rgb(105, 68, 68);
+}
+
+.sticker {
+    width: 120px; height: 120px;
+    position: fixed;
+    top: -10%; right: -20%;
+}
+
+.is-recyclable {
+    background-image: url('../assets/recyclable.svg');
+}
+
+.almost-recyclable {
+    background-image: url('../assets/some-recyclable.svg');
+}
+
+.not-recyclable {
+    background-image: url('../assets/not-recyclable.svg');
 }
 
 /* History */
@@ -176,11 +240,27 @@ a.back {
     z-index: 2;
 }
 
-#history-toggle > div {
+#history-toggle > .history-inner-container {
     background-repeat: no-repeat;
     background-position: center;
     width:100%; height:100%;
     background-size: contain;
+}
+
+#counter {
+    position: absolute;
+    left: -30px;
+    /* margin-right: 10%; */
+    z-index: 2;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5%;
+    border: 1px solid #7DA0D3;
+}
+
+#counter > p {
+    margin: 0;
+    text-align: center;
 }
 
 .closed-history {

@@ -1,10 +1,103 @@
+//////////////////////// variables ////////////////////////
+
 // this variable will hold the metadata from the data file
 var data = null;
 
 // this variables is a reference to the DOM element holding the SVG elements 
 var map = x('#map');
 
-var elementsHistory = [];
+// Variables that will store data for the history panel later on
+var itemsHistory = [];
+var existingItems = [];
+var foundItems = 0;
+
+// array that contains the possible statuses for objects, useful if you want to add stickers, labels or trigger a win/lose result
+var isRecyclableClass = ['not-recyclable', 'almost-recyclable', 'is-recyclable'];
+
+// this variable holds information and methods necessary to trigger the appropriate tooltip
+var Tooltip = {
+    // Stores current active object to trigger event correctly
+    activeObj: undefined,
+    show: function (e, width) {
+        ////////////////////////
+        // Add here things that should happen to the tooltip when shown
+        ////////////////////////
+
+        // reset all active classes from elements
+        reset();
+
+        // Get unique id of active object
+        var id = Tooltip.activeObj.id || Tooltip.activeObj.attributes['data-id'].nodeValue;
+        var tooltipData = data[id];
+
+        // check if object already has coordinates stored
+        if (!tooltipData.hasOwnProperty('elementCoordinates')) {
+            // Store cursor position @ click in one property, 0 is x, 1 is y
+            tooltipData.elementCoordinates = [e.layerX, e.layerY];
+        }
+
+        // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
+        // behavior: 'smooth' does not work in Safari, polyfill needed: 
+        // https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
+        var scrollOptions = {
+            left: tooltipData.elementCoordinates[0] - (window.innerWidth >> 1),
+            top: tooltipData.elementCoordinates[1] - (window.innerHeight >> 1), behavior: 'smooth'
+        }
+
+        // if condition helps on smaller viewports so the object is always visible
+        if (width < 400) {
+            scrollOptions.top = tooltipData.elementCoordinates[1] - (window.innerHeight >> 1) - 100;
+        }
+
+        ////////////////////////
+        // Tooltips content can be expanded by replacing/adding divs, spans or other HTML elements to the info box parent
+        // and its children. Please note, if you don't replace inner HTML but add elements by using '+=' you also need to
+        // erase all new elements when the tooltip is destroyed – see reset() function.
+        ////////////////////////
+
+        // this object's name and info is added to the info box
+        x('#info-content').innerHTML = `
+        <div class='inner-text'>
+            <h2>${tooltipData.name_DE}</h2>
+            <p class='recyclable'>${tooltipData.recyclable_DE}</p><p>${tooltipData.material_info_DE}</p>
+        </div>
+        `;
+
+        // child with correct sticker as a bg image is added to info box
+        x('#sticker-container').innerHTML = `<div class='sticker ${isRecyclableClass[tooltipData.Recyclable]}'></div>`
+
+
+        // positions the info box on click position, 
+        // if/else helps with edge cases where the info box would be rendered outside of the viewport
+        x('#info').style.left = Math.floor(data[id].elementCoordinates[0]) + 'px';
+        x('#info').style.top = tooltipData.elementCoordinates[1] < 400
+            ? Math.floor(tooltipData.elementCoordinates[1] + 300) + 'px'
+            : Math.floor(tooltipData.elementCoordinates[1]) + 'px';
+
+        // scrolls and centers clicked element in the viewport
+        window.scrollTo(scrollOptions);
+
+        // add a class to clicked object
+        x('#' + id).classList.add('active');
+        // the infobox is also made visible (see style in style.css)
+        x('#info').classList.add('active');
+
+        // Click on tiny x in box closes tooltip
+        x('#close-info').onclick = function () {
+            Tooltip.hide();
+        }
+    },
+    hide: function () {
+        ////////////////////////
+        // Add here things that should happen when clicking 
+        // on the background or on the  'x' to close individual tooltips
+        ////////////////////////
+
+        // removes classes and hide tooltip
+        reset();
+        Tooltip.activeObj = undefined;
+    }
+}
 
 // load the SVG file and add its elements to the map
 var fetchScene = fetch('./assets/scene.svg')
@@ -12,6 +105,8 @@ var fetchScene = fetch('./assets/scene.svg')
     .then(text => {
         map.innerHTML = text;
     });
+
+//////////////////////// data and scene fetching, load function gets executed ////////////////////////
 
 // load data file and add to data variable
 var fetchData = fetch('./assets/waste_data.json')
@@ -24,79 +119,14 @@ Promise.all([fetchScene, fetchData]).then(() => {
     load()
 })
 
-// this variable holds information and methods necessary to trigger the appropriate tooltip
-var Tooltip = {
-    // Stores current active object to trigger event correctly
-    activeObj: undefined,
-    show: function (e, width) {
-        ////////////////////////
-        // Add here things that should happen to the tooltip when shown
-        ////////////////////////
+//////////////////////// main load function ////////////////////////
 
-        // reset all active classes from elements
-		reset();
-
-        // Get unique id of active object
-        var id = Tooltip.activeObj.id || Tooltip.activeObj.attributes['data-id'].nodeValue;
-        
-        // check if object already has coordinates stored
-        if (!data[id].hasOwnProperty('elementCoordinates')) {
-            // Store cursor position @ click in one property, 0 is x, 1 is y
-            data[id].elementCoordinates = [e.layerX, e.layerY];
-        }
-
-        // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
-        // behavior: 'smooth' does not work in Safari, polyfill needed: 
-        // https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
-        var scrollOptions = { 
-            left: data[id].elementCoordinates[0] - (window.innerWidth >> 1), 
-            top: data[id].elementCoordinates[1] - (window.innerHeight >> 1), behavior: 'smooth' 
-        }
-
-        // if condition helps on smaller viewports so the object is always visible
-        if (width < 400) {
-            scrollOptions.top = data[id].elementCoordinates[1] - (window.innerHeight >> 1) - 100;
-        }
-
-        // this object's name and info is added to the info box
-        x('#info').innerHTML = `<div id='close-info'><p>x</p></div><div><h2>${ data[id].name_DE }</h2>
-            <p class='recyclable'>${ data[id].recyclable_DE }</p><p>${ data[id].material_info_DE }</p></div>`;
-
-        // positions the info box on click position, 
-        // if/else helps with edge cases where the info box would be rendered outside of the viewport
-        x('#info').style.left = Math.floor(data[id].elementCoordinates[0]) + 'px';
-        x('#info').style.top = data[id].elementCoordinates[1] < 400 
-            ? Math.floor(data[id].elementCoordinates[1] + 300) + 'px' 
-            : Math.floor(data[id].elementCoordinates[1]) + 'px';
-
-        // scrolls and centers clicked element in the viewport
-        window.scrollTo(scrollOptions);
-
-        // add a class to clicked object
-        x('#'+id).classList.add('active');
-        // the infobox is also made visible (see style in style.css)
-        x('#info').classList.add('active');
-
-        // Click on tiny x in box closes tooltip
-        x('#close-info').onclick = function () {
-            Tooltip.hide();
-        }
-    },
-    hide: function() {
-        ////////////////////////
-        // Add here things that should happen when clicking on the background or on the  'x' to close individual tooltips
-        ////////////////////////
-
-        // removes classes and hide tooltip
-        reset();
-        Tooltip.activeObj = undefined;
-    }
-}
-
-// add click events to all svg elements that have an entry in data file
 function load() {
-    let draggableContainer = x('#draggable-container')
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+    // immediately updates counter
+    existingItems = Object.keys(data).length;
+    x('#counter').innerHTML = `<p>${foundItems} / ${existingItems}</p>`
+
     // variable holds the viewport width
     var currentViewportWidth = detectedViewportWidth();
     
@@ -132,7 +162,7 @@ function load() {
                     Tooltip.activeObj = this;	
                     // execute function that renders tooltip (we need to pass the viewport width to catch problematic tooltips)		
                     Tooltip.show(event, currentViewportWidth);
-                    addElementToHistoryPanel(this.id, elementsHistory);
+                    addElementToHistoryPanel(this.id, itemsHistory);
                 }
             }
 	}
@@ -180,12 +210,18 @@ function load() {
 		 }
 	}
 
+    // WIP with draggable function. For now I get really mixed results with good navigation, but weird coordinates mapping on screen
+    // possible solution where I reset coordinates everytime a tooltip appears?
+
+    // let draggableContainer = x('#draggable-container')
+    // let pos = { top: 0, left: 0, x: 0, y: 0 };
+
     // The current position of mouse
     // let xCoord = 0;
     // let yCoord = 0;
 
-    // // Query the element
-    // const ele = document.getElementById('draggable-container');
+    // Query the element
+    // const ele = document.getElementById('draggable');
 
     // // Handle the mousedown event
     // // that's triggered when user drags the element
@@ -205,8 +241,8 @@ function load() {
     //     const dy = e.clientY - yCoord;
 
     //     // Set the position of element
-    //     ele.style.top = `${ele.offsetTop + dy}px`;
-    //     ele.style.left = `${ele.offsetLeft + dx}px`;
+    //     svg.style.top = `${svg.offsetTop + dy}px`;
+    //     svg.style.left = `${ele.offsetLeft + dx}px`;
 
     //     // Reassign the position of mouse
     //     xCoord = e.clientX;
@@ -222,10 +258,7 @@ function load() {
     // ele.addEventListener('mousedown', mouseDownHandler);
 }
 
-////////////////////////
-// helpers
-////////////////////////
-
+//////////////////////// helper functions ////////////////////////
 
 // for now this just defaults to no object selected and resets the tooltip vertical position
 function reset() {
@@ -234,13 +267,18 @@ function reset() {
     ////////////////////////
 	X('.active').forEach(el => el.classList.remove('active'));
     x('#info').scrollTo(0, 0);
+    // x('#info').innerHTML = '';
 }
 
-function addElementToHistoryPanel(currentObj, elementsHistory) {
+function addElementToHistoryPanel(currentObj, itemsHistory) {
     // checks if element has already been discovered, otherwise it adds it to the list
-    if (!elementsHistory.includes(data[currentObj].name_EN)) {
-        elementsHistory.push(data[currentObj].name_EN)
+    if (!itemsHistory.includes(data[currentObj].name_EN)) {
+        // updates variables
+        itemsHistory.push(data[currentObj].name_EN)
+        foundItems = foundItems + 1
 
+        // updates visible HTML elements
+        x('#counter').innerHTML = `<p>${foundItems} / ${existingItems}</p>`
         x('#history').innerHTML += `<p class=${'object-name'} data-id='${currentObj}'>${data[currentObj].name_DE}</p>`
     }
 }
@@ -259,7 +297,3 @@ function X(s) { return document.querySelectorAll(s); }
 
 // shortcut to remove/add classes to elements
 function toggleClass(el, klass) { return el.classList.toggle(klass) }
-
-function insertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
