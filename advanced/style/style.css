@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,500;1,300&display=swap');
+@font-face {
+    font-family: "Work Sans";
+    src: local("/assets/fonts/Work_Sans/WorkSans-VariableFont_wght.ttf") format("truetype");
+}
 
 body {
-    font-family: 'Work Sans', sans-serif, Arial, Helvetica, sans-serif;
+    font-family: 'Work Sans', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -13,11 +16,10 @@ a {
 
 p, 
 a {
-    font-weight: 300;
+    font-weight: 350;
 }
 
 h1.title, h3#reset {
-    /* pointer-events: none; */
     font-size: 1.5em;
     position: fixed;
     text-align: center;
@@ -91,13 +93,13 @@ a.back {
     padding-right: 0.2em; padding-left: 0.2em;
     border-radius: 2px;
     background-color: rgb(152, 152, 248);
-    /* color: blue; */
 }
 
 /* Navigation, tooltips, activate and deactivate objects */
 
 #info {
     position: absolute;
+    z-index: 999;
     width: 300px; min-height: 150px; max-height: 200px;
     transform: translate(-50%, -150%);
 
