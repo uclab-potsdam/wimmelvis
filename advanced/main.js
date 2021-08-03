@@ -216,7 +216,8 @@ function load() {
 		 }
 	}
 
-    // navigation
+    // navigation, here a series of functions are attached to mousemove, mousedon and mouseup
+    // so that dragging is possible
 
     const background = document.getElementById('map');
     let pos = { top: 0, left: 0, x: 0, y: 0 };
