@@ -43,7 +43,6 @@ h3#reset {
 .title,
 .welcome-card,
 #reset {
-    /* pointer-events: none; */
     max-width: 600px;
     left: 15px;
     background: rgb(255, 255, 255);
@@ -53,7 +52,7 @@ h3#reset {
 /* Welcome card with explanation */
 
 .welcome-card {
-    position: absolute;
+    position: fixed;
     width: 30%; 
     min-width: 280px; min-height: 400px;
     max-height: 80%;
@@ -63,10 +62,13 @@ h3#reset {
     z-index: 1;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .welcome-card-inner {
     overflow-y: auto;
     max-height: 100%;
-    /* padding-bottom: 5%; */
 }
 
 .welcome-card-inner > img {
@@ -109,7 +111,7 @@ h3#reset {
     position: absolute;
     z-index: 999;
     width: 350px; height: 200px; max-height: 300px;
-    transform: translate(-50%, -150%);
+    transform: translate(-50%, 50%);
 
 
     /* When nothing is selected the div is not visible and not clickable */
@@ -140,19 +142,35 @@ h3#reset {
 }
 
 .mapcontainer {
-    width: 100vw;
-    height: 100%;
-    /* overflow: hidden; */
+    position: absolute;
+    /* Hide scrollbar */
+    /* Internet Explorer 10+ */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+}
+
+.mapcontainer::-webkit-scrollbar,
+#map::-webkit-scrollbar {
+    /* Safari and Chrome */
+    display: none;
 }
 
 #map {
+    /* Hide scrollbar */
+    /* Internet Explorer 10+ */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+
     overflow: auto;
+    width: 100vw;
     height: 100vh;
 }
 
 #map svg {
     height: 200%;
-    width: 200%;
+    /* width: 200%; */
 }
 
 .object {
