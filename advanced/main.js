@@ -36,8 +36,6 @@ var Tooltip = {
             tooltipData.elementCoordinates = [e.layerX, e.layerY];
         }
 
-        console.log(e)
-
         const movetoX = tooltipData.elementCoordinates[0] - (window.innerWidth >> 1)
         const movetoY = tooltipData.elementCoordinates[1] - (window.innerHeight >> 1)
 
@@ -54,6 +52,8 @@ var Tooltip = {
         if (width < 400) {
             scrollOptions.top = tooltipData.elementCoordinates[1] - (window.innerHeight >> 1) - 100;
         }
+
+        console.log(e)
 
         ////////////////////////
         // Tooltips content can be expanded by replacing/adding divs, spans or other HTML elements to the info box parent
@@ -72,14 +72,15 @@ var Tooltip = {
         // child with correct sticker as a bg image is added to info box
         x('#sticker-container').innerHTML = `<div class='sticker ${isRecyclableClass[tooltipData.Recyclable]}'></div>`
 
+        // scrolls and centers clicked element in the viewport
+        x('#map').scrollTo(scrollOptions);
 
         // positions the info box on click position, 
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
-        x('#info').style.left = Math.floor(movetoX) + 'px';
-        x('#info').style.top = Math.floor(movetoY) + 'px';
-
-        // scrolls and centers clicked element in the viewport
-        x('#map').scrollTo(scrollOptions);
+        x('#info').style.left = Math.floor(window.innerWidth >> 1) + 'px';
+        x('#info').style.top = window.innerHeight >> 1 < 400
+            ? Math.floor(window.innerHeight >> 1 - 100) + 'px'
+            : Math.floor(window.innerHeight >> 1) + 'px'
 
         // add a class to clicked object
         x('#' + id).classList.add('active');
@@ -215,24 +216,25 @@ function load() {
 		 }
 	}
 
-    const ele = document.getElementById('map');
+    // navigation
+
+    const background = document.getElementById('map');
     let pos = { top: 0, left: 0, x: 0, y: 0 };
 
-    console.log(ele)
 
     const mouseDownHandler = function (e) {
         console.log('triggered')
         pos = {
             // The current scroll 
-            left: ele.scrollLeft,
-            top: ele.scrollTop,
+            left: background.scrollLeft,
+            top: background.scrollTop,
             // Get the current mouse position
             x: e.clientX,
             y: e.clientY,
         };
 
-        ele.style.cursor = 'grabbing';
-        ele.style.userSelect = 'none';
+        background.style.cursor = 'grabbing';
+        background.style.userSelect = 'none';
 
         document.addEventListener('mousemove', mouseMoveHandler);
         document.addEventListener('mouseup', mouseUpHandler);
@@ -243,23 +245,28 @@ function load() {
         // How far the mouse has been moved
         const dx = e.clientX - pos.x;
         const dy = e.clientY - pos.y;
-        // console.log(pos.top, pos.left)
-        // Scroll the element
-        ele.scrollTop = pos.top - dy;
-        ele.scrollLeft = pos.left - dx;
 
-        // console.log('scroll top', ele.scrollTop, 'scroll left', ele.scrollLeft)
+        // Scroll the element
+        background.scrollTop = pos.top - dy;
+        background.scrollLeft = pos.left - dx;
     };
 
     const mouseUpHandler = function () {
-        ele.style.cursor = 'default';
-        ele.style.removeProperty('user-select');
+        background.style.cursor = 'default';
+        background.style.removeProperty('user-select');
 
         document.removeEventListener('mousemove', mouseMoveHandler);
     };
 
 
-    ele.addEventListener('mousedown', mouseDownHandler);
+    background.addEventListener('mousedown', mouseDownHandler);
+    background.addEventListener('scroll', function() {
+        if (background.scrollTop > 50 || background.scrollLeft > 50) {
+            x('#presentation').classList.add('hidden')
+        } else {
+            x('#presentation').classList.remove('hidden')
+        }
+    })
 }
 
 //////////////////////// helper functions ////////////////////////

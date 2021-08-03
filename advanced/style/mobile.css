@@ -4,8 +4,8 @@ and (min-device-width : 320px)
 and (max-device-width : 850px) {
     /* Styles */
     #map svg {
-        width: 600%;
-        height: 600%;
+        /* width: 600%; */
+        height: 200%;
     }
 
     h1.title, .welcome-card {
@@ -58,8 +58,8 @@ and (-webkit-min-device-pixel-ratio: 1) {
     }
 
     #map svg {
-        width: 500%;
-        height: 500%;
+        /* width: 500%; */
+        height: 200%;
     }
 
     #history {
