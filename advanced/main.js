@@ -36,12 +36,18 @@ var Tooltip = {
             tooltipData.elementCoordinates = [e.layerX, e.layerY];
         }
 
+        console.log(e)
+
+        const movetoX = tooltipData.elementCoordinates[0] - (window.innerWidth >> 1)
+        const movetoY = tooltipData.elementCoordinates[1] - (window.innerHeight >> 1)
+
         // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
         // behavior: 'smooth' does not work in Safari, polyfill needed: 
         // https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
         var scrollOptions = {
-            left: tooltipData.elementCoordinates[0] - (window.innerWidth >> 1),
-            top: tooltipData.elementCoordinates[1] - (window.innerHeight >> 1), behavior: 'smooth'
+            left: movetoX,
+            top: movetoY, 
+            behavior: 'smooth'
         }
 
         // if condition helps on smaller viewports so the object is always visible
@@ -69,13 +75,11 @@ var Tooltip = {
 
         // positions the info box on click position, 
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
-        x('#info').style.left = Math.floor(data[id].elementCoordinates[0]) + 'px';
-        x('#info').style.top = tooltipData.elementCoordinates[1] < 400
-            ? Math.floor(tooltipData.elementCoordinates[1] + 300) + 'px'
-            : Math.floor(tooltipData.elementCoordinates[1]) + 'px';
+        x('#info').style.left = Math.floor(movetoX) + 'px';
+        x('#info').style.top = Math.floor(movetoY) + 'px';
 
         // scrolls and centers clicked element in the viewport
-        window.scrollTo(scrollOptions);
+        x('#map').scrollTo(scrollOptions);
 
         // add a class to clicked object
         x('#' + id).classList.add('active');
@@ -158,6 +162,7 @@ function load() {
 
                 // prevent event to be triggered if the clicked object is already active
                 if (Tooltip.activeObj == undefined || Tooltip.activeObj.id !== this.id) {
+                    console.log(this)
                     // Assign current active object to tooltip
                     Tooltip.activeObj = this;	
                     // execute function that renders tooltip (we need to pass the viewport width to catch problematic tooltips)		
@@ -210,52 +215,51 @@ function load() {
 		 }
 	}
 
-    // WIP with draggable function. For now I get really mixed results with good navigation, but weird coordinates mapping on screen
-    // possible solution where I reset coordinates everytime a tooltip appears?
+    const ele = document.getElementById('map');
+    let pos = { top: 0, left: 0, x: 0, y: 0 };
 
-    // let draggableContainer = x('#draggable-container')
-    // let pos = { top: 0, left: 0, x: 0, y: 0 };
+    console.log(ele)
 
-    // The current position of mouse
-    // let xCoord = 0;
-    // let yCoord = 0;
+    const mouseDownHandler = function (e) {
+        console.log('triggered')
+        pos = {
+            // The current scroll 
+            left: ele.scrollLeft,
+            top: ele.scrollTop,
+            // Get the current mouse position
+            x: e.clientX,
+            y: e.clientY,
+        };
 
-    // Query the element
-    // const ele = document.getElementById('draggable');
+        ele.style.cursor = 'grabbing';
+        ele.style.userSelect = 'none';
 
-    // // Handle the mousedown event
-    // // that's triggered when user drags the element
-    // const mouseDownHandler = function (e) {
-    //     // Get the current mouse position
-    //     xCoord = e.clientX;
-    //     yCoord = e.clientY;
+        document.addEventListener('mousemove', mouseMoveHandler);
+        document.addEventListener('mouseup', mouseUpHandler);
+        reset();
+    };
 
-    //     // Attach the listeners to `document`
-    //     document.addEventListener('mousemove', mouseMoveHandler);
-    //     document.addEventListener('mouseup', mouseUpHandler);
-    // };
+    const mouseMoveHandler = function (e) {
+        // How far the mouse has been moved
+        const dx = e.clientX - pos.x;
+        const dy = e.clientY - pos.y;
+        // console.log(pos.top, pos.left)
+        // Scroll the element
+        ele.scrollTop = pos.top - dy;
+        ele.scrollLeft = pos.left - dx;
 
-    // const mouseMoveHandler = function (e) {
-    //     // How far the mouse has been moved
-    //     const dx = e.clientX - xCoord;
-    //     const dy = e.clientY - yCoord;
+        // console.log('scroll top', ele.scrollTop, 'scroll left', ele.scrollLeft)
+    };
 
-    //     // Set the position of element
-    //     svg.style.top = `${svg.offsetTop + dy}px`;
-    //     svg.style.left = `${ele.offsetLeft + dx}px`;
+    const mouseUpHandler = function () {
+        ele.style.cursor = 'default';
+        ele.style.removeProperty('user-select');
 
-    //     // Reassign the position of mouse
-    //     xCoord = e.clientX;
-    //     yCoord = e.clientY;
-    // };
+        document.removeEventListener('mousemove', mouseMoveHandler);
+    };
 
-    // const mouseUpHandler = function () {
-    //     // Remove the handlers of `mousemove` and `mouseup`
-    //     document.removeEventListener('mousemove', mouseMoveHandler);
-    //     document.removeEventListener('mouseup', mouseUpHandler);
-    // };
 
-    // ele.addEventListener('mousedown', mouseDownHandler);
+    ele.addEventListener('mousedown', mouseDownHandler);
 }
 
 //////////////////////// helper functions ////////////////////////

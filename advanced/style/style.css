@@ -7,12 +7,7 @@ body {
     font-family: 'Work Sans', sans-serif;
     padding: 0;
     margin: 0;
-}
-
-.main-cointainer {
-    width: 100vw;
-    height: 100vh;
-    /* overflow: hidden; */
+    /* height: 100vh; */
 }
 
 a {
@@ -142,6 +137,17 @@ h3#reset {
     visibility: visible;
     pointer-events: all;
     transition: opacity 1s ease;
+}
+
+.mapcontainer {
+    width: 100vw;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+#map {
+    overflow: auto;
+    height: 100vh;
 }
 
 #map svg {
