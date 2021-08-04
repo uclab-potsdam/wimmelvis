@@ -13,12 +13,29 @@ and (max-device-width : 850px) {
     }
 
     h1.title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .welcome-card {
         /* top: 0px; */
         height: 80%;
+    }
+
+    #info {
+        transform: translate(-50%, -100%);
+    }
+
+    #close-info {
+        top: -15%;
+        left: 0%;
+    }
+
+    .sticker {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        top: -40%;
+        right: 0%;
     }
 
     #history {

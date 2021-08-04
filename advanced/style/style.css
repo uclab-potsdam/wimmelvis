@@ -141,7 +141,7 @@ h3#reset {
     transition: opacity 1s ease;
 }
 
-.mapcontainer {
+#mapcontainer {
     position: absolute;
     /* Hide scrollbar */
     /* Internet Explorer 10+ */
@@ -150,7 +150,7 @@ h3#reset {
     scrollbar-width: none;
 }
 
-.mapcontainer::-webkit-scrollbar,
+#mapcontainer::-webkit-scrollbar,
 #map::-webkit-scrollbar {
     /* Safari and Chrome */
     display: none;

@@ -20,15 +20,23 @@ var Tooltip = {
     activeObj: undefined,
     show: function (e, width) {
         ////////////////////////
+        // Tooltips content can be expanded by replacing/adding divs, spans or other HTML elements to the info box parent
+        // and its children. Please note, if you don't replace inner HTML but add elements by using '+=' you also need to
+        // erase all new elements when the tooltip is destroyed – see reset() function.
+
         // Add here things that should happen to the tooltip when shown
         ////////////////////////
 
         // reset all active classes from elements
         reset();
 
-        // Get unique id of active object
-        var id = Tooltip.activeObj.id || Tooltip.activeObj.attributes['data-id'].nodeValue;
-        var tooltipData = data[id];
+        // stores unique id of active object
+        const id = Tooltip.activeObj.id || Tooltip.activeObj.attributes['data-id'].nodeValue;
+        // stores unique data object
+        const tooltipData = data[id];
+
+        const infoBox = x('#info');
+        const infoContent = x('#info-content');
 
         // check if object already has coordinates stored
         if (!tooltipData.hasOwnProperty('elementCoordinates')) {
@@ -42,7 +50,7 @@ var Tooltip = {
         // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
         // behavior: 'smooth' does not work in Safari, polyfill needed: 
         // https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
-        var scrollOptions = {
+        const scrollOptions = {
             left: movetoX,
             top: movetoY, 
             behavior: 'smooth'
@@ -50,19 +58,12 @@ var Tooltip = {
 
         // if condition helps on smaller viewports so the object is always visible
         if (width < 400) {
-            scrollOptions.top = tooltipData.elementCoordinates[1] - (window.innerHeight >> 1) - 100;
+            scrollOptions.top = scrollOptions.top - 100;
         }
 
-        console.log(e)
-
-        ////////////////////////
-        // Tooltips content can be expanded by replacing/adding divs, spans or other HTML elements to the info box parent
-        // and its children. Please note, if you don't replace inner HTML but add elements by using '+=' you also need to
-        // erase all new elements when the tooltip is destroyed – see reset() function.
-        ////////////////////////
 
         // this object's name and info is added to the info box
-        x('#info-content').innerHTML = `
+        infoContent.innerHTML = `
         <div class='inner-text'>
             <h2>${tooltipData.name_DE}</h2>
             <p class='recyclable'>${tooltipData.recyclable_DE}</p><p>${tooltipData.material_info_DE}</p>
@@ -75,17 +76,17 @@ var Tooltip = {
         // scrolls and centers clicked element in the viewport
         x('#map').scrollTo(scrollOptions);
 
-        // positions the info box on click position, 
+        // positions the info box at the center of the viewport, 
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
-        x('#info').style.left = Math.floor(window.innerWidth >> 1) + 'px';
-        x('#info').style.top = window.innerHeight >> 1 < 400
+        infoBox.style.left = Math.floor(window.innerWidth >> 1) + 'px';
+        infoBox.style.top = window.innerHeight >> 1 < 400
             ? Math.floor(window.innerHeight >> 1 - 100) + 'px'
             : Math.floor(window.innerHeight >> 1) + 'px'
 
         // add a class to clicked object
         x('#' + id).classList.add('active');
         // the infobox is also made visible (see style in style.css)
-        x('#info').classList.add('active');
+        infoBox.classList.add('active');
 
         // Click on tiny x in box closes tooltip
         x('#close-info').onclick = function () {
@@ -104,17 +105,24 @@ var Tooltip = {
     }
 }
 
+
+
+
+//////////////////////// data and scene fetching, load function gets executed ////////////////////////
+
+// Change these variables with the local path to your design and data
+const pathToScene = './assets/scene.svg';
+const pathToData = './assets/waste_data.json';
+
 // load the SVG file and add its elements to the map
-var fetchScene = fetch('./assets/scene.svg')
+var fetchScene = fetch(pathToScene)
     .then(r => r.text())
     .then(text => {
         map.innerHTML = text;
     });
 
-//////////////////////// data and scene fetching, load function gets executed ////////////////////////
-
 // load data file and add to data variable
-var fetchData = fetch('./assets/waste_data.json')
+var fetchData = fetch(pathToData)
     .then(r => r.json())
     .then(d => {
         data = d;
@@ -124,27 +132,40 @@ Promise.all([fetchScene, fetchData]).then(() => {
     load()
 })
 
+
+
+
 //////////////////////// main load function ////////////////////////
 
 function load() {
+    // print in console how many objects are found, turn off when deploying
+    console.info('You have ' + Object.keys(data).length + ' items in your dataset');
 
-    // immediately updates counter
+    // immediately updates the counter visible to users
     existingItems = Object.keys(data).length;
     x('#counter').innerHTML = `<p>${foundItems} / ${existingItems}</p>`
 
     // variable holds the viewport width
-    var currentViewportWidth = detectedViewportWidth();
+    const currentViewportWidth = detectedViewportWidth();
     
     // variable references the history panel
-    var history = x('#history');
+    const history = x('#history');
+    const historyToggle = x('#history-toggle');
+
+    const draggableMap = x('#map');
     
 	// variable references the svg object
-	var svg = x('#map svg');
-	console.info('You have ' + Object.keys(data).length + ' items in your dataset')
+	const svg = x('#map svg');
+    // tags svg appropriately for screen readers
+    ensureSvgAccessibility('root', svg);
+    
 	// iterate over all data items
 	for (id in data) {
 		
 		var obj = svg.getElementById(id);
+
+        // tags each object within svgs appropriately and provide aria labelling
+        ensureSvgAccessibility('element', obj, id);
 		
 		// if id not found among svg elements issue warning and continue with loop
 		if (obj == null) {
@@ -174,7 +195,7 @@ function load() {
 	}
 
     // By clicking on the bin's parent some classes are toggled    
-    x('#history-toggle').onclick = function (event) {
+    historyToggle.onclick = function (event) {
         toggleClass(event.target, 'open-history');
         toggleClass(event.target, 'closed-history');
 
@@ -192,83 +213,108 @@ function load() {
     }
 
     ////////////////////////
-    // from here on we define how views are cleaned and resetted
+    // from here on we define how navigation happens, we might not want the background to be draggable!
+    // If that's the case you can simply set the attribute 'dragnavigation as false in the index.html file to get a
+    // scroll only template
     ////////////////////////
 
-	// when clicking on the background, the selection is reset and history panel is closed (if open)
-	var bg = svg.getElementById('background')
-	bg.onclick = function() { 
-        Tooltip.hide();
-
-        if (history.classList.contains('active-history')) {
-            toggleClass(x('#history-toggle').firstElementChild, 'closed-history');
-            toggleClass(x('#history-toggle').firstElementChild, 'open-history');
-
-            toggleClass(history, 'closed-history');
-            toggleClass(history, 'active-history');
-        }
-    }
-	
-	// also when the escape key is pressed
-	document.onkeyup = function(e) {
-	   if (e.key === 'Escape') {
-			 reset();
-		 }
-	}
-
-    // navigation, here a series of functions are attached to mousemove, mousedon and mouseup
-    // so that dragging is possible
-
-    const background = document.getElementById('map');
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
-
-
-    const mouseDownHandler = function (e) {
-        console.log('triggered')
-        pos = {
-            // The current scroll 
-            left: background.scrollLeft,
-            top: background.scrollTop,
-            // Get the current mouse position
-            x: e.clientX,
-            y: e.clientY,
-        };
-
-        background.style.cursor = 'grabbing';
-        background.style.userSelect = 'none';
-
-        document.addEventListener('mousemove', mouseMoveHandler);
-        document.addEventListener('mouseup', mouseUpHandler);
-        reset();
-    };
-
-    const mouseMoveHandler = function (e) {
-        // How far the mouse has been moved
-        const dx = e.clientX - pos.x;
-        const dy = e.clientY - pos.y;
-
-        // Scroll the element
-        background.scrollTop = pos.top - dy;
-        background.scrollLeft = pos.left - dx;
-    };
-
-    const mouseUpHandler = function () {
-        background.style.cursor = 'default';
-        background.style.removeProperty('user-select');
-
-        document.removeEventListener('mousemove', mouseMoveHandler);
-    };
-
-
-    background.addEventListener('mousedown', mouseDownHandler);
-    background.addEventListener('scroll', function() {
-        if (background.scrollTop > 50 || background.scrollLeft > 50) {
+    // Welcome card is toggled based on user's position
+    draggableMap.addEventListener('scroll', function() {
+        if (draggableMap.scrollTop > 50 || draggableMap.scrollLeft > 50) {
             x('#presentation').classList.add('hidden')
         } else {
             x('#presentation').classList.remove('hidden')
         }
     })
+
+    // Eventing is executed only if dragnavigation is set to true
+    if (draggableMap.getAttribute('dragnavigation') === 'true') {
+        let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+        // Handler for when the cursor is pressed down
+        const mouseDownHandler = function (e) {
+
+            // Stores data on the current scroll and mouse position
+            pos = {
+                // The current scroll 
+                left: draggableMap.scrollLeft,
+                top: draggableMap.scrollTop,
+                // Get the current mouse position
+                x: e.clientX,
+                y: e.clientY,
+            };
+
+            // Change style of cursor and disable selection for better UX
+            draggableMap.style.cursor = 'grabbing';
+            draggableMap.style.userSelect = 'none';
+
+            // Attach events when the cursor is moved or released
+            document.addEventListener('mousemove', mouseMoveHandler);
+            document.addEventListener('mouseup', mouseUpHandler);
+            reset();
+        };
+
+        // Handler for when the cursor is moving
+        // If you don't want to hold down the cursor and have the container to always follow the pointer
+        // you will need ONLY this handler
+        const mouseMoveHandler = function (e) {
+            // How far the mouse has been moved
+            const dx = e.clientX - pos.x;
+            const dy = e.clientY - pos.y;
+    
+            // Scroll the element
+            draggableMap.scrollTop = pos.top - dy;
+            draggableMap.scrollLeft = pos.left - dx;
+        };
+
+        // Handler for when the cursor is released
+        const mouseUpHandler = function () {
+            // Revert previous style changes
+            draggableMap.style.cursor = 'default';
+            draggableMap.style.removeProperty('user-select');
+            // IMPORTANT! This stops the container to be scrolled once the cursor is pressed
+            document.removeEventListener('mousemove', mouseMoveHandler);
+        };
+
+        // Attach handler when the cursor is pressed
+        draggableMap.addEventListener('mousedown', mouseDownHandler);
+    }
+
+    ////////////////////////
+    // from here on we define how views are cleaned and resetted
+    ////////////////////////
+
+    // when clicking on the background, the selection is reset and history panel is closed (if open)
+    var bg = svg.getElementById('background')
+    bg.onclick = function () {
+        Tooltip.hide();
+
+        if (history.classList.contains('active-history')) {
+            toggleClass(historyToggle.firstElementChild, 'closed-history');
+            toggleClass(historyToggle.firstElementChild, 'open-history');
+
+            toggleClass(history, 'closed-history');
+            toggleClass(history, 'active-history');
+        }
+    }
+
+    // also when the escape key is pressed
+    document.onkeyup = function (e) {
+        if (e.key === 'Escape') {
+            reset();
+
+            if (history.classList.contains('active-history')) {
+                toggleClass(historyToggle.firstElementChild, 'closed-history');
+                toggleClass(historyToggle.firstElementChild, 'open-history');
+
+                toggleClass(history, 'closed-history');
+                toggleClass(history, 'active-history');
+            }
+        }
+    }
 }
+
+
 
 //////////////////////// helper functions ////////////////////////
 
@@ -309,3 +355,22 @@ function X(s) { return document.querySelectorAll(s); }
 
 // shortcut to remove/add classes to elements
 function toggleClass(el, klass) { return el.classList.toggle(klass) }
+
+
+// This function helps us to make svgs accessible for screen readers. By providing context, readable element and data we can specify
+// unique descriptions that will appear as alt text. For better accessibility dragnavigation can be set to false in index.html and further
+// features could be added. For instance additional voice salutation on objects selection.
+function ensureSvgAccessibility(context, el, id) {
+    if (context === 'root') {
+        el.setAttribute("role", "img")
+        el.setAttribute("tabindex", "0")
+        el.innerHTML += `<title id="svgTitle">Du bist in deiner schönen und chaotischen Küche</title>`
+        el.innerHTML += `<desc id="svgDesc">Sie können mit der Registerkarte navigieren und Objekte anhören, die schwer zu recyceln sind</desc>`
+        el.setAttribute("aria-labelledby", "svgTitle svgDesc")
+    } else {
+        el.setAttribute("tabindex", 0)
+        el.innerHTML += `<title id="${id}-objTitle">${data[id].name_DE}</title>`
+        el.innerHTML += `<desc id="${id}-objDesc">${data[id].recyclable_DE + data[id].material_info_DE}</desc>`
+        el.setAttribute("aria-labelledby", `${id}-objTitle ${id}-objDesc`)
+    }
+}
