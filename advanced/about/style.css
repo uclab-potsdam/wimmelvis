@@ -39,7 +39,7 @@ p {
 
 .introduction-container > .graphic-title {
     z-index: 2;
-    background: url('/advanced/assets/wimmelbild_logo.png');
+    background: url('../assets/wimmelbild_logo.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;    
@@ -53,7 +53,21 @@ p {
 }
 
 .instructions {
-    width: 60%;
+    font-weight: 300;
+}
+
+.instructions ul {
+    list-style: numbered;
+}
+
+.instructions li {
+    margin-top: 10px;
+}
+
+.instructions img {
+    width: 70%;
+    margin: 5% auto;
+    display: block;
 }
 
 /* Footer */

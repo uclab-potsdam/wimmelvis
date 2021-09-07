@@ -7,12 +7,7 @@ body {
     font-family: 'Work Sans', sans-serif;
     padding: 0;
     margin: 0;
-}
-
-.main-cointainer {
-    width: 100vw;
-    height: 100vh;
-    /* overflow: hidden; */
+    /* height: 100vh; */
 }
 
 a {
@@ -48,7 +43,6 @@ h3#reset {
 .title,
 .welcome-card,
 #reset {
-    /* pointer-events: none; */
     max-width: 600px;
     left: 15px;
     background: rgb(255, 255, 255);
@@ -58,20 +52,32 @@ h3#reset {
 /* Welcome card with explanation */
 
 .welcome-card {
-    position: absolute;
+    position: fixed;
     width: 30%; 
-    min-width: 280px; min-height: 400px;
+    min-width: 280px;
     max-height: 80%;
 
     top: 80px;
     left: 15px;
     z-index: 1;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+.hidden {
+    top: 50px;
+    height: 15%;
+    border: none;
+    background-color: transparent;
+    transition: all 0.5s;
+}
+
+.hidden > .welcome-card-inner > p {
+    visibility: hidden;
 }
 
 .welcome-card-inner {
-    overflow-y: auto;
     max-height: 100%;
-    /* padding-bottom: 5%; */
 }
 
 .welcome-card-inner > img {
@@ -83,12 +89,6 @@ h3#reset {
 .welcome-card-inner > p, .navigation-commands {
     width: 77%;
     margin: 0 auto;
-}
-
-.welcome-card-inner > .start-scheme {
-    width: 70%;
-    margin-top: 60px;
-    margin-bottom: 40px;
 }
 
 .navigation-commands {
@@ -114,7 +114,7 @@ h3#reset {
     position: absolute;
     z-index: 999;
     width: 350px; height: 200px; max-height: 300px;
-    transform: translate(-50%, -150%);
+    transform: translate(-50%, 50%);
 
 
     /* When nothing is selected the div is not visible and not clickable */
@@ -144,9 +144,36 @@ h3#reset {
     transition: opacity 1s ease;
 }
 
+#mapcontainer {
+    position: absolute;
+    /* Hide scrollbar */
+    /* Internet Explorer 10+ */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+}
+
+#mapcontainer::-webkit-scrollbar,
+#map::-webkit-scrollbar {
+    /* Safari and Chrome */
+    display: none;
+}
+
+#map {
+    /* Hide scrollbar */
+    /* Internet Explorer 10+ */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+}
+
 #map svg {
     height: 200%;
-    width: 200%;
+    /* width: 200%; */
 }
 
 .object {

@@ -4,8 +4,8 @@ and (min-device-width : 320px)
 and (max-device-width : 850px) {
     /* Styles */
     #map svg {
-        width: 600%;
-        height: 600%;
+        /* width: 600%; */
+        height: 200%;
     }
 
     h1.title, .welcome-card {
@@ -13,12 +13,38 @@ and (max-device-width : 850px) {
     }
 
     h1.title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .welcome-card {
-        /* top: 0px; */
-        height: 80%;
+        top: 100px;
+        height: 70%;
+    }
+
+    .hidden {
+        top: 70px;
+        height: 15%;
+        border: none;
+        background-color: transparent;
+        transition: all 0.5s;
+        pointer-events: none;
+    }
+
+    #info {
+        transform: translate(-50%, -100%);
+    }
+
+    #close-info {
+        top: -15%;
+        left: 0%;
+    }
+
+    .sticker {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        top: -40%;
+        right: 0%;
     }
 
     #history {
@@ -41,8 +67,8 @@ and (max-device-width : 850px) {
     }
 
     #bin {
-        width: 80px;
-        height: 120px;
+        width: 60px;
+        height: 100px;
     }
 
 }
@@ -58,8 +84,8 @@ and (-webkit-min-device-pixel-ratio: 1) {
     }
 
     #map svg {
-        width: 500%;
-        height: 500%;
+        /* width: 500%; */
+        height: 200%;
     }
 
     #history {
