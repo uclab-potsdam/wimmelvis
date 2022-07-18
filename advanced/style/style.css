@@ -41,27 +41,11 @@ h3#reset {
 }
 
 .title,
-.welcome-card,
 #reset {
     max-width: 600px;
     left: 15px;
     background: rgb(255, 255, 255);
     border: 1px solid black;
-}
-
-/* Welcome card with explanation */
-
-.welcome-card {
-    position: fixed;
-    width: 30%; 
-    min-width: 280px;
-    max-height: 80%;
-
-    top: 80px;
-    left: 15px;
-    z-index: 1;
-    overflow: hidden;
-    transition: all 0.5s;
 }
 
 .hidden {
@@ -72,21 +56,7 @@ h3#reset {
     transition: all 0.5s;
 }
 
-.hidden > .welcome-card-inner > p {
-    visibility: hidden;
-}
-
-.welcome-card-inner {
-    max-height: 100%;
-}
-
-.welcome-card-inner > img {
-    width: 85%;
-    margin: 20px auto;
-    display: block;
-}
-
-.welcome-card-inner > p, .navigation-commands {
+.navigation-commands {
     width: 77%;
     margin: 0 auto;
 }

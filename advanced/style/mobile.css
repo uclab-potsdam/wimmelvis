@@ -8,17 +8,12 @@ and (max-device-width : 850px) {
         height: 200%;
     }
 
-    h1.title, .welcome-card {
+    h1.title {
         width: 90%;
     }
 
     h1.title {
         font-size: 1.2rem;
-    }
-
-    .welcome-card {
-        top: 100px;
-        height: 70%;
     }
 
     .hidden {
@@ -78,8 +73,7 @@ and (max-device-width : 850px) {
 and (min-device-width: 851px) 
 and (max-device-width: 1024px) 
 and (-webkit-min-device-pixel-ratio: 1) {
-    h1.title,
-    .welcome-card {
+    h1.title {
         width: 50%;
     }
 
