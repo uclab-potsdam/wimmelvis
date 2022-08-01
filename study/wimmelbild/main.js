@@ -229,7 +229,7 @@ function load() {
             pos = {
                 // The current scroll 
                 left: draggableMap.scrollLeft,
-                top: draggableMap.scrollTop,
+                top: document.documentElement.scrollTop,
                 // Get the current mouse position
                 x: e.clientX,
                 y: e.clientY,
@@ -252,9 +252,9 @@ function load() {
             // How far the mouse has been moved
             const dx = e.clientX - pos.x;
             const dy = e.clientY - pos.y;
-    
+
             // Scroll the element
-            draggableMap.scrollTop = pos.top - dy;
+            document.documentElement.scrollTop = pos.top - dy;
             draggableMap.scrollLeft = pos.left - dx;
         };
 
