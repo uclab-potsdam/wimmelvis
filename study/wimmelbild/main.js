@@ -218,15 +218,6 @@ function load() {
     // scroll only template
     ////////////////////////
 
-    // Welcome card is toggled based on user's position
-    draggableMap.addEventListener('scroll', function() {
-        if (draggableMap.scrollTop > 50 || draggableMap.scrollLeft > 50) {
-            x('#presentation').classList.add('hidden')
-        } else {
-            x('#presentation').classList.remove('hidden')
-        }
-    })
-
     // Eventing is executed only if dragnavigation is set to true
     if (draggableMap.getAttribute('dragnavigation') === 'true') {
         let pos = { top: 0, left: 0, x: 0, y: 0 };
