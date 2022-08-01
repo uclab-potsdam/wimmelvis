@@ -218,6 +218,8 @@ function load() {
     // scroll only template
     ////////////////////////
 
+    documentElement = document.documentElement;
+
     // Eventing is executed only if dragnavigation is set to true
     if (draggableMap.getAttribute('dragnavigation') === 'true') {
         let pos = { top: 0, left: 0, x: 0, y: 0 };
@@ -229,7 +231,7 @@ function load() {
             pos = {
                 // The current scroll 
                 left: draggableMap.scrollLeft,
-                top: document.documentElement.scrollTop,
+                top: documentElement.scrollTop,
                 // Get the current mouse position
                 x: e.clientX,
                 y: e.clientY,
@@ -254,7 +256,7 @@ function load() {
             const dy = e.clientY - pos.y;
 
             // Scroll the element
-            document.documentElement.scrollTop = pos.top - dy;
+            documentElement.scrollTop = pos.top - dy;
             draggableMap.scrollLeft = pos.left - dx;
         };
 
