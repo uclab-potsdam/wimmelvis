@@ -61,7 +61,6 @@ var Tooltip = {
             scrollOptions.top = scrollOptions.top - 100;
         }
 
-
         // this object's name and info is added to the info box
         infoContent.innerHTML = `
         <div class='inner-text'>
@@ -76,7 +75,7 @@ var Tooltip = {
         // scrolls and centers clicked element in the viewport
         x('#map').scrollTo(scrollOptions);
 
-        // positions the info box at the center of the viewport, 
+        // positions the info box at the center of the viewport,
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
         infoBox.style.left = '500px';
         infoBox.style.top = '500px'
@@ -145,35 +144,35 @@ function load() {
 
     // variable holds the viewport width
     const currentViewportWidth = detectedViewportWidth();
-    
+
     // variable references the history panel
     const history = x('#history');
     const historyToggle = x('#history-toggle');
 
     const draggableMap = x('#map');
-    
-	// variable references the svg object
-	const svg = x('#map svg');
+
+    // variable references the svg object
+    const svg = x('#map svg');
     // tags svg appropriately for screen readers
     ensureSvgAccessibility('root', svg);
-    
-	// iterate over all data items
-	for (id in data) {
-		
-		var obj = svg.getElementById(id);
+
+    // iterate over all data items
+    for (id in data) {
+
+        var obj = svg.getElementById(id);
 
         // tags each object within svgs appropriately and provide aria labelling
         ensureSvgAccessibility('element', obj, id);
-		
-		// if id not found among svg elements issue warning and continue with loop
-		if (obj == null) {
-			console.warn(id+' not found in the map');
-			continue;
-		}
-		
-		// the object that is matched gets class object and is made invisible (see stylesheet)
-		obj.classList.add('object');
-        
+
+        // if id not found among svg elements issue warning and continue with loop
+        if (obj == null) {
+            console.warn(id+' not found in the map');
+            continue;
+        }
+
+        // the object that is matched gets class object and is made invisible (see stylesheet)
+        obj.classList.add('object');
+
             // object gets a click event
             obj.onclick = function(event) {
             ////////////////////////
@@ -184,13 +183,14 @@ function load() {
                 if (Tooltip.activeObj == undefined || Tooltip.activeObj.id !== this.id) {
                     console.log(this)
                     // Assign current active object to tooltip
-                    Tooltip.activeObj = this;	
-                    // execute function that renders tooltip (we need to pass the viewport width to catch problematic tooltips)		
+                    Tooltip.activeObj = this;
+                    // execute function that renders tooltip (we need to pass
+                    // the viewport width to catch problematic tooltips)
                     Tooltip.show(event, currentViewportWidth);
                     addElementToHistoryPanel(this.id, itemsHistory);
                 }
             }
-	}
+    }
 
     // By clicking on the bin's parent some classes are toggled    
     historyToggle.onclick = function (event) {
@@ -314,7 +314,7 @@ function reset() {
     ////////////////////////
     // add here things that should happen on reset
     ////////////////////////
-	X('.active').forEach(el => el.classList.remove('active'));
+    X('.active').forEach(el => el.classList.remove('active'));
     x('#info').scrollTo(0, 0);
     // x('#info').innerHTML = '';
 }
