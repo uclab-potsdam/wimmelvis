@@ -77,8 +77,8 @@ var Tooltip = {
 
         // positions the info box at the center of the viewport,
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
-        infoBox.style.left = '500px';
-        infoBox.style.top = '500px'
+        infoBox.style.left = e.layerX + 'px';
+        infoBox.style.top = e.layerY + 'px'
 
         // add a class to clicked object
         x('#' + id).classList.add('active');
