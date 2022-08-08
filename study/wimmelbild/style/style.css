@@ -81,7 +81,7 @@ h3#reset {
 
 /* Navigation, tooltips, activate and deactivate objects */
 #info {
-    position: fixed;
+    position: relative;
     z-index: 999;
     width: 350px; height: 200px; max-height: 300px;
     transform: translate(-50%, 50%);

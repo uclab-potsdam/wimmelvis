@@ -78,10 +78,8 @@ var Tooltip = {
 
         // positions the info box at the center of the viewport, 
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
-        infoBox.style.left = Math.floor(window.innerWidth >> 1) + 'px';
-        infoBox.style.top = window.innerHeight >> 1 < 400
-            ? Math.floor(window.innerHeight >> 1 - 100) + 'px'
-            : Math.floor(window.innerHeight >> 1) + 'px'
+        infoBox.style.left = '500px';
+        infoBox.style.top = '500px'
 
         // add a class to clicked object
         x('#' + id).classList.add('active');
@@ -118,7 +116,7 @@ const pathToData = './assets/waste_data.json';
 var fetchScene = fetch(pathToScene)
     .then(r => r.text())
     .then(text => {
-        map.innerHTML = text;
+        map.insertAdjacentHTML('beforeend', text);
     });
 
 // load data file and add to data variable
