@@ -5,6 +5,12 @@
 
 @font-face {
     font-family: "Sora";
+    src: local("/assets/fonts/sora/Sora-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Sora";
     src: local("/assets/fonts/sora/Sora-Regular.ttf") format("truetype");
     font-weight: 400;
 }
@@ -78,6 +84,7 @@ h2 {
     margin-left: 70px;
     margin-top: 116px;
     width: 24em;
+    padding-bottom: 1em;
 }
 
 h2 p {
@@ -112,7 +119,19 @@ h3#reset {
 
 .continuous-text {
     margin-left: 70px;
+    margin-right: 10em;
     width: 640px;
+}
+
+.sidenote {
+  font-size: 16px;
+  color: #CB3800;
+  border-left-style: solid;
+  border-left-width: 0.1em;
+  border-left-color: #412589;
+  width: 290px;
+  padding-left: 1.2em;
+  margin-top: 3em;
 }
 
 div .colored-text {
