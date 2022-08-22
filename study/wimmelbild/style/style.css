@@ -3,11 +3,45 @@
     src: local("/assets/fonts/Work_Sans/WorkSans-VariableFont_wght.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "Sora";
+    src: local("/assets/fonts/sora/Sora-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Sora";
+    src: local("/assets/fonts/sora/Sora-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Sora";
+    src: local("/assets/fonts/sora/Sora-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+}
+
 body {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
     padding: 0;
     margin: 0;
     /* height: 100vh; */
+    background: linear-gradient(rgba(166,145,248,1), rgba(244,201,146,1));
+}
+
+h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    color: #412589;
+}
+
+h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    color: #412589;
 }
 
 a {
