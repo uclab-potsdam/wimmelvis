@@ -69,6 +69,7 @@ h1 {
   background: #3DEEB9;
   display: inline-block;
   font-size: 20px;
+  font-weight: 700;
   padding: 0.3em;
   padding-left: 0.8em;
   padding-right: 0.8em;
@@ -90,6 +91,17 @@ h2 {
 h2 p {
   padding-bottom: 0.66em;
   margin: 0;
+}
+
+h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #412589;
+    margin-left: 70px;
+    margin-top: 140px;
+    width: 24em;
+    padding-bottom: 1em;
 }
 
 a {
@@ -124,18 +136,27 @@ h3#reset {
 }
 
 .sidenote {
-  font-size: 16px;
-  color: #CB3800;
-  border-left-style: solid;
-  border-left-width: 0.1em;
-  border-left-color: #412589;
-  width: 290px;
-  padding-left: 1.2em;
-  margin-top: 3em;
+    font-size: 16px;
+    color: #CB3800;
+    border-left-style: solid;
+    border-left-width: 0.1em;
+    border-left-color: #412589;
+    width: 290px;
+    padding-left: 1.2em;
+    margin-top: 3em;
 }
 
 div .colored-text {
-  color: #3DEEB9;
+    color: #3DEEB9;
+}
+
+.rules-of-the-game {
+    margin-left: 70px;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 125px;
+    grid-auto-rows: minmax(100px, auto);
 }
 
 .title,
