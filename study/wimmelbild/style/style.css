@@ -150,12 +150,39 @@ div .colored-text {
     color: #3DEEB9;
 }
 
-.rules-of-the-game {
+#rules-of-the-game {
     margin-left: 70px;
     width: 1200px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 125px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.infographic {
+    margin-left: 176px;
+}
+
+.infographic h2 {
+    font-size: 40px;
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-position: under;
+    margin-left: unset;
+    padding-bottom: 0;
+}
+
+.infographic h3 {
+    font-size: 28px;
+    font-weight: 300;
+    margin-top: 0;
+    margin-left: unset;
+}
+
+#discovered-objects {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 50px;
     grid-auto-rows: minmax(100px, auto);
 }
 
