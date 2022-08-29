@@ -26,6 +26,18 @@ and (max-device-width : 850px) {
         transform: rotate(2.25deg) scale(2) translate(6em, -1.4em);
     }
 
+    h2 {
+        font-size: 24px;
+        margin-left: 45px;
+        width: 70vw;
+        margin-top: 2em;
+    }
+
+    .continuous-text {
+        font-size: 16px;
+        width: 70vw;
+    }
+
     /* Styles */
     #map svg {
         /* width: 600%; */
