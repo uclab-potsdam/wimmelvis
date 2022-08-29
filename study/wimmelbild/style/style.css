@@ -182,6 +182,18 @@ div .colored-text {
     width: unset;
 }
 
+#you-discovered #discovered-ratio {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+#you-discovered #discovered-count {
+    background: #3DEEB9;
+    display: inline-block;
+    transform: rotate(-3deg);
+    padding: 0.5em;
+}
+
 .infographic {
     margin-left: 176px;
     width: 70vw;

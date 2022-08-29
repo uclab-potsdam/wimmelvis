@@ -92,6 +92,14 @@ and (max-device-width : 850px) {
         width: 70vw;
     }
 
+    #you-discovered h2 {
+        font-size: 24px;
+        font-weight: 400;
+        text-align: unset;
+        margin-left: 45px;
+        width: 70vw;
+    }
+
     #discovered-objects {
         margin-left: 45px;
         width: 70vw;
