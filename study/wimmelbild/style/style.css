@@ -77,6 +77,11 @@ h1 {
   z-index: -1;
 }
 
+h1 .berlin-edition {
+  transform: rotate(2.25deg) scale(2) translate(-3.2em, 1.4em);
+}
+
+
 h2 {
     font-family: 'Sora', sans-serif;
     font-size: 50px;

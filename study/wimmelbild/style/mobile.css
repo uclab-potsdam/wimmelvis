@@ -1,7 +1,31 @@
-/* Smartphones and small devices (portrait and landscape) ----------- */
+/* Smartphones and small devices (portrait and landscape) */
 @media only screen 
-and (min-device-width : 320px) 
+and (min-device-width : 320px)
 and (max-device-width : 850px) {
+
+    html, body {
+      overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-left: 45px;
+      margin-top: 175px;
+      width: 70vw;
+    }
+
+    .h1-special {
+      font-size: 10px;
+    }
+
+    h1 .berlin-edition {
+      transform: rotate(2.25deg) scale(2) translate(6em, -1.4em);
+    }
+
     /* Styles */
     #map svg {
         /* width: 600%; */
@@ -68,7 +92,7 @@ and (max-device-width : 850px) {
 
 }
 
-/* Tablets and medium size devices (portrait and landscape) ----------- */
+/* Tablets and medium size devices (portrait and landscape) */
 @media only screen 
 and (min-device-width: 851px) 
 and (max-device-width: 1024px) 
