@@ -66,21 +66,20 @@ h1 {
 }
 
 .h1-special {
-  background: #3DEEB9;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 0.3em;
-  padding-left: 0.8em;
-  padding-right: 0.8em;
-  position: relative;
-  z-index: -1;
+    background: #3DEEB9;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0.3em;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    position: relative;
+    z-index: -1;
 }
 
 h1 .berlin-edition {
-  transform: rotate(2.25deg) scale(2) translate(-3.2em, 1.4em);
+    transform: rotate(2.25deg) scale(2) translate(-3.2em, 1.4em);
 }
-
 
 h2 {
     font-family: 'Sora', sans-serif;
@@ -94,8 +93,8 @@ h2 {
 }
 
 h2 p {
-  padding-bottom: 0.66em;
-  margin: 0;
+    padding-bottom: 0.66em;
+    margin: 0;
 }
 
 h3 {

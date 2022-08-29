@@ -4,26 +4,26 @@ and (min-device-width : 320px)
 and (max-device-width : 850px) {
 
     html, body {
-      overflow-x: hidden;
+        overflow-x: hidden;
     }
 
     body {
-      position: relative;
+        position: relative;
     }
 
     h1 {
-      font-size: 40px;
-      margin-left: 45px;
-      margin-top: 175px;
-      width: 70vw;
+        font-size: 40px;
+        margin-left: 45px;
+        margin-top: 175px;
+        width: 70vw;
     }
 
     .h1-special {
-      font-size: 10px;
+        font-size: 10px;
     }
 
     h1 .berlin-edition {
-      transform: rotate(2.25deg) scale(2) translate(6em, -1.4em);
+        transform: rotate(2.25deg) scale(2) translate(6em, -1.4em);
     }
 
     /* Styles */
