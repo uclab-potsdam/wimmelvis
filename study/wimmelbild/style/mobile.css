@@ -97,6 +97,10 @@ and (max-device-width : 850px) {
         width: 70vw;
     }
 
+    #discovered-objects-container {
+        display: unset;
+    }
+
     #discovered-objects {
         margin-left: 45px;
         width: 70vw;

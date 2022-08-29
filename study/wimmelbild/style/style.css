@@ -218,6 +218,12 @@ div .colored-text {
     color: #412589;
 }
 
+#discovered-objects-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #discovered-objects {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
