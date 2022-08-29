@@ -171,6 +171,7 @@ div .colored-text {
     grid-template-columns: repeat(3, 1fr);
     gap: 125px;
     grid-auto-rows: minmax(100px, auto);
+    font-size: 24px;
 }
 
 .infographic {

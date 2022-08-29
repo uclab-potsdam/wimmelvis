@@ -33,6 +33,11 @@ and (max-device-width : 850px) {
         margin-top: 2em;
     }
 
+    h3 {
+        font-size: 24px;
+        margin-left: 45px;
+    }
+
     .continuous-text {
         font-size: 16px;
         margin-left: 45px;
@@ -49,6 +54,20 @@ and (max-device-width : 850px) {
         margin-left: 45px;
         padding-left: unset;
         width: 70vw;
+    }
+
+    #rules-of-the-game {
+        font-size: 16px;
+        margin-left: 45px;
+        width: 70vw;
+        display: unset;
+    }
+
+    #rules-of-the-game .rule {
+        margin-left: 45px;
+        padding-left: 25vw;
+        width: 45vw;
+        margin-bottom: 3em;
     }
 
     .infographic {
