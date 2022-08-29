@@ -5,6 +5,12 @@
 
 @font-face {
     font-family: "Sora";
+    src: local("/assets/fonts/sora/Sora-ExtraLight.ttf") format("truetype");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Sora";
     src: local("/assets/fonts/sora/Sora-Light.ttf") format("truetype");
     font-weight: 300;
 }

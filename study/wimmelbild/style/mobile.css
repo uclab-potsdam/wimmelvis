@@ -51,6 +51,25 @@ and (max-device-width : 850px) {
         width: 70vw;
     }
 
+    .infographic {
+        margin-left: 45px;
+    }
+
+    .infographic h2 {
+        font-size: 24px;
+        width: 70vw;
+    }
+
+    .infographic h3 {
+        font-size: 16px;
+        font-weight: 200;
+        width: 70vw;
+    }
+
+    .infographic img {
+        width: 70vw;
+    }
+
     /* Styles */
     #map svg {
         /* width: 600%; */
