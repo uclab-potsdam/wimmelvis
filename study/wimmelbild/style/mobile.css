@@ -92,6 +92,13 @@ and (max-device-width : 850px) {
         width: 70vw;
     }
 
+    #discovered-objects {
+        margin-left: 45px;
+        width: 70vw;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+
     /* Styles */
     #map svg {
         /* width: 600%; */
