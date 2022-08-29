@@ -139,6 +139,10 @@ h3#reset {
     width: 640px;
 }
 
+.sidenote-container {
+    display: flex;
+}
+
 .sidenote {
     font-size: 16px;
     color: #CB3800;
