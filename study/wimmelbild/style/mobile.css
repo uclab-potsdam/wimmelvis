@@ -22,10 +22,6 @@ and (max-device-width : 850px) {
         font-size: 10px;
     }
 
-    h1 .berlin-edition {
-        transform: rotate(2.25deg) scale(2) translate(6em, -1.4em);
-    }
-
     h2 {
         font-size: 24px;
         margin-left: 45px;
