@@ -171,7 +171,8 @@ div .colored-text {
     width: 1200px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 125px;
+    row-gap: 50px;
+    column-gap: 125px;
     grid-auto-rows: minmax(100px, auto);
     font-size: 24px;
 }
