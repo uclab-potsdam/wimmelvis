@@ -108,8 +108,8 @@ var Tooltip = {
 //////////////////////// data and scene fetching, load function gets executed ////////////////////////
 
 // Change these variables with the local path to your design and data
-const pathToScene = './assets/scene.svg';
-const pathToData = './assets/waste_data.json';
+const pathToScene = '../common/assets/scene.svg';
+const pathToData = '../common/assets/waste_data.json';
 
 // load the SVG file and add its elements to the map
 var fetchScene = fetch(pathToScene)
