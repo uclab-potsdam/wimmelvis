@@ -5,6 +5,7 @@
 
   outputs = { self, nixpkgs }: let
     pkgs = import nixpkgs { system = "x86_64-linux"; };
+    nodejs = pkgs."nodejs-18_x";
   in {
 
     packages.x86_64-linux.website = let
@@ -14,12 +15,23 @@
         libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
       };
     in
-    import ./study/node-packages.nix {
+    (import ./study/node-packages.nix {
       inherit (pkgs) fetchurl nix-gitignore stdenv lib fetchgit;
       inherit nodeEnv;
+    }).package.override {
+      postInstall = ''
+        npm run build
+      '';
     };
 
     defaultPackage.x86_64-linux = self.packages.x86_64-linux.website;
+
+    devShells.x86_64-linux.default = pkgs.mkShell {
+      buildInputs = with pkgs; [
+        nodejs
+        node2nix
+      ];
+    };
 
   };
 }
