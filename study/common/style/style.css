@@ -1,58 +1,58 @@
 @font-face {
-    font-family: "Work Sans";
-    src: local("/assets/fonts/Work_Sans/WorkSans-VariableFont_wght.ttf") format("truetype");
+    font-family: "Work Sans-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/Work_Sans/WorkSans-VariableFont_wght.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Sora";
-    src: local("/assets/fonts/sora/Sora-ExtraLight.ttf") format("truetype");
+    font-family: "Sora-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/sora/Sora-ExtraLight.ttf") format("truetype");
     font-weight: 200;
 }
 
 @font-face {
-    font-family: "Sora";
-    src: local("/assets/fonts/sora/Sora-Light.ttf") format("truetype");
+    font-family: "Sora-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/sora/Sora-Light.ttf") format("truetype");
     font-weight: 300;
 }
 
 @font-face {
-    font-family: "Sora";
-    src: local("/assets/fonts/sora/Sora-Regular.ttf") format("truetype");
+    font-family: "Sora-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/sora/Sora-Regular.ttf") format("truetype");
     font-weight: 400;
 }
 
 @font-face {
-    font-family: "Sora";
-    src: local("/assets/fonts/sora/Sora-SemiBold.ttf") format("truetype");
+    font-family: "Sora-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/sora/Sora-SemiBold.ttf") format("truetype");
     font-weight: 600;
 }
 
 @font-face {
-    font-family: "Sora";
-    src: local("/assets/fonts/sora/Sora-Bold.ttf") format("truetype");
+    font-family: "Sora-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/sora/Sora-Bold.ttf") format("truetype");
     font-weight: 700;
 }
 
 @font-face {
-    font-family: "Sora";
-    src: local("/assets/fonts/sora/Sora-ExtraBold.ttf") format("truetype");
+    font-family: "Sora-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/sora/Sora-ExtraBold.ttf") format("truetype");
     font-weight: 800;
 }
 
 @font-face {
-    font-family: "Piazzolla";
-    src: local("/assets/fonts/piazzolla/Piazzolla-Regular.ttf") format("truetype");
+    font-family: "Piazzolla-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/piazzolla/Piazzolla-Regular.ttf") format("truetype");
     font-weight: 400;
 }
 
 @font-face {
-    font-family: "Piazzolla";
-    src: local("/assets/fonts/piazzolla/Piazzolla-SemiBold.ttf") format("truetype");
+    font-family: "Piazzolla-d4hcraEBs9vSVBUpE5d8";
+    src: url("../assets/fonts/piazzolla/Piazzolla-SemiBold.ttf") format("truetype");
     font-weight: 600;
 }
 
 body {
-    font-family: 'Piazzolla', sans-serif;
+    font-family: 'Piazzolla-d4hcraEBs9vSVBUpE5d8', sans-serif;
     font-weight: 400;
     font-size: 24px;
     color: #412589;
@@ -69,7 +69,7 @@ body {
 }
 
 h1 {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Sora-d4hcraEBs9vSVBUpE5d8', sans-serif;
     font-size: 60px;
     font-weight: 700;
     color: #412589;
@@ -90,7 +90,7 @@ h1 {
 }
 
 h2 {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Sora-d4hcraEBs9vSVBUpE5d8', sans-serif;
     font-size: 50px;
     font-weight: 400;
     color: #412589;
@@ -106,7 +106,7 @@ h2 p {
 }
 
 h3 {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Sora-d4hcraEBs9vSVBUpE5d8', sans-serif;
     font-size: 48px;
     font-weight: 400;
     color: #412589;
