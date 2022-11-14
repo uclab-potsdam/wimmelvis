@@ -52,7 +52,7 @@ var Tooltip = {
         // https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
         const scrollOptions = {
             left: movetoX,
-            top: movetoY, 
+            top: movetoY,
             behavior: 'smooth'
         }
 
@@ -166,30 +166,30 @@ function load() {
 
         // if id not found among svg elements issue warning and continue with loop
         if (obj == null) {
-            console.warn(id+' not found in the map');
+            console.warn(id + ' not found in the map');
             continue;
         }
 
         // the object that is matched gets class object and is made invisible (see stylesheet)
         obj.classList.add('object');
 
-            // object gets a click event
-            obj.onclick = function(event) {
+        // object gets a click event
+        obj.onclick = function (event) {
             ////////////////////////
             // Add here things that should happen on object's click
             ////////////////////////
 
-                // prevent event to be triggered if the clicked object is already active
-                if (Tooltip.activeObj == undefined || Tooltip.activeObj.id !== this.id) {
-                    console.log(this)
-                    // Assign current active object to tooltip
-                    Tooltip.activeObj = this;
-                    // execute function that renders tooltip (we need to pass
-                    // the viewport width to catch problematic tooltips)
-                    Tooltip.show(event, currentViewportWidth);
-                    addElementToHistoryPanel(this.id, itemsHistory);
-                }
+            // prevent event to be triggered if the clicked object is already active
+            if (Tooltip.activeObj == undefined || Tooltip.activeObj.id !== this.id) {
+                console.log(this)
+                // Assign current active object to tooltip
+                Tooltip.activeObj = this;
+                // execute function that renders tooltip (we need to pass
+                // the viewport width to catch problematic tooltips)
+                Tooltip.show(event, currentViewportWidth);
+                addElementToHistoryPanel(this.id, itemsHistory);
             }
+        }
     }
 
     // By clicking on the bin's parent some classes are toggled    
@@ -303,6 +303,8 @@ function load() {
             }
         }
     }
+
+    loadScript('../common/vis.js')
 }
 
 
@@ -333,7 +335,7 @@ function addElementToHistoryPanel(currentObj, itemsHistory) {
 }
 
 // Detect viewport width and returns its size
-function detectedViewportWidth () {
+function detectedViewportWidth() {
     var body = document.body;
     var html = document.documentElement;
 
@@ -365,3 +367,12 @@ function ensureSvgAccessibility(context, el, id) {
         el.setAttribute("aria-labelledby", `${id}-objTitle ${id}-objDesc`)
     }
 }
+
+function loadScript(url) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    head.appendChild(script);
+}
+
