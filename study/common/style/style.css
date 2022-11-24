@@ -385,8 +385,9 @@ div .colored-text {
     scrollbar-width: none;
 
     overflow: scroll;
+    overscroll-behavior: contain;
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     position: relative;
     background-color: pink;
 }
@@ -479,7 +480,6 @@ div .colored-text {
 #history-outer-container > #history-toggle {
     /* top: 10%; */
     position: absolute;
-    background-color: azure;
     bottom: 10px; right: 25px;
 }
 
@@ -556,109 +556,219 @@ div .colored-text {
     background-size: contain;
 }
 
+.after-game-render {
+    display: none;
+}
 
-#pizza-box {
+
+#pizza-box-icon {
     background-image: url('../assets/items/pizzabox-BN.png');
 }
 
-#tetrapack {
+#pizza-box-icon.discovered {
+    background-image: url('../assets/items/pizzabox_w_symbol.png');
+}
+
+#tetrapack-icon {
     background-image: url('../assets/items/tetrapack-BN.png');
 }
 
-#shipping-box {
+#tetrapack-icon.discovered {
+    background-image: url('../assets/items/tetrapack_w_symbol.png');
+}
+
+#shipping-box-icon {
     background-image: url('../assets/items/packaging-BN.png');
 }
 
-#envelope {
+#shipping-box-icon.discovered {
+    background-image: url('../assets/items/packaging_w_symbol.png');
+}
+
+#envelopes-icon {
     background-image: url('../assets/items/envelopes-BN.png');
 }
 
-#receipt {
+#envelopes-icon.discovered {
+    background-image: url('../assets/items/envelopes_w_symbol.png');
+}
+
+#receipt-icon {
     background-image: url('../assets/items/receipt-BN.png');
 }
 
-#plastic-bag {
+#receipt-icon.discovered {
+    background-image: url('../assets/items/receipt_w_symbol.png');
+}
+
+#plastic-bag-icon {
     background-image: url('../assets/items/plasticbag-BN.png');
 }
 
-#cooking-foil {
+#plastic-bag-icon.discovered {
+    background-image: url('../assets/items/plasticbag_w_symbol.png');
+}
+
+#cooking-foil-icon {
     background-image: url('../assets/items/foil-BN.png');
 }
 
-#medication {
+#cooking-foil-icon.discovered {
+    background-image: url('../assets/items/foil_w_symbol.png');
+}
+
+#medication-icon {
     background-image: url('../assets/items/medicine-BN.png');
 }
 
-#broken-mirror {
+#medication-icon.discovered {
+    background-image: url('../assets/items/medicine_w_symbol.png');
+}
+
+#broken-mirror-icon {
     background-image: url('../assets/items/mirror-BN.png');
 }
 
-#yogurt-cup {
+#broken-mirror-icon.discovered {
+    background-image: url('../assets/items/mirror_w_symbol.png');
+}
+
+#yogurt-cups-icon {
     background-image: url('../assets/items/yogurth-BN.png');
 }
 
-#broken-cable {
+#yogurt-cups-icon.discovered {
+    background-image: url('../assets/items/yogurth_w_symbol.png');
+}
+
+#broken-cable-icon {
     background-image: url('../assets/items/cable-BN.png');
 }
 
-#broken-toaster {
+#broken-cable-icon.discovered {
+    background-image: url('../assets/items/cable_w_symbol.png');
+}
+
+#broken-toaster-icon {
     background-image: url('../assets/items/toaster-BN.png');
 }
 
-#batteries {
+#broken-toaster-icon.discovered {
+    background-image: url('../assets/items/toaster_w_symbol.png');
+}
+
+#batteries-icon {
     background-image: url('../assets/items/batteries-BN.png');
 }
 
-#lights {
+#batteries-icon.discovered {
+    background-image: url('../assets/items/batteries_w_symbol.png');
+}
+
+#chain-of-lights-icon {
     background-image: url('../assets/items/lights-BN.png');
 }
 
-#plate {
+#chain-of-lights-icon.discovered {
+    background-image: url('../assets/items/lights_w_symbol.png');
+}
+
+#broken-plate-icon {
     background-image: url('../assets/items/plates-BN.png');
 }
 
-#plant {
+#broken-plate-icon.discovered {
+    background-image: url('../assets/items/plate_w_symbol.png');
+}
+
+#dead-plant-icon {
     background-image: url('../assets/items/plant-BN.png');
 }
 
-#filter {
+#dead-plant-icon.discovered {
+    background-image: url('../assets/items/plant_w_symbol.png');
+}
+
+#coffee-filter-icon {
     background-image: url('../assets/items/coffeefilter-BN.png');
 }
 
-#tire {
+#coffee-filter-icon.discovered {
+    background-image: url('../assets/items/coffeefilter_w_symbol.png');
+}
+
+#bike-tire-icon {
     background-image: url('../assets/items/tire-BN.png');
 }
 
-#bottle {
+#bike-tire-icon.discovered {
+    background-image: url('../assets/items/tire_w_symbol.png');
+}
+
+#plastic-bottle-icon {
     background-image: url('../assets/items/plasticbottle-BN.png');
 }
 
-#ink {
+#plastic-bottle-icon.discovered {
+    background-image: url('../assets/items/plasticbottle_w_symbol.png');
+}
+
+#printer-ink-icon {
     background-image: url('../assets/items/printersink-BN.png');
 }
 
-#tea {
+#printer-ink-icon.discovered {
+    background-image: url('../assets/items/printersink_w_symbol.png');
+}
+
+#tea-bag-icon {
     background-image: url('../assets/items/teabag-BN.png');
 }
 
-#pan {
+#tea-bag-icon.discovered {
+    background-image: url('../assets/items/teabag_w_symbol.png');
+}
+
+#old-pan-icon {
     background-image: url('../assets/items/pan-BN.png');
 }
 
-#glass-bottle {
+#old-pan-icon.discovered {
+    background-image: url('../assets/items/pan_w_symbol.png');
+}
+
+#glass-bottle-icon {
     background-image: url('../assets/items/glasbottles-BN.png');
 }
 
-#old-clothes {
+#glass-bottle-icon.discovered {
+    background-image: url('../assets/items/glasbottle_w_symbol.png');
+}
+
+/* missing */
+#old-clothing-icon {
     background-image: url('../assets/items/pan-BN.png');
 }
 
-#cup {
+#old-clothing-icon.discovered {
+    background-image: url('../assets/items/pan_w_symbol.png');
+}
+
+
+#coffee-to-go-cup-icon {
     background-image: url('../assets/items/coffeecup-BN.png');
 }
 
-#cd {
+#coffee-to-go-cup-icon.discovered {
+    background-image: url('../assets/items/coffeecup_w_symbol.png');
+}
+
+#CD-icon {
     background-image: url('../assets/items/cd-BN.png');
+}
+
+#CD-icon.discovered {
+    background-image: url('../assets/items/cd_w_symbol.png');
 }
 
 .object-container > p {
@@ -668,9 +778,11 @@ div .colored-text {
 }
 
 footer {
-    /* height: 20%; */
-    margin-top: 10%;
-    margin-bottom: 2%;
+    /* height: 205; */
+    margin-top: 20%;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    background-color: #ffeadd;
 }
 
 .footer-container {
@@ -689,6 +801,11 @@ footer {
 
 .prj-description {
     width: 50%;
+}
+
+.team-list > p {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .team-list > li {

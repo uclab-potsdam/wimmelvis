@@ -47,8 +47,6 @@ var Tooltip = {
         const movetoX = tooltipData.elementCoordinates[0] - (window.innerWidth >> 1)
         const movetoY = tooltipData.elementCoordinates[1] - (window.innerHeight >> 1)
 
-        console.log(movetoY)
-
         // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
         // behavior: 'smooth' does not work in Safari, polyfill needed: 
         // https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
@@ -336,6 +334,8 @@ function addElementToHistoryPanel(currentObj, itemsHistory) {
         x('#history').innerHTML += `<p class=${'object-name'} data-id='${currentObj}'>${data[currentObj].name_DE}</p>`
         // updates count in list
         x('#discovered-count').innerHTML = foundItems
+        var currentId = `#${currentObj}-icon`
+        x(currentId).classList.add('discovered')
     }
 }
 
