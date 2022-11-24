@@ -526,7 +526,7 @@ div .colored-text {
 
 .icon {
     width: 100%;
-    height: 200px;
+    height: 150px;
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -568,7 +568,76 @@ div .colored-text {
     background-image: url('../assets/items/mirror-BN.png');
 }
 
+#yogurt-cup {
+    background-image: url('../assets/items/yogurth-BN.png');
+}
+
+#broken-cable {
+    background-image: url('../assets/items/cable-BN.png');
+}
+
+#broken-toaster {
+    background-image: url('../assets/items/toaster-BN.png');
+}
+
+#batteries {
+    background-image: url('../assets/items/batteries-BN.png');
+}
+
+#lights {
+    background-image: url('../assets/items/lights-BN.png');
+}
+
+#plate {
+    background-image: url('../assets/items/plates-BN.png');
+}
+
+#plant {
+    background-image: url('../assets/items/plant-BN.png');
+}
+
+#filter {
+    background-image: url('../assets/items/coffeefilter-BN.png');
+}
+
+#tire {
+    background-image: url('../assets/items/tire-BN.png');
+}
+
+#bottle {
+    background-image: url('../assets/items/plasticbottle-BN.png');
+}
+
+#ink {
+    background-image: url('../assets/items/printersink-BN.png');
+}
+
+#tea {
+    background-image: url('../assets/items/teabag-BN.png');
+}
+
+#pan {
+    background-image: url('../assets/items/pan-BN.png');
+}
+
+#glass-bottle {
+    background-image: url('../assets/items/glasbottles-BN.png');
+}
+
+#old-clothes {
+    background-image: url('../assets/items/pan-BN.png');
+}
+
+#cup {
+    background-image: url('../assets/items/coffeecup-BN.png');
+}
+
+#cd {
+    background-image: url('../assets/items/cd-BN.png');
+}
+
 .object-container > p {
     text-align: center;
     margin: 0 auto;
+    font-size: 20px;
 }
