@@ -366,6 +366,7 @@ div .colored-text {
 
     overflow-x: scroll;
     width: 100vw;
+    position: relative;
 }
 
 #map svg {
@@ -444,15 +445,17 @@ div .colored-text {
 #history-outer-container {
     z-index: 4;
     pointer-events: none;
-    position: fixed;
+    position: sticky;
     top: 0;
-    height: 100%;
-    width: 10%;
+    height: 90%;
+    width: 100%;
+    background-color: pink;
 }
 
 #history-outer-container > #history-toggle {
-    position: fixed;
-    bottom: 20px; right: 25px;
+    top: 10%;
+    background-color: azure;
+    /* bottom: 20px; right: 25px; */
 }
 
 #history-toggle {
@@ -519,4 +522,53 @@ div .colored-text {
 .object-name {
     margin: 30px;
     border-bottom: 1px solid black;
+}
+
+.icon {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+#pizza-box {
+    background-image: url('../assets/items/pizzabox-BN.png');
+}
+
+#tetrapack {
+    background-image: url('../assets/items/tetrapack-BN.png');
+}
+
+#shipping-box {
+    background-image: url('../assets/items/packaging-BN.png');
+}
+
+#envelope {
+    background-image: url('../assets/items/envelopes-BN.png');
+}
+
+#receipt {
+    background-image: url('../assets/items/receipt-BN.png');
+}
+
+#plastic-bag {
+    background-image: url('../assets/items/plasticbag-BN.png');
+}
+
+#cooking-foil {
+    background-image: url('../assets/items/foil-BN.png');
+}
+
+#medication {
+    background-image: url('../assets/items/medicine-BN.png');
+}
+
+#broken-mirror {
+    background-image: url('../assets/items/mirror-BN.png');
+}
+
+.object-container > p {
+    text-align: center;
+    margin: 0 auto;
 }
