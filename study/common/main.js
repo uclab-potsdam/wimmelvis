@@ -47,6 +47,8 @@ var Tooltip = {
         const movetoX = tooltipData.elementCoordinates[0] - (window.innerWidth >> 1)
         const movetoY = tooltipData.elementCoordinates[1] - (window.innerHeight >> 1)
 
+        console.log(movetoY)
+
         // Defining scrollOptions for window.scrollTo() - enjoy some smooth scrolling.
         // behavior: 'smooth' does not work in Safari, polyfill needed: 
         // https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions
@@ -64,7 +66,7 @@ var Tooltip = {
         // this object's name and info is added to the info box
         infoContent.innerHTML = `
         <div class='inner-text'>
-            <h2>${tooltipData.name_DE}</h2>
+            <h5>${tooltipData.name_DE}</h5>
             <p class='recyclable'>${tooltipData.recyclable_DE}</p><p>${tooltipData.material_info_DE}</p>
         </div>
         `;
@@ -73,6 +75,7 @@ var Tooltip = {
         x('#sticker-container').innerHTML = `<div class='sticker ${isRecyclableClass[tooltipData.Recyclable]}'></div>`
 
         // scrolls and centers clicked element in the viewport
+        console.log(x('#map'))
         x('#map').scrollTo(scrollOptions);
 
         // positions the info box at the center of the viewport,
@@ -181,13 +184,13 @@ function load() {
 
             // prevent event to be triggered if the clicked object is already active
             if (Tooltip.activeObj == undefined || Tooltip.activeObj.id !== this.id) {
-                console.log(this)
                 // Assign current active object to tooltip
                 Tooltip.activeObj = this;
                 // execute function that renders tooltip (we need to pass
                 // the viewport width to catch problematic tooltips)
                 Tooltip.show(event, currentViewportWidth);
                 addElementToHistoryPanel(this.id, itemsHistory);
+
             }
         }
     }
@@ -331,6 +334,8 @@ function addElementToHistoryPanel(currentObj, itemsHistory) {
         // updates visible HTML elements
         x('#counter').innerHTML = `<p>${foundItems} / ${existingItems}</p>`
         x('#history').innerHTML += `<p class=${'object-name'} data-id='${currentObj}'>${data[currentObj].name_DE}</p>`
+        // updates count in list
+        x('#discovered-count').innerHTML = foundItems
     }
 }
 
@@ -357,7 +362,7 @@ function ensureSvgAccessibility(context, el, id) {
     if (context === 'root') {
         el.setAttribute("role", "img")
         el.setAttribute("tabindex", "0")
-        el.innerHTML += `<title id="svgTitle">Du bist in deiner schönen und chaotischen Küche</title>`
+        // el.innerHTML += `<title id="svgTitle">Du bist in deiner schönen und chaotischen Küche</title>`
         el.innerHTML += `<desc id="svgDesc">Sie können mit der Registerkarte navigieren und Objekte anhören, die schwer zu recyceln sind</desc>`
         el.setAttribute("aria-labelledby", "svgTitle svgDesc")
     } else {

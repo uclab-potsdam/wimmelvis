@@ -153,6 +153,10 @@ h3#reset {
     width: 640px;
 }
 
+.last-paragraph {
+    width: 80%;
+}
+
 .visualization-container {
     width: 100%;
 }
@@ -336,6 +340,18 @@ div .colored-text {
 
 }
 
+#info-content > .inner-text > h5 {
+    margin: 1rem auto;
+    font-size: 20px;
+    font-family: 'Sora-d4hcraEBs9vSVBUpE5d8',
+        sans-serif;
+}
+
+#info-content>.inner-text > p {
+    font-size: 14px;
+    line-height: normal;
+}
+
 #info.active {
     opacity: 1;
     visibility: visible;
@@ -347,8 +363,12 @@ div .colored-text {
     /* Hide scrollbar */
     /* Internet Explorer 10+ */
     -ms-overflow-style: none;
+    position: relative;
     /* Firefox */
     scrollbar-width: none;
+    margin-top: 10%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #mapcontainer::-webkit-scrollbar,
@@ -364,13 +384,18 @@ div .colored-text {
     /* Firefox */
     scrollbar-width: none;
 
-    overflow-x: scroll;
+    overflow: scroll;
     width: 100vw;
+    height: 100vh;
     position: relative;
+    background-color: pink;
 }
 
 #map svg {
+    top: 0;
+    position: absolute;
     width: 300%;
+    height: auto;
 }
 
 .object {
@@ -445,17 +470,17 @@ div .colored-text {
 #history-outer-container {
     z-index: 4;
     pointer-events: none;
-    position: sticky;
-    top: 0;
-    height: 90%;
+    position: absolute;
+    top: 0%;
     width: 100%;
-    background-color: pink;
+    height: 100%;
 }
 
 #history-outer-container > #history-toggle {
-    top: 10%;
+    /* top: 10%; */
+    position: absolute;
     background-color: azure;
-    /* bottom: 20px; right: 25px; */
+    bottom: 10px; right: 25px;
 }
 
 #history-toggle {
@@ -504,7 +529,7 @@ div .colored-text {
     border-left: 1px solid black;
     padding-left: 15px;
     height: 100%;
-    position: fixed;
+    position: absolute;
     overflow-y: auto;
     pointer-events: all;
 }
@@ -641,3 +666,53 @@ div .colored-text {
     margin: 0 auto;
     font-size: 20px;
 }
+
+footer {
+    /* height: 20%; */
+    margin-top: 10%;
+    margin-bottom: 2%;
+}
+
+.footer-container {
+    width: 100%;
+    display: inline-flex;
+}
+
+.team-list {
+    width: 30%;
+}
+
+.logos-container {
+    display: grid;
+    width: 20%;
+}
+
+.prj-description {
+    width: 50%;
+}
+
+.team-list > li {
+    list-style-type: none;
+}
+
+
+li > ul, .prj-description > div {
+    padding-left: 1rem;
+    margin: 1rem auto;
+    margin-top: 0;
+    font-size: 14px;
+}
+
+.prj-description>div {
+    /* padding: 1rem; */
+    font-size: 10px;
+    width: 80%;
+}
+
+.logos-container>img {
+    width: 100px;
+    margin-bottom: 30px;
+    margin-left: 70px;
+    margin-right: 30px;
+}
+
