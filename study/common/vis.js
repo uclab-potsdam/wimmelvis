@@ -150,6 +150,48 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
         .attr('fill', function (d) { return (colorScale(d.data.Type_EN)) })
         .attr("stroke", "white")
         .style("opacity", 0.7)
+        .on('mouseover', function () {
+            d3.select(this)
+                .transition()
+                .duration(500)
+                .attr('stroke-width', '2px')
+                .attr('d', d3.arc()
+                    .innerRadius(radius / 1.3 + 10)         // This is the size of the donut hole
+                    .outerRadius(radius + 10)
+                )
+
+            currentLabel = dataReady.filter(d => d.data.Type_EN === this['__data__'].data.Type_EN)
+
+            svgPie.select("#interactive-label")
+                .data(currentLabel)
+                .text(currentLabel[0].data.Type_EN)
+
+            svgPie.select("#interactive-label-name")
+                .data(currentLabel)
+                .text(currentLabel[0].value + "%")
+
+
+        })
+        .on('mouseout', function () {
+            d3.select(this)
+                .transition()
+                .duration(500)
+                .attr('stroke-width', '1px')
+                .attr('d', d3.arc()
+                    .innerRadius(radius / 1.3)         // This is the size of the donut hole
+                    .outerRadius(radius)
+                )
+
+            var currentLabel = dataReady.filter(d => d.data.Type_EN === "Organic Waste")
+
+            svgPie.select("#interactive-label")
+                .data(currentLabel)
+                .text(currentLabel[0].data.Type_EN)
+
+            svgPie.select("#interactive-label-name")
+                .data(currentLabel)
+                .text(currentLabel[0].value + "%")
+        })
 
     svgPie.select("g")
         .append("g")
@@ -159,6 +201,7 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
         .enter().append("text")
         .attr("x", 0)
         .attr("y", 0)
+        .attr('id', 'interactive-label-name')
         .attr("text-anchor", "middle")
         .text(currentLabel[0].data.Type_EN)
 
@@ -169,6 +212,11 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
         .enter().append("text")
         .attr("x", 0)
         .attr("y", 30)
+        .attr('id', 'interactive-label')
         .attr("text-anchor", "middle")
         .text(currentLabel[0].value + "%")
+
+    // svgPie.on('click', function () {
+    //     console.log(this)
+    // })
 })

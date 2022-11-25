@@ -79,7 +79,7 @@ var Tooltip = {
         // positions the info box at the center of the viewport,
         // if/else helps with edge cases where the info box would be rendered outside of the viewport
         infoBox.style.left = e.layerX + 'px';
-        infoBox.style.top = e.layerY + 'px'
+        infoBox.style.top = e.layerY >= 1950 ? e.layerY - 500 + 'px' : e.layerY + 'px'
 
         // add a class to clicked object
         x('#' + id).classList.add('active');
@@ -303,6 +303,15 @@ function load() {
                 toggleClass(history, 'active-history');
             }
         }
+    }
+
+    x('#back-to-article').onclick = function (e) {
+        x('#rules-of-the-game-title').scrollIntoView({ behavior: 'smooth', inline: 'end' })
+    }
+
+    x('#see-results').onclick = function (e) {
+        x('.after-game-render').classList.add('visible')
+        x('.after-game-render').scrollIntoView({ behavior: 'smooth' })
     }
 
     loadScript('../common/vis.js')
