@@ -10,6 +10,7 @@ var map = x('#map');
 var itemsHistory = [];
 var existingItems = [];
 var foundItems = 0;
+let numOfInteractions = 0
 
 // array that contains the possible statuses for objects, useful if you want to add stickers, labels or trigger a win/lose result
 var isRecyclableClass = ['not-recyclable', 'almost-recyclable', 'is-recyclable'];
@@ -141,6 +142,7 @@ function load() {
 
     // immediately updates the counter visible to users
     existingItems = Object.keys(data).length;
+    x('#total-count').innerHTML = existingItems
     x('#counter').innerHTML = `<p>${foundItems} / ${existingItems}</p>`
 
     // variable holds the viewport width
@@ -189,6 +191,9 @@ function load() {
                 Tooltip.show(event, currentViewportWidth);
                 addElementToHistoryPanel(this.id, itemsHistory);
 
+                if (foundItems === existingItems) {
+                    notifyGameEnd(true)
+                }
             }
         }
     }
@@ -226,11 +231,21 @@ function load() {
         // Handler for when the cursor is pressed down
         const mouseDownHandler = function (e) {
 
+            if (foundItems === existingItems) {
+                notifyGameEnd(false)
+            }
+
+            if (numOfInteractions === 0) {
+                x('.article').classList.add('invisible')
+                x('.after-game-render').classList.remove('visible')
+                numOfInteractions += 1
+            }
+
             // Stores data on the current scroll and mouse position
             pos = {
                 // The current scroll 
                 left: draggableMap.scrollLeft,
-                top: documentElement.scrollTop,
+                top: draggableMap.scrollTop,
                 // Get the current mouse position
                 x: e.clientX,
                 y: e.clientY,
@@ -255,7 +270,7 @@ function load() {
             const dy = e.clientY - pos.y;
 
             // Scroll the element
-            documentElement.scrollTop = pos.top - dy;
+            draggableMap.scrollTop = pos.top - dy;
             draggableMap.scrollLeft = pos.left - dx;
         };
 
@@ -305,13 +320,74 @@ function load() {
         }
     }
 
+    function onVisibilityChange(el, callback) {
+        var old_visible;
+        return function () {
+            var visible = isElementInViewport(el);
+            console.log(visible)
+            if (visible != old_visible) {
+                old_visible = visible;
+                if (typeof callback == 'function') {
+                    callback();
+                }
+            }
+        }
+    }
+
+    var handler = onVisibilityChange(x('#mapcontainer'), function () {
+        if (navigateToMap) {
+            x('#mapcontainer').scrollIntoView({ behavior: 'smooth' })
+        }
+    });
+
+    var navigateToMap = true;
+
     x('#back-to-article').onclick = function (e) {
-        x('#rules-of-the-game-title').scrollIntoView({ behavior: 'smooth', inline: 'end' })
+        navigateToMap = false;
+        numOfInteractions = 0
+        x('.article').classList.remove('invisible')
+        x('.after-game-render').classList.remove('visible')
+        x('#rules-of-the-game-title').scrollIntoView({ behavior: 'smooth' })
+        setTimeout(() => { navigateToMap = true; }, 1000);
     }
 
     x('#see-results').onclick = function (e) {
+        navigateToMap = false;
+        numOfInteractions = 0
         x('.after-game-render').classList.add('visible')
         x('.after-game-render').scrollIntoView({ behavior: 'smooth' })
+        setTimeout(() => { navigateToMap = true; }, 1000);
+    }
+
+    x('#end-game').onclick = function (e) {
+        navigateToMap = false;
+        numOfInteractions = 0
+        x('.after-game-render').classList.add('visible')
+        x('.after-game-render').scrollIntoView({ behavior: 'smooth' })
+        setTimeout(() => { navigateToMap = true; }, 1000);
+    }
+
+    function isElementInViewport(el) {
+        var rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight + 250 || document.documentElement.clientHeight + 250) && /* or $(window).height() */
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+        );
+    }
+
+    // Non-jQuery
+    if (navigateToMap && window.addEventListener) {
+        addEventListener('DOMContentLoaded', handler, false);
+        addEventListener('load', handler, false);
+        addEventListener('scroll', handler, false);
+        addEventListener('resize', handler, false);
+    } else if (window.attachEvent) {
+        attachEvent('onDOMContentLoaded', handler); // Internet Explorer 9+ :(
+        attachEvent('onload', handler);
+        attachEvent('onscroll', handler);
+        attachEvent('onresize', handler);
     }
 
     loadScript('../common/vis.js')
@@ -345,6 +421,14 @@ function addElementToHistoryPanel(currentObj, itemsHistory) {
         x('#discovered-count').innerHTML = foundItems
         var currentId = `#${currentObj}-icon`
         x(currentId).classList.add('discovered')
+    }
+}
+
+function notifyGameEnd(visible) {
+    if (visible) {
+        x("#end-game").classList.remove('invisible')
+    } else {
+        x("#end-game").classList.add('invisible')
     }
 }
 
