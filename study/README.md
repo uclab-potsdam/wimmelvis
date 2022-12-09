@@ -20,6 +20,11 @@ Building then works by running
 npm run build
 ```
 
+**Important**: Do not edit the files `wimmelbild/index.html` and `linear/index.html`! They are build products that are not checked into Git. Your changes will be overwritten without a backup!
+
+The right place to make edits are the files in `common/` and the `template.html` files in both versions.
+
+
 # Running a development webserver
 
 There are different ways to achieve this. One would be to install `http-server` once from npm:
