@@ -361,6 +361,29 @@ div .colored-text {
     transition: opacity 1s ease;
 }
 
+.linear-item {
+    margin-top: 7em;
+    margin-bottom: 7em;
+}
+
+.linear-item img {
+    width: 20em;
+    margin-left: 70px;
+}
+
+.linear-item h3 {
+    font-weight: 400;
+    font-size: 50px;
+    margin-top: unset;
+    margin-bottom: unset;
+    padding-bottom: unset;
+}
+
+.linear-item p {
+    margin-left: 70px;
+    width: 400px;
+}
+
 #mapcontainer {
     /* Hide scrollbar */
     /* Internet Explorer 10+ */
