@@ -41,4 +41,4 @@ http-serveg -p 8000
 
 The webpage should be available now on http://127.0.0.1:8000/ .
 
-For reloading the page it might be necessary to do a force-reload in your web browser. E.g. Cmd+Option+r in Safari.
+For reloading the page it might be necessary to do a force-reload in your web browser. E.g. Cmd+Option+r in Mac. 
