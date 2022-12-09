@@ -1,5 +1,9 @@
 #! /usr/bin/env python3
 
+# I was too lazy to create html elements for every one of the 26 items, so I just wrote this script.
+# When being run it is piped into linear/linear-items.html
+# Could have been done in NodeJS ofc to keep the dependencies minimal, I'm just more used to python.
+
 import json
 
 html_snippet = '''\
