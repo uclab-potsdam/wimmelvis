@@ -366,6 +366,10 @@ div .colored-text {
     margin-bottom: 7em;
 }
 
+.linear-item.even {
+    float: right;
+}
+
 .linear-item img {
     width: 20em;
     margin-left: 70px;
