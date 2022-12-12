@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run build:wimmelbild && npm run build:linear",
     "build:wimmelbild": "node wimmelbild/build.js > wimmelbild/index.html",
-    "build:linear": "node linear/build.js > linear/index.html",
+    "build:linear": "./linear/build-linear-items.py > linear/linear-items.html && node linear/build.js > linear/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

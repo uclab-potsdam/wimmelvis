@@ -366,6 +366,33 @@ div .colored-text {
     transition: opacity 1s ease;
 }
 
+.linear-item {
+    margin-top: 7em;
+    margin-bottom: 7em;
+}
+
+.linear-item.even {
+    float: right;
+}
+
+.linear-item img {
+    width: 20em;
+    margin-left: 70px;
+}
+
+.linear-item h3 {
+    font-weight: 400;
+    font-size: 50px;
+    margin-top: unset;
+    margin-bottom: unset;
+    padding-bottom: unset;
+}
+
+.linear-item p {
+    margin-left: 70px;
+    width: 400px;
+}
+
 #mapcontainer {
     /* Hide scrollbar */
     /* Internet Explorer 10+ */
@@ -636,11 +663,11 @@ div .colored-text {
 
 
 #pizza-box-icon {
-    background-image: url('../assets/items/pizzabox-BN.png');
+    background-image: url('../assets/items/pizza-box-BN.png');
 }
 
 #pizza-box-icon.discovered {
-    background-image: url('../assets/items/pizzabox_w_symbol.png');
+    background-image: url('../assets/items/pizza-box_w_symbol.png');
 }
 
 #tetrapack-icon {
@@ -652,11 +679,11 @@ div .colored-text {
 }
 
 #shipping-box-icon {
-    background-image: url('../assets/items/packaging-BN.png');
+    background-image: url('../assets/items/shipping-box-BN.png');
 }
 
 #shipping-box-icon.discovered {
-    background-image: url('../assets/items/packaging_w_symbol.png');
+    background-image: url('../assets/items/shipping-box_w_symbol.png');
 }
 
 #envelopes-icon {
@@ -676,59 +703,59 @@ div .colored-text {
 }
 
 #plastic-bag-icon {
-    background-image: url('../assets/items/plasticbag-BN.png');
+    background-image: url('../assets/items/plastic-bag-BN.png');
 }
 
 #plastic-bag-icon.discovered {
-    background-image: url('../assets/items/plasticbag_w_symbol.png');
+    background-image: url('../assets/items/plastic-bag_w_symbol.png');
 }
 
 #cooking-foil-icon {
-    background-image: url('../assets/items/foil-BN.png');
+    background-image: url('../assets/items/cooking-foil-BN.png');
 }
 
 #cooking-foil-icon.discovered {
-    background-image: url('../assets/items/foil_w_symbol.png');
+    background-image: url('../assets/items/cooking-foil_w_symbol.png');
 }
 
 #medication-icon {
-    background-image: url('../assets/items/medicine-BN.png');
+    background-image: url('../assets/items/medication.png');
 }
 
 #medication-icon.discovered {
-    background-image: url('../assets/items/medicine_w_symbol.png');
+    background-image: url('../assets/items/medication_w_symbol.png');
 }
 
 #broken-mirror-icon {
-    background-image: url('../assets/items/mirror-BN.png');
+    background-image: url('../assets/items/broken-mirror-BN.png');
 }
 
 #broken-mirror-icon.discovered {
-    background-image: url('../assets/items/mirror_w_symbol.png');
+    background-image: url('../assets/items/broken-mirror_w_symbol.png');
 }
 
 #yogurt-cups-icon {
-    background-image: url('../assets/items/yogurth-BN.png');
+    background-image: url('../assets/items/yogurt-cups-BN.png');
 }
 
 #yogurt-cups-icon.discovered {
-    background-image: url('../assets/items/yogurth_w_symbol.png');
+    background-image: url('../assets/items/yogurt-cups_w_symbol.png');
 }
 
 #broken-cable-icon {
-    background-image: url('../assets/items/cable-BN.png');
+    background-image: url('../assets/items/broken-cable-BN.png');
 }
 
 #broken-cable-icon.discovered {
-    background-image: url('../assets/items/cable_w_symbol.png');
+    background-image: url('../assets/items/broken-cable_w_symbol.png');
 }
 
 #broken-toaster-icon {
-    background-image: url('../assets/items/toaster-BN.png');
+    background-image: url('../assets/items/broken-toaster-BN.png');
 }
 
 #broken-toaster-icon.discovered {
-    background-image: url('../assets/items/toaster_w_symbol.png');
+    background-image: url('../assets/items/broken-toaster_w_symbol.png');
 }
 
 #batteries-icon {
@@ -740,109 +767,109 @@ div .colored-text {
 }
 
 #chain-of-lights-icon {
-    background-image: url('../assets/items/lights-BN.png');
+    background-image: url('../assets/items/chain-of-lights-BN.png');
 }
 
 #chain-of-lights-icon.discovered {
-    background-image: url('../assets/items/lights_w_symbol.png');
+    background-image: url('../assets/items/chain-of-lights_w_symbol.png');
 }
 
 #broken-plate-icon {
-    background-image: url('../assets/items/plates-BN.png');
+    background-image: url('../assets/items/broken-plate-BN.png');
 }
 
 #broken-plate-icon.discovered {
-    background-image: url('../assets/items/plate_w_symbol.png');
+    background-image: url('../assets/items/broken-plate_w_symbol.png');
 }
 
 #dead-plant-icon {
-    background-image: url('../assets/items/plant-BN.png');
+    background-image: url('../assets/items/dead-plant-BN.png');
 }
 
 #dead-plant-icon.discovered {
-    background-image: url('../assets/items/plant_w_symbol.png');
+    background-image: url('../assets/items/dead-plant_w_symbol.png');
 }
 
 #coffee-filter-icon {
-    background-image: url('../assets/items/coffeefilter-BN.png');
+    background-image: url('../assets/items/coffee-filter-BN.png');
 }
 
 #coffee-filter-icon.discovered {
-    background-image: url('../assets/items/coffeefilter_w_symbol.png');
+    background-image: url('../assets/items/coffee-filter_w_symbol.png');
 }
 
 #bike-tire-icon {
-    background-image: url('../assets/items/tire-BN.png');
+    background-image: url('../assets/items/bike-tire-BN.png');
 }
 
 #bike-tire-icon.discovered {
-    background-image: url('../assets/items/tire_w_symbol.png');
+    background-image: url('../assets/items/bike-tire_w_symbol.png');
 }
 
 #plastic-bottle-icon {
-    background-image: url('../assets/items/plasticbottle-BN.png');
+    background-image: url('../assets/items/plastic-bottle-BN.png');
 }
 
 #plastic-bottle-icon.discovered {
-    background-image: url('../assets/items/plasticbottle_w_symbol.png');
+    background-image: url('../assets/items/plastic-bottle_w_symbol.png');
 }
 
 #printer-ink-icon {
-    background-image: url('../assets/items/printersink-BN.png');
+    background-image: url('../assets/items/printer-ink-BN.png');
 }
 
 #printer-ink-icon.discovered {
-    background-image: url('../assets/items/printersink_w_symbol.png');
+    background-image: url('../assets/items/printer-ink_w_symbol.png');
 }
 
 #tea-bag-icon {
-    background-image: url('../assets/items/teabag-BN.png');
+    background-image: url('../assets/items/tea-bag-BN.png');
 }
 
 #tea-bag-icon.discovered {
-    background-image: url('../assets/items/teabag_w_symbol.png');
+    background-image: url('../assets/items/tea-bag_w_symbol.png');
 }
 
 #old-pan-icon {
-    background-image: url('../assets/items/pan-BN.png');
+    background-image: url('../assets/items/old-pan-BN.png');
 }
 
 #old-pan-icon.discovered {
-    background-image: url('../assets/items/pan_w_symbol.png');
+    background-image: url('../assets/items/old-pan_w_symbol.png');
 }
 
 #glass-bottle-icon {
-    background-image: url('../assets/items/glasbottles-BN.png');
+    background-image: url('../assets/items/glass-bottle-BN.png');
 }
 
 #glass-bottle-icon.discovered {
-    background-image: url('../assets/items/glasbottle_w_symbol.png');
+    background-image: url('../assets/items/glass-bottle_w_symbol.png');
 }
 
-/* missing */
+/* TODO missing */
 #old-clothing-icon {
-    background-image: url('../assets/items/pan-BN.png');
+    background-image: url('../assets/items/old-clothing-BN.png');
 }
 
 #old-clothing-icon.discovered {
-    background-image: url('../assets/items/pan_w_symbol.png');
+    background-image: url('../assets/items/old-clothing_w_symbol.png');
 }
 
 
 #coffee-to-go-cup-icon {
-    background-image: url('../assets/items/coffeecup-BN.png');
+    background-image: url('../assets/items/coffee-to-go-cup-BN.png');
 }
 
 #coffee-to-go-cup-icon.discovered {
-    background-image: url('../assets/items/coffeecup_w_symbol.png');
+    background-image: url('../assets/items/coffee-to-go-cup_w_symbol.png');
 }
 
 #CD-icon {
-    background-image: url('../assets/items/cd-BN.png');
+    background-image: url('../assets/items/CD-BN.png');
 }
 
 #CD-icon.discovered {
-    background-image: url('../assets/items/cd_w_symbol.png');
+    background-image: url('../assets/items/CD_w_symbol.png');
 }
 
 .object-container > p {

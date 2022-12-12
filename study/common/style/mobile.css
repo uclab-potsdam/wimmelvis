@@ -116,6 +116,10 @@ and (max-device-width : 850px) {
         gap: 3em;
     }
 
+    .linear-item.even {
+        float: unset;
+    }
+
     /* Styles */
     #map svg {
         width: 600%;
