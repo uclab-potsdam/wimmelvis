@@ -4,7 +4,7 @@ and (min-device-width : 320px)
 and (max-device-width : 850px) {
 
     html, body {
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
     }
 
     body {
@@ -52,6 +52,11 @@ and (max-device-width : 850px) {
         width: 70vw;
     }
 
+    .sidenote > .plastic-bag {
+        transform: translate(12em, -28em);
+        z-index: -1;
+    }
+
     #rules-of-the-game {
         font-size: 16px;
         margin-left: 45px;
@@ -60,17 +65,28 @@ and (max-device-width : 850px) {
     }
 
     #rules-of-the-game .rule {
-        margin-left: 45px;
-        padding-left: 25vw;
-        width: 45vw;
-        margin-bottom: 3em;
+        /* margin-left: 45px; */
+        /* padding-left: 25vw; */
+        width: 70vw;
+        margin: 0 auto;
+        margin-bottom: 5em;
+        text-align: center;
+    }
+
+    .rule > img {
+        text-align: center;
+        display: block;
+        float: none;
+        margin: 0 auto;
     }
 
     .infographic {
-        margin-left: 45px;
+        
+        width: 100%;
     }
 
-    .infographic h2 {
+    .infographic h2, hr {
+        margin-left: 45px;
         font-size: 24px;
         width: 70vw;
     }
@@ -79,6 +95,7 @@ and (max-device-width : 850px) {
         font-size: 16px;
         font-weight: 200;
         width: 70vw;
+        margin-left: 45px;
     }
 
     .infographic img {
@@ -88,26 +105,23 @@ and (max-device-width : 850px) {
     #you-discovered h2 {
         font-size: 24px;
         font-weight: 400;
-        text-align: unset;
-        margin-left: 45px;
+        text-align: center;
+        /* margin-left: 45px; */
         width: 70vw;
-    }
-
-    #discovered-objects-container {
-        display: unset;
+        margin: 2rem auto;
     }
 
     #discovered-objects {
-        margin-left: 45px;
-        width: 70vw;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1em;
+        /* margin-left: 45px; */
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3em;
     }
 
     /* Styles */
     #map svg {
-        /* width: 600%; */
-        height: 200%;
+        width: 600%;
+        /* height: 120vh; */
     }
 
     h1.title {
@@ -167,6 +181,32 @@ and (max-device-width : 850px) {
         width: 60px;
         height: 100px;
     }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footer-container > div {
+        width: 90%;
+        margin: 10% auto;
+    }
+
+    .logos-container {
+       display: inline-flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    }
+
+    .logos-container> div {
+        margin: 0;
+    }
+
+   .team-list {
+        text-align: center;
+        margin-top: 5%;
+   }
 
 }
 

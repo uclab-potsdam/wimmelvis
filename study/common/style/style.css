@@ -81,7 +81,7 @@ h1 {
 
 text, foreignObject {
     font-family: 'Sora-d4hcraEBs9vSVBUpE5d8', sans-serif;
-    fill: #412589;
+    /* fill: #412589; */
 }
 
 .h1-special {
@@ -168,7 +168,8 @@ h3#reset {
 }
 
 #de-map path {
-    stroke: white;
+    stroke: #412589;
+    stroke-width: 0.5px;
     /* fill: #da936a; */
 }
 
@@ -185,6 +186,10 @@ h3#reset {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+}
+
+#de-map .legend-label {
+    text-anchor: start;
 }
 
 .sidenote-container {
@@ -610,6 +615,7 @@ div .colored-text {
     height: 150px;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 }
 
 .after-game-render {
@@ -847,10 +853,10 @@ div .colored-text {
 
 footer {
     /* height: 205; */
-    margin-top: 20%;
+    margin-top: 10%;
     padding-top: 5%;
     padding-bottom: 2%;
-    background-color: #ffeadd;
+    border-top: 1px solid #412589;
 }
 
 .footer-container {
@@ -860,11 +866,12 @@ footer {
 
 .team-list {
     width: 30%;
+    margin-left: 5%;
 }
 
 .logos-container {
     display: grid;
-    width: 20%;
+    width: 15%;
 }
 
 .prj-description {
@@ -872,17 +879,28 @@ footer {
 }
 
 .team-list > p {
+    font-size: 12px;
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .team-list > li {
     list-style-type: none;
 }
 
+.role {
+    margin-top: 0;
+    font-style: italic;
+}
+
+.name {
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
 
 li > ul, .prj-description > div {
-    padding-left: 1rem;
+    padding-left: 0;
     margin: 1rem auto;
     margin-top: 0;
     font-size: 14px;
@@ -894,10 +912,27 @@ li > ul, .prj-description > div {
     width: 80%;
 }
 
-.logos-container>img {
+.logos-container>div {
     width: 100px;
-    margin-bottom: 30px;
-    margin-left: 70px;
-    margin-right: 30px;
+    min-height: 70px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+        background-size: contain;
+}
+
+#bmbf {
+    background-image: url('../assets/logos/bmbf_logo.svg');
+}
+
+#civity {
+    background-image: url('../assets/logos/civity_logo.svg');
+}
+
+#fhp {
+    background-image: url('../assets/logos/fhp_logo.svg');
+}
+
+#uclab {
+    background-image: url('../assets/logos/uclab_logo.svg');
 }
 

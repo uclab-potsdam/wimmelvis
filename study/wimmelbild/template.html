@@ -13,35 +13,6 @@
   <include src="./common/introduction.html"></include>
   <!-- <h3 id="reset">Reset</h3> -->
   <!-- the svg is added to this element -->
-  <h3>Rules of the game</h3>
-  <img
-    style="z-index: -1; position: absolute; transform: translate(0, -12em);"
-    src="../common/assets/biggradient-rules.svg"
-  >
-  <div id="rules-of-the-game">
-    <div class="rule" style="grid-column: 1; grid-row: 1;">
-      <img src="../common/assets/individualstart-rules.svg">
-      <p>
-        Move around the kitchen by scrolling or dragging.<br>
-        <span style="font-weight: 600;">Find the items that are hard to recycle.</span>
-      </p>
-    </div>
-    <div class="rule" style="grid-column: 2; grid-row: 1;">
-      <img src="../common/assets/individualstart-rules.svg">
-      <p>Discover how things should be thrown away and separated.</p>
-    </div>
-    <div style="grid-column: 1; grid-row: 2;">
-      <img style="position: relative; top: 8em;" src="../common/assets/group-stars.svg">
-    </div>
-    <div class="rule" style="grid-column: 2; grid-row: 2;">
-      <img src="../common/assets/individualstart-rules.svg">
-      <p>Text boxes give you important and additional information about each object.</p>
-    </div>
-    <div class="rule" style="grid-column: 3; grid-row: 2;">
-      <img src="../common/assets/individualstart-rules.svg">
-      <p>You can reload the objects by clicking on them or using the memory history.</p>
-    </div>
-  </div>
   <div id="mapcontainer">
     <!-- this element shows the descriptions of the items, to ensure accessibility dragnavigation can be set to false -->
     <div id="map" dragnavigation="true">
@@ -51,56 +22,151 @@
         <div id="sticker-container"></div>
       </div>
       <!-- this element contains the history panel where discovered objects are enlisted  -->
-      <div id="history-outer-container">
-        <div id="history-toggle">
-          <div id="counter" title="Collected objects counter">
-            <p>0</p>
+    </div>
+    <div id="history-outer-container">
+      <div id="history-toggle">
+        <div id="counter" title="Collected objects counter">
+          <p>0</p>
+        </div>
+        <div></div>
+        <div class="history-inner-container closed-history" title="Collected objects history"></div>
+      </div>
+      <div id="history" class="closed-history">
+        <h4>Collected objects:</h4>
+      </div>
+      <div id="back-to-article">
+        <p>Back to article</p>
+      </div>
+      <div id="see-results">
+        <p>See results</p>
+      </div>
+      <div id="end-game" class="invisible">
+        <p>You discovered all objects! See results</p>
+      </div>
+    </div>
+  </div>
+  <section class="after-game-render">
+    <div id="you-discovered">
+      <h2>
+        You discovered
+        <span id="discovered-ratio"><span id="discovered-count">0</span> / <span id="total-count">0</span></span>
+        objects.
+      </h2>
+      <div id="discovered-objects-container">
+        <div id="discovered-objects">
+          <div class="object-container">
+            <div class="icon" id="broken-toaster-icon"></div>
+            <p>Toaster</p>
           </div>
-          <div class="history-inner-container closed-history" title="Collected objects history"></div>
-        </div>
-        <div id="history" class="closed-history">
-          <h4>Collected objects:</h4>
+          <div class="object-container">
+            <div class="icon" id="broken-plate-icon"></div>
+            <p>Broken plate</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="pizza-box-icon"></div>
+            <p>Pizza box</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="receipt-icon"></div>
+            <p>Receipt</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="glass-bottle-icon"></div>
+            <p>Sterni bottle</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="batteries-icon"></div>
+            <p>Batteries</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="chain-of-lights-icon"></div>
+            <p>Chain of lights</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="dead-plant-icon"></div>
+            <p>Dead plants</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="coffee-filter-icon"></div>
+            <p>Coffee Filter</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="bike-tire-icon"></div>
+            <p>Bike Tires</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="plastic-bottle-icon"></div>
+            <p>Plastic bottle</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="printer-ink-icon"></div>
+            <p>Printer Ink</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="tea-bag-icon"></div>
+            <p>Tea bag</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="old-pan-icon"></div>
+            <p>Old Pan</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="old-clothing-icon"></div>
+            <p>Old Clothes</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="coffee-to-go-cup-icon"></div>
+            <p>Coffee Cup to-go</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="CD-icon"></div>
+            <p>CD</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="broken-cable-icon"></div>
+            <p>Broken cable</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="yogurt-cups-icon"></div>
+            <p>Yogurt Cup</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="broken-mirror-icon"></div>
+            <p>Broken Mirror</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="medication-icon"></div>
+            <p>Expired medications</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="cooking-foil-icon"></div>
+            <p>Cooking foil</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="plastic-bag-icon"></div>
+            <p>Plastic bag</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="envelopes-icon"></div>
+            <p>Envelopes</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="shipping-box-icon"></div>
+            <p>Shipping box</p>
+          </div>
+          <div class="object-container">
+            <div class="icon" id="tetrapack-icon"></div>
+            <p>Tetrapack</p>
+          </div>
         </div>
       </div>
     </div>
-
-  </div>
-  </div>
-  <div id="you-discovered">
-    <h2>
-      You discovered
-      <span id="discovered-ratio"><span id="discovered-count">0</span> / 25</span>
-      objects.
-    </h2>
-    <div id="discovered-objects-container">
-      <div id="discovered-objects">
-        <p>Toaster</p>
-        <p>Broken plate</p>
-        <p>Pizza box</p>
-        <p>Recipe</p>
-        <p>Sterni bottle</p>
-        <p>Batteries</p>
-
-        <p>Toaster</p>
-        <p>Broken plate</p>
-        <p>Pizza box</p>
-        <p>Recipe</p>
-        <p>Sterni bottle</p>
-        <p>Batteries</p>
-
-        <p>Toaster</p>
-        <p>Broken plate</p>
-        <p>Pizza box</p>
-        <p>Recipe</p>
-        <p>Sterni bottle</p>
-        <p>Batteries</p>
-      </div>
-    </div>
-  </div>
-  <include src="./common/conclusion.html"></include>
+    <include src="./common/conclusion.html"></include>
+  </section>
 </body>
 <!-- this polyfill forces scroll smooth on window.scrollTo(), see: https://github.com/iamdustan/smoothscroll -->
 <script src="../common/smoothscroll.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <!-- main javascript file to handle scroll, click and all the interactive features -->
 <script src="../common/main.js"></script>
 

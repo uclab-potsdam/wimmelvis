@@ -31,7 +31,7 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
 
     d3.csv("../common/assets/data/pro-kopf-haushalten-2020.csv").then(function (packData) {
 
-        var linearScale = d3.scaleLinear().domain([50, d3.max(packData.map(d => { return +d["Verpackungsmüll"] }))]).range([0, 1])
+        var linearScale = d3.scaleLinear().domain([50, 100]).range([0, 1])
         var legendValues = [50, 60, 70, 80, 90, 95]
 
         svgMapDe.append("g")
@@ -49,6 +49,14 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
                     }
                 })
             })
+            .on('click', function () {
+                const currentLabel = d3.selectAll(`.${this['__data__'].properties.GEN}`)
+                currentLabel["_groups"].forEach(el => {
+                    // el.classList.remove('invisible')
+                    console.log(el)
+                })
+                console.log(currentLabel)
+            })
 
         svgMapDe.append("g")
             .attr("class", "legend")
@@ -65,7 +73,9 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
             .selectAll("text")
             .data(legendValues)
             .enter().append("text")
-            .attr("x", 60)
+            .attr("class", "legend-label")
+            .attr("fill", "#412589")
+            .attr("x", 40)
             .attr("y", (d, i) => ((i + 1) * 25) - 10)
             .text(function (d, i) {
                 var nextValueI = i + 1
@@ -84,8 +94,6 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
                 y = y + 20
             }
 
-
-
             packData.forEach(el => {
                 if (el.Land === d.properties.GEN) {
                     kgProKopf = +el["Verpackungsmüll"]
@@ -102,18 +110,20 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
         }).filter(d => { return !d.label.includes('(Bodensee)') }).reverse()
 
         const filteredLabels = getUniqueListBy(bundesLabels, 'label')
+        // console.log(filteredLabels)
 
         svgMapDe.select(".map-contours")
             .append("g")
             .selectAll("text")
             .data(filteredLabels)
             .enter().append("text")
+            .attr("class", [d => d.label, "invisible"])
             .attr("x", d => d.x)
             .attr("y", d => d.y + 10)
             .attr("fill", "transparent")
-            .attr("stroke", "white")
+            .attr("stroke", "#412589")
             .attr("stroke-width", 2)
-            .attr("stroke-opacity", 0.9)
+            .attr("stroke-opacity", 1)
             .text(function (d) { return d.kgProKopf + 'Kg » ' + d.label })
 
         svgMapDe.select(".map-contours")
@@ -121,6 +131,8 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
             .selectAll("text")
             .data(filteredLabels)
             .enter().append("text")
+            .attr("class", d => d.label)
+            .attr("fill", "white")
             .attr("x", d => d.x)
             .attr("y", d => d.y + 10)
             .text(function (d) { return d.kgProKopf + 'Kg » ' + d.label })
@@ -134,8 +146,6 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
     var pie = d3.pie().value(function (d) { return +d.Perc })
     var dataReady = pie(pieData)
     var currentLabel = dataReady.filter(d => d.data.Type_EN === "Organic Waste")
-
-    console.log(currentLabel)
 
     svgPie.append("g")
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
@@ -215,8 +225,4 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
         .attr('id', 'interactive-label')
         .attr("text-anchor", "middle")
         .text(currentLabel[0].value + "%")
-
-    // svgPie.on('click', function () {
-    //     console.log(this)
-    // })
 })

@@ -137,6 +137,7 @@ Promise.all([fetchScene, fetchData]).then(() => {
 //////////////////////// main load function ////////////////////////
 
 function load() {
+    loadScript('../common/vis.js')
     // print in console how many objects are found, turn off when deploying
     console.info('You have ' + Object.keys(data).length + ' items in your dataset');
 
@@ -324,7 +325,7 @@ function load() {
         var old_visible;
         return function () {
             var visible = isElementInViewport(el);
-            console.log(visible)
+            // console.log(visible)
             if (visible != old_visible) {
                 old_visible = visible;
                 if (typeof callback == 'function') {
@@ -389,8 +390,6 @@ function load() {
         attachEvent('onscroll', handler);
         attachEvent('onresize', handler);
     }
-
-    loadScript('../common/vis.js')
 }
 
 
