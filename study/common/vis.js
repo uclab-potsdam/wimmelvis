@@ -6,7 +6,7 @@ var svgPie = d3.select("#de-pie");
 var pieWidth = svgPie.node().getBoundingClientRect().width;
 var pieHeight = svgPie.node().getBoundingClientRect().height;
 console.log(width)
-var margin = height / 30;
+var margin = width <= 850 && width > 400 ? 150 : 40;
 var radius = Math.min(width, height) / 2 - margin
 
 function getUniqueListBy(arr, key) {
@@ -152,7 +152,7 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
 
     var pie = d3.pie().value(function (d) { return +d.Perc })
     var dataReady = pie(pieData)
-    var translateY = width <= 400 ? height / 3.5 : height / 2;
+    var translateY = width <= 850 ? height / 3.5 : height / 2;
     var eventType = width <= 400 ? 'click' : 'mouseover'
     var currentLabel = dataReady.filter(d => d.data.Type_EN === "Organic Waste")
     var previousElement
