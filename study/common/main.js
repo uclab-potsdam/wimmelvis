@@ -74,7 +74,7 @@ var Tooltip = {
         x('#sticker-container').innerHTML = `<div class='sticker ${isRecyclableClass[tooltipData.Recyclable]}'></div>`
 
         // scrolls and centers clicked element in the viewport
-        console.log(x('#map'))
+        // console.log(x('#map'))
         x('#map').scrollTo(scrollOptions);
 
         // positions the info box at the center of the viewport,
@@ -344,11 +344,12 @@ function load() {
     var navigateToMap = true;
 
     x('#back-to-article').onclick = function (e) {
+        // console.log()
         navigateToMap = false;
         numOfInteractions = 0
         x('.article').classList.remove('invisible')
         x('.after-game-render').classList.remove('visible')
-        x('#rules-of-the-game-title').scrollIntoView({ behavior: 'smooth' })
+        x('#rules-of-the-game-title').scrollIntoView({ behavior: 'smooth', block: "start" })
         setTimeout(() => { navigateToMap = true; }, 1000);
     }
 

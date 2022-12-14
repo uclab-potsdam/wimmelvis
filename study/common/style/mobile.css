@@ -52,8 +52,7 @@ and (max-device-width : 850px) {
         width: 70vw;
     }
 
-    .sidenote > .plastic-bag {
-        transform: translate(12em, -28em);
+    .sidenote > img {
         z-index: -1;
     }
 
@@ -98,6 +97,23 @@ and (max-device-width : 850px) {
 
     .infographic img {
         width: 70vw;
+    }
+
+    #de-map text {
+        font-size: 10px;
+    }
+
+    .invisible-text {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    #de-pie {
+        height: 50vh;
+    }
+
+    #interactive-label-name, #interactive-label {
+        font-size: 12px;
     }
 
     #you-discovered h2 {

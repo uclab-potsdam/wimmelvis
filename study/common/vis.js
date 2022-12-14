@@ -5,7 +5,8 @@ var height = svgMapDe.node().getBoundingClientRect().height;
 var svgPie = d3.select("#de-pie");
 var pieWidth = svgPie.node().getBoundingClientRect().width;
 var pieHeight = svgPie.node().getBoundingClientRect().height;
-var margin = 40;
+console.log(width)
+var margin = height / 30;
 var radius = Math.min(width, height) / 2 - margin
 
 function getUniqueListBy(arr, key) {
@@ -33,6 +34,8 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
 
         var linearScale = d3.scaleLinear().domain([50, 100]).range([0, 1])
         var legendValues = [50, 60, 70, 80, 90, 95]
+        var currentLabel = data.features.filter(d => d.properties.GEN === 'Berlin')
+        console.log(currentLabel)
 
         svgMapDe.append("g")
             .attr("class", "map-contours")
@@ -50,12 +53,16 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
                 })
             })
             .on('click', function () {
-                const currentLabel = d3.selectAll(`.${this['__data__'].properties.GEN}`)
-                currentLabel["_groups"].forEach(el => {
-                    // el.classList.remove('invisible')
-                    console.log(el)
-                })
-                console.log(currentLabel)
+                currentLabel = data.features.filter(d => d.properties.GEN === this['__data__'].properties.GEN)
+                // var activeLabel = this['__data__'].properties.GEN
+                svgMapDe.selectAll("text")
+                    .each(function (el) {
+                        if (el.label !== undefined) {
+                            d3.select(this)
+                                .attr("class", el.label !== currentLabel[0].properties.GEN ? 'invisible-text' : '')
+                        }
+
+                    })
             })
 
         svgMapDe.append("g")
@@ -145,10 +152,13 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
 
     var pie = d3.pie().value(function (d) { return +d.Perc })
     var dataReady = pie(pieData)
+    var translateY = width <= 400 ? height / 3.5 : height / 2;
+    var eventType = width <= 400 ? 'click' : 'mouseover'
     var currentLabel = dataReady.filter(d => d.data.Type_EN === "Organic Waste")
+    var previousElement
 
     svgPie.append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+        .attr("transform", "translate(" + width / 2 + "," + translateY + ")")
         .selectAll("path")
         .data(dataReady)
         .enter()
@@ -160,17 +170,21 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
         .attr('fill', function (d) { return (colorScale(d.data.Type_EN)) })
         .attr("stroke", "white")
         .style("opacity", 0.7)
-        .on('mouseover', function () {
-            d3.select(this)
-                .transition()
-                .duration(500)
-                .attr('stroke-width', '2px')
-                .attr('d', d3.arc()
-                    .innerRadius(radius / 1.3 + 10)         // This is the size of the donut hole
-                    .outerRadius(radius + 10)
-                )
-
+        .on(eventType, function () {
             currentLabel = dataReady.filter(d => d.data.Type_EN === this['__data__'].data.Type_EN)
+            svgPie.selectAll("path")
+                .each(function (el) {
+                    d3.select(this)
+                        .transition()
+                        .duration(500)
+                        .attr('stroke-width', el.data.Type_EN === currentLabel[0].data.Type_EN ? '2px' : '1px')
+                        .attr('d', d3.arc()
+                            .innerRadius(el.data.Type_EN === currentLabel[0].data.Type_EN ? radius / 1.3 + 10 : radius / 1.3)         // This is the size of the donut hole
+                            .outerRadius(el.data.Type_EN === currentLabel[0].data.Type_EN ? radius + 10 : radius)
+                        )
+                })
+
+
 
             svgPie.select("#interactive-label")
                 .data(currentLabel)
@@ -179,6 +193,8 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
             svgPie.select("#interactive-label-name")
                 .data(currentLabel)
                 .text(currentLabel[0].value + "%")
+
+            previousElement = this
 
 
         })
@@ -211,6 +227,7 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
         .enter().append("text")
         .attr("x", 0)
         .attr("y", 0)
+        .attr('fill', '#412589')
         .attr('id', 'interactive-label-name')
         .attr("text-anchor", "middle")
         .text(currentLabel[0].data.Type_EN)
@@ -222,6 +239,7 @@ d3.csv("../common/assets/data/de-composition.csv").then(function (pieData) {
         .enter().append("text")
         .attr("x", 0)
         .attr("y", 30)
+        .attr('fill', '#412589')
         .attr('id', 'interactive-label')
         .attr("text-anchor", "middle")
         .text(currentLabel[0].value + "%")
