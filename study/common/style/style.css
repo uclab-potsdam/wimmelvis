@@ -367,12 +367,12 @@ div .colored-text {
 }
 
 .linear-item {
-    margin-top: 7em;
-    margin-bottom: 7em;
+    margin-top: -3em;
+    margin-left: 20%;
 }
 
 .linear-item.even {
-    float: right;
+    margin-left: 50%;
 }
 
 .linear-item img {
