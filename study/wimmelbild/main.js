@@ -137,7 +137,6 @@ Promise.all([fetchScene, fetchData]).then(() => {
 //////////////////////// main load function ////////////////////////
 
 function load() {
-    loadScript('../common/vis.js')
     // print in console how many objects are found, turn off when deploying
     console.info('You have ' + Object.keys(data).length + ' items in your dataset');
 
@@ -464,13 +463,5 @@ function ensureSvgAccessibility(context, el, id) {
         el.innerHTML += `<desc id="${id}-objDesc">${data[id].recyclable_DE + data[id].material_info_DE}</desc>`
         el.setAttribute("aria-labelledby", `${id}-objTitle ${id}-objDesc`)
     }
-}
-
-function loadScript(url) {
-    var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
-    head.appendChild(script);
 }
 
