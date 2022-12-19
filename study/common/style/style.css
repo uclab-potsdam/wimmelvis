@@ -96,6 +96,14 @@ text, foreignObject {
     z-index: -1;
 }
 
+.h1-special-xs {
+    text-decoration: underline;
+    font-size: 9px;
+    vertical-align: text-top;
+    position: relative;
+    display: inline-block;
+}
+
 h2 {
     font-family: 'Sora-d4hcraEBs9vSVBUpE5d8', sans-serif;
     font-size: 50px;
