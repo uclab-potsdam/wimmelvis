@@ -366,31 +366,56 @@ div .colored-text {
     transition: opacity 1s ease;
 }
 
-.linear-item {
-    margin-top: -3em;
-    margin-left: 20%;
+#linear-items {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.linear-item.even {
-    margin-left: 50%;
+.element-container {
+margin-bottom: 10%;
+}
+
+.linear-item {
+    margin-top: 10%;
+    border-bottom: 1px solid #412589;
+}
+
+.img-container {
+    width: 20%;
+    display: inline-block;
+    margin-right: 5%;
 }
 
 .linear-item img {
-    width: 15em;
-    margin-left: 70px;
+    width: 100%;
+}
+
+.description {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
 }
 
 .linear-item h3 {
+    text-align: left;
     font-weight: 400;
     font-size: 50px;
+    width: 100%;
     margin-top: unset;
     margin-bottom: unset;
     padding-bottom: unset;
+    margin-left: 0;
 }
 
-.linear-item p {
-    margin-left: 70px;
-    width: 400px;
+.linear-item.uneven  {
+    text-align: right;
+}
+
+.uneven > .element-container > .description {
+    vertical-align: top;
 }
 
 #mapcontainer {
@@ -425,6 +450,19 @@ div .colored-text {
     width: 100vw;
     height: 120vh;
     position: relative;
+
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 #map svg {
