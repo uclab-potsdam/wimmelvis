@@ -32,7 +32,7 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
 
     d3.csv("../common/assets/data/pro-kopf-haushalten-2020.csv").then(function (packData) {
 
-        var linearScale = d3.scaleLinear().domain([50, 100]).range([0, 1])
+        var linearScale = d3.scaleLinear().domain([0, 100]).range([0, 1])
         var legendValues = [50, 60, 70, 80, 90, 95]
         var currentLabel = data.features.filter(d => d.properties.GEN === 'Berlin')
         console.log(currentLabel)
