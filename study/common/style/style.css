@@ -156,6 +156,13 @@ h3#reset {
     padding: 5px 10px;
 }
 
+#gradient1 {
+    position: absolute;
+    z-index: -2;
+    top: 250px;
+    width: 100%;
+}
+
 .continuous-text {
     margin-left: 70px;
     margin-right: 10em;
