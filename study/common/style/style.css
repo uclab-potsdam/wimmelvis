@@ -235,6 +235,7 @@ div .colored-text {
     column-gap: 125px;
     grid-auto-rows: minmax(100px, auto);
     font-size: 24px;
+    margin-bottom: 5%;
 }
 
 #you-discovered h2 {
