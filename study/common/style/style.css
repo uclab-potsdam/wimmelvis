@@ -586,7 +586,8 @@ margin-bottom: 10%;
 }
 
 #back-to-article > p, #see-results > p {
-    font-size: 16px;
+    font-size: 24px;
+    font-weight: 500;
     margin: 0.2rem 0.5rem;
 }
 
