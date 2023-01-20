@@ -191,7 +191,7 @@
     "name_DE": "Fahrradreifen",
     "Recyclable": 1,
     "recyclable_EN": "Some of it is recyclable! BUT:",
-    "material_info_EN": "Not if they go into the <span class='black'>Hausmüll</span>. For recycling you can bring it back to a bike shop or \nbring it to one of the <a href='https://www.bsr.de/recyclinghoefe-20503.php'>recycling centers</a>.",
+    "material_info_EN": "It isn't recycable if it doesn't go into the <span class='black'>Hausmüll</span>. For recycling you can bring it back to a bike shop or \nbring it to one of the <a href='https://www.bsr.de/recyclinghoefe-20503.php'>recycling centers</a>.",
     "recyclable_DE": "Einiges daran ist recycelbar! ABER:",
     "material_info_DE": "Nicht wenn er in den <span class='black'>Hausmüll</span> kommt. Zum Recyceln \nkann man ihn in ein Fahrradgeschäft bringen oder zu einem der <a href='https://www.bsr.de/recyclinghoefe-20503.php'>Recyclinghöfe</a>.",
     "recycling_bin": "Wertstoffhof/Recyclinghof",
