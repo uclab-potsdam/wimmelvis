@@ -131,7 +131,7 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
             .attr("stroke", "#412589")
             .attr("stroke-width", 2)
             .attr("stroke-opacity", 1)
-            .text(function (d) { return d.kgProKopf + 'kg » ' + d.label })
+            .text(function (d) { return d.kgProKopf + 'kg ' + d.label })
 
         svgMapDe.select(".map-contours")
             .append("g")
@@ -142,7 +142,7 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
             .attr("fill", "white")
             .attr("x", d => d.x)
             .attr("y", d => d.y + 10)
-            .text(function (d) { return d.kgProKopf + 'kg » ' + d.label })
+            .text(function (d) { return d.kgProKopf + 'kg ' + d.label })
 
     })
 })
