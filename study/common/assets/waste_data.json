@@ -11,8 +11,8 @@
     "color": "black"
   },
   "tetrapack": {
-    "name_EN": "Tetrapack",
-    "name_DE": "Tetrapack",
+    "name_EN": "Tetra Pak",
+    "name_DE": "Tetra Pak",
     "Recyclable": 2,
     "recyclable_EN": "Yes, this is recyclable!",
     "material_info_EN": "Its made out of around seven differrent materials like aluminium, plastic and paper. Most of it can be recycled\n and goes into the <span class='yellow'>Wertstofftonne</span>.",
