@@ -86,7 +86,7 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
             .attr("y", (d, i) => ((i + 1) * 25) - 10)
             .text(function (d, i) {
                 var nextValueI = i + 1
-                return i < legendValues.length - 1 ? `${d}kg – ${legendValues[nextValueI]}kg` : `< ${d}kg`
+                return i < legendValues.length - 1 ? `${d}kg – ${legendValues[nextValueI]}kg` : `> ${d}kg`
             })
 
 
