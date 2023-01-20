@@ -131,10 +131,6 @@ h3 {
     padding-bottom: 1em;
 }
 
-a {
-    text-decoration: none;
-}
-
 h1.title, h3#reset {
     font-size: 1.3em;
     position: fixed;
