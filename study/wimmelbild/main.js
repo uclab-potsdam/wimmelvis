@@ -65,8 +65,8 @@ var Tooltip = {
         // this object's name and info is added to the info box
         infoContent.innerHTML = `
         <div class='inner-text'>
-            <h5>${tooltipData.name_DE}</h5>
-            <p class='recyclable'>${tooltipData.recyclable_DE}</p><p>${tooltipData.material_info_DE}</p>
+            <h5>${tooltipData.name_EN}</h5>
+            <p class='recyclable'>${tooltipData.recyclable_EN}</p><p>${tooltipData.material_info_EN}</p>
         </div>
         `;
 
@@ -415,7 +415,7 @@ function addElementToHistoryPanel(currentObj, itemsHistory) {
 
         // updates visible HTML elements
         x('#counter').innerHTML = `<p>${foundItems} / ${existingItems}</p>`
-        x('#history').innerHTML += `<p class=${'object-name'} data-id='${currentObj}'>${data[currentObj].name_DE}</p>`
+        x('#history').innerHTML += `<p class=${'object-name'} data-id='${currentObj}'>${data[currentObj].name_EN}</p>`
         // updates count in list
         x('#discovered-count').innerHTML = foundItems
         var currentId = `#${currentObj}-icon`
@@ -459,8 +459,8 @@ function ensureSvgAccessibility(context, el, id) {
         el.setAttribute("aria-labelledby", "svgTitle svgDesc")
     } else {
         el.setAttribute("tabindex", 0)
-        el.innerHTML += `<title id="${id}-objTitle">${data[id].name_DE}</title>`
-        el.innerHTML += `<desc id="${id}-objDesc">${data[id].recyclable_DE + data[id].material_info_DE}</desc>`
+        el.innerHTML += `<title id="${id}-objTitle">${data[id].name_EN}</title>`
+        el.innerHTML += `<desc id="${id}-objDesc">${data[id].recyclable_EN + data[id].material_info_EN}</desc>`
         el.setAttribute("aria-labelledby", `${id}-objTitle ${id}-objDesc`)
     }
 }
