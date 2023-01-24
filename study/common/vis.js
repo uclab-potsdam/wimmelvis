@@ -65,17 +65,6 @@ d3.json("../common/assets/data/bundeslaender.json").then(function (data) {
                     })
             })
 
-        svgMapDe.append("g")
-            .attr("class", "legend")
-            .selectAll("rect")
-            .data(legendValues)
-            .enter().append("rect")
-            .attr("x", 10)
-            .attr("y", (d, i) => i * 25)
-            .attr("width", 20)
-            .attr("height", 20)
-            .attr("fill", d => d3.interpolateOranges(linearScale(d)))
-
         svgMapDe.select(".legend")
             .selectAll("text")
             .data(legendValues)
