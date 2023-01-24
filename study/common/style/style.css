@@ -272,6 +272,7 @@ div .colored-text {
     font-weight: 300;
     margin-top: 1em;
     margin-left: unset;
+    margin-bottom: unset;
 }
 
 .infographic hr {
