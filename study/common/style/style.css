@@ -489,6 +489,11 @@ margin-bottom: 10%;
     cursor: pointer;
 }
 
+.object:hover {
+    transition: opacity 0.2s ease;
+    opacity: 0.2;
+}
+
 .object.active {
     transition: opacity 0.5s ease;
     opacity: 1;

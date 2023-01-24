@@ -243,7 +243,7 @@ function load() {
 
             // Stores data on the current scroll and mouse position
             pos = {
-                // The current scroll 
+                // The current scroll
                 left: draggableMap.scrollLeft,
                 top: draggableMap.scrollTop,
                 // Get the current mouse position
